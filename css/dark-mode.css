@@ -1,0 +1,76 @@
+:root {
+  --bodyTextWhite: #e6e9f1;
+  --clr-dark-theme-50: #0065ca;
+  --clr-dark-theme-100: #011ea0;
+  --clr-dark-theme-200: #0c3a6e;
+  --clr-dark-theme-300: #041523;
+  --clr-dark-theme-400: #111111;
+}
+
+html.dark-mode body {
+  background-color: var(--clr-dark-theme-400);
+  transition: background-color 0.5s;
+}
+
+html.dark-mode .dark-mode-hidden {
+  display: none;
+}
+
+html.dark-mode .dark-mode-show {
+  display: block;
+}
+
+/*-- -------------------------- -->
+<---      Dark Mode Toggle      -->
+<--- -------------------------- -*/
+
+html.dark-mode #dark-mode-toggle #svg-sun {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+html.dark-mode #dark-mode-toggle #svg-moon {
+  transform: translate(-200%, -50%);
+  opacity: 0;
+}
+
+#dark-mode-toggle {
+  display: block;
+  right: 5.25rem;
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  svg {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 2rem;
+    height: 2rem;
+    pointer-events: none;
+  }
+
+  #svg-moon {
+    z-index: 2;
+    transition: transform 0.75s, opacity 0.5s;
+  }
+
+  #svg-sun {
+    z-index: 1;
+    transform: translate(-50%, 100%);
+    opacity: 0;
+    transition: transform 0.75s, opacity 0.5s;
+    /* prettier-ignore */
+    transition-timing-function: linear(0, 0.504 20.5%, 1 37.8%, 0.863 44.4%, 0.831 47.4%, 0.821 50.3%, 0.83 53%, 0.856 55.8%, 1 65.5%, 0.959 69.4%, 0.947 73.2%, 0.955 76.6%, 1 84.5%, 0.991 89.3%, 1);
+  }
+
+  @media (width > 64rem) {
+    position: relative;
+    top: auto;
+    right: auto;
+    transform: none;
+    margin-left: 1.875rem;
+    margin-bottom: 0rem;
+  }
+}
