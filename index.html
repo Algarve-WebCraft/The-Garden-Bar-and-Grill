@@ -21,19 +21,30 @@
     <link rel="stylesheet" href="css/style.css" media="print" onload="this.media='all'">
     <link rel="preload" href="css/dark-mode.css" as="style">
     <link rel="stylesheet" href="css/dark-mode.css">
+    <script type="module" src="js/swup.js" defer></script>
     <script type="module" src="js/script.js" defer></script>
     <noscript>
       <link rel="stylesheet" href="css/style.css">
     </noscript>
     <title>The Garden Bar and Grill | Outdoor Restaurant in Lagos, Portugal</title>
   </head>
-  <body>
+  <body class="home">
     <header id="header">
       <a href="#main" class="skip-to-content">Skip to main content</a>
 
       <div class="header__container">
         <div class="wrapper wrapper--wide wrapper--header">
-          <img src="assets/logos/company-logo4.webp" class="company-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="Algarve Webcraft's logo. Landscape scenary of beach-side cliffs on the left, with the business name on the right (Algarve Webcraft) and its slogan below it (Small business website designs.)">
+          <img src="/assets/icons/garden-logo.webp" class="business-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="">
+
+          <nav class="nav-bar">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="html/about.html">About</a></li>
+              <li><a href="html/menu.html">Menu</a></li>
+              <li><a href="html/gallery.html">Gallery</a></li>
+              <li><a href="html/contact.html">Contact</a></li>
+            </ul>
+          </nav>
 
           <div class="hamburger-btn-box">
             <button id="dark-mode-toggle" aria-label="Toggle Dark Mode" aria-pressed="false">
@@ -80,16 +91,6 @@
             </button>
           </div>
 
-          <nav class="nav-bar">
-            <ul>
-              <li><a href="index.html"></a></li>
-              <li><a href="html/about.html"></a></li>
-              <li><a href="html/services.html"></a></li>
-              <li><a href="html/pricing.html"></a></li>
-              <li><a href="html/contact.html"></a></li>
-            </ul>
-          </nav>
-
         </div>
       </div>
     </header>
@@ -99,8 +100,18 @@
       <!--------------------------------------- PAGE 1 / SECTION-ONE / HERO ---------------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section id="hero-section" aria-labelledby="">
-        <div class="wrapper wrapper--mobile-L">
+      <section id="hero-section" aria-labelledby="hero-title">
+        <div class="wrapper wrapper--wide">
+
+          <div class="hero-flex">
+            <div class="hero-text-block">
+              <h1 id="hero-title">Welcome to The Garden</h1>
+            </div>
+
+            <div class="hero-main-logo-container">
+              <img src="/assets/icons/garden-logo.webp" class="hero-main-logo" width="600" height="360" fetchpriority="high" decoding="async" loading="eager" alt="">
+            </div>
+          </div>
 
         </div>
       </section>
