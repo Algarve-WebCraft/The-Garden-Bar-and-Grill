@@ -7,9 +7,39 @@
   --clr-dark-theme-400: #111111;
 }
 
-html.dark-mode body {
-  background-color: var(--clr-dark-theme-400);
-  transition: background-color 0.5s;
+html.dark-mode body.home {
+  background: #00000046
+    url("/assets/images/garden-night.webp") no-repeat center;
+  background-size: cover;
+  background-blend-mode: multiply;
+  color: #f4f4f4;
+}
+
+html.dark-mode p,
+html.dark-mode li,
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode a,
+html.dark-mode span {
+  color: var(--bodyTextWhite);
+}
+
+html.dark-mode #header {
+  background-color: #000000a1;
+  box-shadow: 1px 1px 30px #ffffff74;
+  backdrop-filter: blur(0.25rem);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+html.dark-mode .business-logo,
+html.dark-mode .hero-main-logo {
+  filter: invert(1) brightness(2);
+  transform: rotateY(360deg);
+}
+
+html.dark-mode .hamburger-btn {
+  background-color: var(--clr-dark-theme-200);
 }
 
 html.dark-mode .dark-mode-hidden {
@@ -30,7 +60,7 @@ html.dark-mode #dark-mode-toggle #svg-sun {
 }
 
 html.dark-mode #dark-mode-toggle #svg-moon {
-  transform: translate(-200%, -50%);
+  transform: translate(-50%, 50%);
   opacity: 0;
 }
 
@@ -45,10 +75,10 @@ html.dark-mode #dark-mode-toggle #svg-moon {
 
   svg {
     position: absolute;
-    transform: translate(-50%, -50%);
-    width: 2rem;
-    height: 2rem;
+    width: 2.5rem;
+    height: auto;
     pointer-events: none;
+    transform: translate(-50%, -50%);
   }
 
   #svg-moon {
@@ -61,8 +91,6 @@ html.dark-mode #dark-mode-toggle #svg-moon {
     transform: translate(-50%, 100%);
     opacity: 0;
     transition: transform 0.75s, opacity 0.5s;
-    /* prettier-ignore */
-    transition-timing-function: linear(0, 0.504 20.5%, 1 37.8%, 0.863 44.4%, 0.831 47.4%, 0.821 50.3%, 0.83 53%, 0.856 55.8%, 1 65.5%, 0.959 69.4%, 0.947 73.2%, 0.955 76.6%, 1 84.5%, 0.991 89.3%, 1);
   }
 
   @media (width > 64rem) {
