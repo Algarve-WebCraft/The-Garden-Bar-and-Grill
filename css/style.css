@@ -1,9 +1,178 @@
+@layer components {
+  .cmp-side-wave-svg {
+    position: fixed;
+    width: auto;
+    min-height: 100vh;
+    aspect-ratio: 140 / 680;
+    fill: var(--clr-dark-theme-400);
+    top: 0;
+    z-index: -1;
+
+    @media (width > 62.5rem) {
+      min-height: 140vh;
+      aspect-ratio: 140 / 680;
+    }
+  }
+
+  .cmp-side-wave-svg-left {
+    left: 0;
+  }
+
+  .cmp-side-wave-svg-right {
+    right: 0;
+  }
+}
+
 @layer base {
-  
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 2 / SECTION-ONE / ABOUT ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+  #about-section {
+    padding-block: 0;
+    text-align: center;
+
+    @media (width > 62.5rem) {
+      text-align: left;
+    }
+  }
+
+  .about-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-block: var(--padd-page-48);
+    backdrop-filter: blur(0.25rem);
+
+    .about-text-block {
+      max-width: 100%;
+    }
+
+    .cmp-main-btn--pg2 {
+      background-color: var(--clr-green-200);
+      color: var(--clr-lighter-black);
+      opacity: .9;
+      margin-top: 2rem;
+
+      &:hover {
+        background-color: var(--clr-green-250);
+        color: var(--clr-lighter-white);
+      }
+    }
+
+    @media (width > 62.5rem) {
+      flex-direction: row;
+      gap: 3rem;
+
+      .about-text-block {
+        max-width: 54%;
+      }
+    }
+  }
+
+  .cmp-info-text--pg2 {
+    display: none;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    color: var(--clr-green-100);
+    right: 10rem; 
+    top: 8.5rem; 
+    transform: rotateX(30deg);
+    transform-origin: center;
+    text-decoration: dotted underline;
+    text-decoration-thickness: 0.2rem;
+    text-underline-offset: 0.25em;
+    
+    @media (width > 62.5rem) {
+      display: block;
+    }
+  }
+
+  .text--2 {
+    right: 0rem;
+    top: 31.5rem; 
+  }
+
+  .about-image-block {
+    position: relative;
+    max-width: 100%;
+    max-height: clamp(8rem, 53vw, 21rem);
+    margin-top: 3rem;
+    padding-bottom: -1rem;
+    margin-inline: 1rem;
+    border-radius: 4rem;
+    overflow: clip;
+    cursor: pointer;
+    box-shadow: 10px 8px 12px 4px var(--clr-lighter-black);
+    transition: transform 0.2s ease-out;
+
+    .about-image-track {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      padding-bottom: 22rem;
+      background-color: #e4e7e3;
+      animation: scrollUp 40s linear 4s infinite; 
+      animation-play-state: running;
+      animation-fill-mode: both;
+    }
+
+    .paused {
+      animation-play-state: paused;
+    }
+
+    img {
+      position: relative;
+      display: block;
+      max-width: 100%;
+      border-radius: 3.75rem;
+      box-shadow: 4px 4px 5px var(--clr-lighter-black);
+      user-select: none;
+
+      @media (width > 62.5rem) {
+        bottom: 0.4rem;
+        border-radius: 4.5rem;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.5) translateX(-2rem);
+      transition: transform 0.2s ease-out;
+      box-shadow: 5px 4px 6px 4px var(--clr-lighter-black);
+    }
+
+    @media (width > 62.5rem) {
+      max-width: 35%;
+      max-height: clamp(13rem, 20vw, 17.5rem);
+      margin-top: 10rem;
+    }
+  }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 1 / SECTION-ONE / APPROACH ***       \\\\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 / SECTION-ONE / CONTACT ***       \\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+  .contact-block-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 85dvh;
+    gap: 2rem;
+  }
+
+  .maps-container {
+    position: relative;
+    width: 100%;
+    padding-inline: 0.5rem;
+    bottom: 0;
+  }
+
+  .maps-container__map {
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+  }
 }
 
 @layer utilities {
@@ -14,7 +183,15 @@
   }
 
   .wrapper--wide {
-    max-width: calc(95rem + 2rem);
+    max-width: calc(90rem + 2rem);
+  }
+
+  .wrapper--header {
+    max-width: calc(85rem + 2rem);
+    min-height: clamp(4.75rem, 6vw, 6rem);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .wrapper--mobile-L {
@@ -68,96 +245,21 @@
     font-size: 1.5rem;
     font-weight: 700;
     left: 1rem;
-    top: 5rem;
+    top: 7rem;
     transition: transform 0.5s ease-out;
   }
 }
 
 @layer animations {
-  @keyframes slideDown {
-    from {
-      transform: translateY(-100%);
-    }
-    to {
+  @keyframes scrollUp {
+    0% {
       transform: translateY(0);
     }
-  }
-
-  @keyframes slideUp {
-    from {
-      opacity: 0.2;
-      transform: translateY(21.87rem);
+    50% {
+      transform: translateY(-50%);
     }
-    to {
-      opacity: 1;
+    100% {
       transform: translateY(0);
-    }
-  }
-
-  @keyframes slideDiagonal {
-    0% {
-      transform: translate(0px, 0px);
-    }
-    50% {
-      transform: translate(6.25rem, 18.75rem);
-    }
-    100% {
-      transform: translate(0px, 0px);
-    }
-  }
-
-  @keyframes rotate-diagonal-small-s {
-    from {
-      transform: rotate3d(1, 10, 10, -180deg);
-      transform-origin: 100% 0%;
-    }
-    to {
-      opacity: 1;
-      transform: rotate3d(1, 1, 0, 0deg);
-      transform-origin: 100% 0%;
-    }
-  }
-
-  @keyframes rotate-diagonal-large-s {
-    from {
-      transform: rotate3d(1, 1, 0, -180deg);
-      transform-origin: 100% 0%;
-    }
-    to {
-      opacity: 1;
-      transform: rotate3d(1, 1, 0, 0deg);
-      transform-origin: 100% 0%;
-    }
-  }
-
-  @keyframes rotate {
-    0% {
-      transform: rotate(0deg) translate3d(0, 0, 0);
-    }
-
-    25% {
-      transform: rotate(4deg) translate3d(0, 0, 0);
-    }
-
-    50% {
-      transform: rotate(-4deg) translate3d(0, 0, 0);
-    }
-
-    75% {
-      transform: rotate(2deg) translate3d(0, 0, 0);
-    }
-
-    100% {
-      transform: rotate(0deg) translate3d(0, 0, 0);
-    }
-  }
-
-  @keyframes autoRun {
-    from {
-      transform: perspective(62.5rem) rotateX(-12deg) rotateY(0deg);
-    }
-    to {
-      transform: perspective(62.5rem) rotateX(-12deg) rotateY(360deg);
     }
   }
 

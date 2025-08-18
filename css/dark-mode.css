@@ -1,18 +1,27 @@
 :root {
-  --bodyTextWhite: #e6e9f1;
-  --clr-dark-theme-50: #0065ca;
-  --clr-dark-theme-100: #011ea0;
-  --clr-dark-theme-200: #0c3a6e;
-  --clr-dark-theme-300: #041523;
-  --clr-dark-theme-400: #111111;
+  --clr-lighter-white: #fafbfc;
+  --clr-lighter-black: #1a1a1a;
+  --clr-text-white: #f4f4f4;
+  --clr-nav-background-dark: #00000061;
+  --clr-nav-shadow-dark: #ffffff74;
+  --clr-dark-theme-100: #7fbf89;
+  --clr-dark-theme-200: #4d7a58;
+  --clr-dark-theme-300: #33523d;
+  --clr-dark-theme-400: #243126;
 }
 
 html.dark-mode body.home {
-  background: #00000046
-    url("/assets/images/garden-night.webp") no-repeat center;
+  background: #00000046 url("/assets/images/garden-night.webp") no-repeat center;
   background-size: cover;
   background-blend-mode: multiply;
-  color: #f4f4f4;
+}
+
+html.dark-mode body.secondary-pages {
+  background-color: var(--clr-dark-theme-400);
+}
+
+html.dark-mode .cmp-info-text {
+  color: var(--clr-green-200);
 }
 
 html.dark-mode p,
@@ -22,18 +31,39 @@ html.dark-mode h2,
 html.dark-mode h3,
 html.dark-mode a,
 html.dark-mode span {
-  color: var(--bodyTextWhite);
+  color: var(--clr-text-white);
 }
 
 html.dark-mode #header {
-  background-color: #000000a1;
-  box-shadow: 1px 1px 30px #ffffff74;
+  background-color: var(--clr-nav-background-dark);
+  box-shadow: 1px 1px 30px var(--nav-shadow-dark);
   backdrop-filter: blur(0.25rem);
   -webkit-backdrop-filter: blur(8px);
 }
 
-html.dark-mode .business-logo,
-html.dark-mode .hero-main-logo {
+html.dark-mode .nav-bar {
+  background-color: var(--clr-dark-theme-300);
+  opacity: 0.98;
+
+  & li:not(:last-of-type)::after {
+    background-color: var(--clr-lighter-white);
+  }
+
+  @media (width > 62.5rem) {
+    background-color: unset;
+  }
+}
+
+html.dark-mode .business-logo-text-dark-wrapper {
+  display: block;
+}
+
+html.dark-mode .business-logo-text-dark {
+  opacity: 1;
+  transition: opacity 2s ease-out 3s;
+}
+
+html.dark-mode .business-logo {
   filter: invert(1) brightness(2);
   transform: rotateY(360deg);
 }
@@ -42,12 +72,34 @@ html.dark-mode .hamburger-btn {
   background-color: var(--clr-dark-theme-200);
 }
 
-html.dark-mode .dark-mode-hidden {
-  display: none;
+html.dark-mode .dark-mode-toggle-text-box {
+  span {
+    transform: rotateY(360deg);
+    transition: transform 7s ease-out;
+    backface-visibility: hidden;
+  }
+
+  .dark-mode-toggle-text__day {
+    display: inline-block;
+    transform: rotate(11deg);
+  }
+
+  .dark-mode-toggle-text__night {
+    display: none;
+  }
 }
 
-html.dark-mode .dark-mode-show {
-  display: block;
+html.dark-mode #hero-title {
+  color: var(--clr-green-100);
+
+  span {
+    color: var(--clr-green-200);
+  }
+}
+
+html.dark-mode .hero-main-logo {
+  filter: invert(1) brightness(1);
+  transform: rotateX(360deg);
 }
 
 /*-- -------------------------- -->
