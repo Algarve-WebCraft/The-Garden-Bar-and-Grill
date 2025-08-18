@@ -33,8 +33,11 @@
       <a href="#main" class="skip-to-content">Skip to main content</a>
 
       <div class="header__container">
-        <div class="wrapper wrapper--wide wrapper--header">
-          <img src="/assets/icons/garden-logo.webp" class="business-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="">
+        <div class="wrapper wrapper--header">
+          <div class="business-logo-text-dark-wrapper">
+            <img src="/assets/icons/garden-logo.webp" class="business-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="">
+            <span class="business-logo-text-dark" title="After Dark">After Dark</span>
+          </div>
 
           <nav class="nav-bar">
             <ul>
@@ -84,6 +87,15 @@
               </svg>
             </button>
 
+            <div class="dark-toggle-text-box">
+              <svg viewBox="0 0 32 32">
+                <path d="M30.97,1.76c-0.02-0.08-0.05-0.16-0.09-0.23c-0.01-0.03-0.03-0.06-0.05-0.09 c-0.01-0.01-0.02-0.03-0.04-0.04c-0.02-0.04-0.05-0.08-0.08-0.11c-0.03-0.03-0.07-0.06-0.11-0.08c-0.0099-0.02-0.03-0.03-0.04-0.04 c-0.03-0.02-0.06-0.04-0.09-0.05C30.4,1.08,30.32,1.05,30.24,1.03C30.16,1.01,30.08,1,30,1s-0.16,0.01-0.25,0.04 c-0.04,0-0.09,0.02-0.14,0.04l-0.17,0.08L1.61,13.08C1.24,13.24,1,13.59,1,13.99c0,0.39,0.23,0.76,0.59,0.92l10.66,4.84l4.84,10.66 C17.25,30.77,17.61,31,18,31h0.01c0.4,0,0.75-0.24,0.91-0.61L30.89,2.46c0.01-0.02,0.02-0.05,0.03-0.0699 c0.02-0.05,0.04-0.1,0.04-0.14C30.99,2.17,31,2.09,31,2C31,1.92,30.99,1.84,30.97,1.76z" fill="#3e5f44"></path>
+                <path d="M31,2c0,0.09-0.01,0.17-0.04,0.25c0,0.04-0.02,0.09-0.04,0.14C30.91,2.41,30.9,2.44,30.89,2.46 L18.92,30.39C18.76,30.76,18.41,31,18.01,31H18c-0.39,0-0.75-0.23-0.91-0.59l-4.84-10.66L30.71,1.29 c0.03,0.03,0.06,0.07,0.08,0.11c0.04,0.04,0.07,0.09,0.09,0.13c0.04,0.07,0.07,0.15,0.09,0.23C30.99,1.84,31,1.92,31,2z" fill="#5e936c"></path>
+                <path d="M30.6,1.21c-0.04-0.04-0.09-0.0699-0.13-0.09c0.03,0.01,0.0601,0.03,0.09,0.05 C30.57,1.18,30.59,1.19,30.6,1.21z" fill="#5e936c"></path>
+              </svg>
+              <span class="cmp-info-text cmp-info-text--pg1">See us during the <div class="dark-toggle-text__day">day!</div><div class="dark-toggle-text__night">night!</div></span>
+            </div>
+
             <button class="hamburger-btn" id="hamburger" aria-label="Toggle The Navigation Menu" aria-controls="navigation" aria-expanded="false">
               <span></span>
               <span></span>
@@ -100,12 +112,17 @@
       <!--------------------------------------- PAGE 1 / SECTION-ONE / HERO ---------------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section id="hero-section" aria-labelledby="hero-title">
-        <div class="wrapper wrapper--wide">
+      <section id="hero-section" class="cmp-section" aria-labelledby="hero-title">
+        <div class="wrapper wrapper--wide wrapper--mobile-L">
 
           <div class="hero-flex">
             <div class="hero-text-block">
-              <h1 id="hero-title">Welcome to The Garden</h1>
+              <h1 id="hero-title" class="cmp-heading">Enter the <div class="hero-title__letters"><span>h</span><span>i</span><span>d</span><span>d</span><span>e</span><span>n</span></div> <div class="hero-title__letters"><span>g</span><span>e</span><span>m</span></div> of Lagos</h1>
+              <p class="cmp-text cmp-text--pg1-s1">Where a South African BBQ, known as a <em>Braai</em>, meets funky outdoor dining. Savor the variety of flavours from our open grill and delicious cocktail bar. Relax on large picnic tables or sink into comfortable couches. We are open daily from 12pm to 11pm. Contact us to reserve your evening table.</p>
+              <div class="button-flex">
+                <a class="cmp-main-btn" href="html/contact.html">Contact Us</a>
+                <a class="cmp-main-btn cmp-main-btn--pg1-s1" href="html/gallery.html">Gallery</a>
+              </div>
             </div>
 
             <div class="hero-main-logo-container">
@@ -115,15 +132,6 @@
 
         </div>
       </section>
-
-      <!------------------------------------------------------------------------------------------------------------>
-      <!------------------------------------------------ FOOTER ---------------------------------------------------->
-      <!------------------------------------------------------------------------------------------------------------>
-
-      <footer id="footer">
-        <div class="wrapper wrapper--mobile-L">
-
-        </div>
       </footer>
     </main>
   </body>

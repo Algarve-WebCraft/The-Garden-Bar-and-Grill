@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="../css/critical.css">
     <link rel="preload" href="../css/style.css" as="style">
     <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
-    <link rel="preload" href="../css/style-pages.css" as="style">
-    <link rel="stylesheet" href="../css/style-pages.css" media="print" onload="this.media='all'">
     <link rel="preload" href="../css/dark-mode.css" as="style">
     <link rel="stylesheet" href="../css/dark-mode.css">
     <script type="module" src="../js/swup.js" defer></script>
@@ -30,15 +28,18 @@
     </noscript>
     <title>The Garden Bar and Grill | Outdoor Restaurant in Lagos, Portugal</title>
   </head>
-  <body>
+  <body class="secondary-pages">
     <header id="header">
       <a href="#main" class="skip-to-content">Skip to main content</a>
 
       <div class="header__container">
-        <div class="wrapper wrapper--wide wrapper--header">
-          <img src="/assets/icons/garden-logo.webp" class="business-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="">
+        <div class="wrapper wrapper--header">
+          <div class="business-logo-text-dark-wrapper">
+            <img src="/assets/icons/garden-logo.webp" class="business-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="">
+            <span class="business-logo-text-dark" title="After Dark">After Dark</span> 
+          </div>
 
-          <nav class="nav-bar">
+          <nav class="nav-bar"> 
             <ul>
               <li><a href="../index.html">Home</a></li>
               <li><a href="about.html">About</a></li>
@@ -102,8 +103,10 @@
       <!--------------------------------------- PAGE 1 / SECTION-ONE / HERO ---------------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section id="hero-section" aria-labelledby="">
+      <section id="menu-section" class="cmp-section" aria-labelledby="menu-title">
         <div class="wrapper wrapper--mobile-L">
+
+          <h1 id="menu-title" class="cmp-heading">Menus</h1>
 
         </div>
       </section>

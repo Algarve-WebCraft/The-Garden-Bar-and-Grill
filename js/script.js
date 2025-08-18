@@ -65,7 +65,8 @@ document.addEventListener("click", (e) => {
     e.target === navBar ||
     e.target === hamburgerBtn ||
     e.target === navBarList
-  ) return;
+  )
+    return;
 
   if (isAnimating) return;
 
@@ -171,8 +172,8 @@ function detectColorScheme() {
     disableDarkMode();
     preloadLink.href = "/assets/images/garden-day.jpg";
   } else {
-    enableDarkMode(); 
-    preloadLink.href = "/assets/images/garden-night.webp"; 
+    enableDarkMode();
+    preloadLink.href = "/assets/images/garden-night.webp";
   }
 
   document.head.appendChild(preloadLink);
@@ -199,4 +200,12 @@ darkModeButton.addEventListener("click", () => {
   document.startViewTransition(() => {
     switchTheme(newTheme);
   });
+});
+
+  /* About section carousel pause function */
+
+const track = document.querySelector('.about-image-track');
+
+track.addEventListener('click', () => {
+  track.classList.toggle('paused');
 });

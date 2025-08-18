@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="../css/critical.css">
     <link rel="preload" href="../css/style.css" as="style">
     <link rel="stylesheet" href="../css/style.css" media="print" onload="this.media='all'">
-    <link rel="preload" href="../css/style-pages.css" as="style">
-    <link rel="stylesheet" href="../css/style-pages.css" media="print" onload="this.media='all'">
     <link rel="preload" href="../css/dark-mode.css" as="style">
     <link rel="stylesheet" href="../css/dark-mode.css">
     <script type="module" src="../js/swup.js" defer></script>
@@ -30,13 +28,16 @@
     </noscript>
     <title>The Garden Bar and Grill | Outdoor Restaurant in Lagos, Portugal</title>
   </head>
-  <body>
+  <body class="secondary-pages">
     <header id="header">
       <a href="#main" class="skip-to-content">Skip to main content</a>
 
       <div class="header__container">
-        <div class="wrapper wrapper--wide wrapper--header">
-          <img src="/assets/icons/garden-logo.webp" class="business-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="">
+        <div class="wrapper wrapper--header">
+          <div class="business-logo-text-dark-wrapper">
+            <img src="/assets/icons/garden-logo.webp" class="business-logo" width="600" height="160" fetchpriority="high" decoding="async" loading="eager" alt="">
+            <span class="business-logo-text-dark" title="After Dark">After Dark</span>
+          </div>
 
           <nav class="nav-bar">
             <ul>
@@ -99,11 +100,44 @@
 
     <main id="main">
       <!------------------------------------------------------------------------------------------------------------>
-      <!--------------------------------------- PAGE 1 / SECTION-ONE / HERO ---------------------------------------->
+      <!--------------------------------------- PAGE 1 / SECTION-ONE / ABOUT ---------------------------------------->
       <!------------------------------------------------------------------------------------------------------------>
 
-      <section id="hero-section" aria-labelledby="">
+      <section id="about-section" class="cmp-section" aria-labelledby="about-title">
         <div class="wrapper wrapper--mobile-L">
+
+          <div class="cmp-side-wave-svg cmp-side-wave-svg-left">
+            <svg viewBox="0 0 140 680" preserveAspectRatio="none">
+              <path d="M40,0 C100,240 0,480 60,720 C120,960 80,1200 110,1440 L0,1440 L0,0 Z" />
+            </svg>
+          </div>
+
+          <div class="about-flex">
+            <div class="about-text-block">
+              <h1 id="about-title" class="cmp-heading">Our Story</h1>
+              <p class="cmp-text">The Gardens story began in 2012, on the overgrown grounds of an old abandoned clinic. Clearing decades of tangled weeds and rubble took patience, and little by little the space started to reveal its charm. A lot of friends pitched in, building the grill from scratch, turning the dusty carport into a fully functioning bar and crafting all the required furniture from scratch. A mural of a great wave soon brightened the walls, and the variety of decorations gave the place its soul.</p><br> 
+              <p class="cmp-text">On June 16th 2012, The Garden opened its large door for the very first time, finally revealing itself to the world. Since then, it has grown and evolved year after year, shaped by the same spirit of creativity and community that built it. Check out the Gallery section to see the history for yourself!</p>
+
+              <a class="cmp-main-btn cmp-main-btn--pg2" href="./gallery.html">Gallery</a> 
+            </div>
+
+            <span class="cmp-info-text cmp-info-text--pg2">Hover over to enlarge</span> 
+            <span class="cmp-info-text cmp-info-text--pg2 text--2">Click to pause/play</span> 
+
+            <div class="about-image-block">
+              <div class="about-image-track">
+                <img src="/assets/images/garden-cat.jpg" width="600" height="600" decoding="async" loading="lazy" alt="a black and white photo of the gardens old resident fat cat named Burnie.">
+                <img src="/assets/images/garden-cat.jpg" width="600" height="600" decoding="async" loading="lazy" alt="a black and white photo of the gardens old resident fat cat named Burnie.">
+                <img src="/assets/images/garden-cat.jpg" width="600" height="600" decoding="async" loading="lazy" alt="a black and white photo of the gardens old resident fat cat named Burnie.">
+              </div>
+            </div>
+          </div>
+
+          <div class="cmp-side-wave-svg cmp-side-wave-svg-right">
+            <svg viewBox="0 0 140 680" preserveAspectRatio="none" style="transform:scaleX(-1);">
+              <path d="M40,0 C100,240 0,480 60,720 C120,960 80,1200 110,1440 L0,1440 L0,0 Z" />
+            </svg>
+          </div>
 
         </div>
       </section>
