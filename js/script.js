@@ -152,8 +152,9 @@ function disableDarkMode() {
 }
 
 function detectColorScheme() {
-  let theme = "light";
   const preloadLink = document.createElement("link");
+  const bodyEl = document.querySelector("body");
+  let theme = "light";
   preloadLink.rel = "preload";
   preloadLink.as = "image";
 
@@ -167,16 +168,15 @@ function detectColorScheme() {
   }
 
   /* Logic for setting html pre-load <link> for background images depending on the theme */
-
-  if (theme === "light") {
+  if (theme === "light" && bodyEl.classList.contains("home")) {
     disableDarkMode();
     preloadLink.href = "/assets/images/garden-day.jpg";
-  } else {
+    document.head.appendChild(preloadLink);
+  } else if (theme === "dark" && bodyEl.classList.contains("home")) {
     enableDarkMode();
     preloadLink.href = "/assets/images/garden-night.webp";
+    document.head.appendChild(preloadLink);
   }
-
-  document.head.appendChild(preloadLink);
 }
 
 detectColorScheme();
@@ -202,10 +202,147 @@ darkModeButton.addEventListener("click", () => {
   });
 });
 
-  /* About section carousel pause function */
+/* About section carousel pause function */
 
-const track = document.querySelector('.about-image-track');
+const track = document.querySelector(".about-image-track");
 
-track.addEventListener('click', () => {
-  track.classList.toggle('paused');
+track?.addEventListener("click", () => {
+  track.classList.toggle("paused");
+});
+
+document.addEventListener("keydown", (e) => {
+  if (track && e.key === " ") {
+    track.classList.toggle("paused");
+  }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  if (track) {
+    track.click();
+
+    setTimeout(() => {
+      track.click();
+    }, 4000);
+  }
+});
+
+/* Menu section modal image logic */
+
+const menuData = {
+  en: ["/assets/images/menu-front.webp", "/assets/images/menu-back.webp"],
+  pt: ["menus/portuguese-front.jpg", "menus/portuguese-back.jpg"],
+  de: ["menus/german-front.jpg", "menus/german-back.jpg"],
+  fr: ["menus/french-front.jpg", "menus/french-back.jpg"],
+  dr: ["menus/french-front.jpg", "menus/french-back.jpg"],
+  bw: ["menus/french-front.jpg", "menus/french-back.jpg"],
+};
+
+const buttons = document.querySelectorAll(".menu-buttons button");
+const modal = document.getElementById("menuModal");
+const closeBtn = document.getElementById("closeModal");
+const frontImg = document.getElementById("menu-front");
+const backImg = document.getElementById("menu-back");
+
+buttons?.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const lang = btn.dataset.lang;
+    const [front, back] = menuData[lang];
+    frontImg.src = front;
+    backImg.src = back;
+    modal.classList.add("show");
+  });
+});
+
+closeBtn?.addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+
+modal?.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("show");
+  }
+});
+
+/* Gallery section album books */
+
+const books = document.querySelectorAll(".gallery-book-svg");
+const albums = document.querySelectorAll(".album-grid");
+const backButtons = document.querySelectorAll(".album-grid__btn");
+const bookContainer = document.querySelector(".gallery-book-svg-box");
+
+let activeAlbum = null;
+let activeBook = null;
+
+books.forEach((book, index) => {
+  const album = document.querySelector(`.album-grid--${index + 1}`);
+
+  book.addEventListener("click", () => {
+    activeAlbum = album;
+    activeBook = book;
+
+    book.classList.add("fade-out-selected");
+
+    books.forEach((otherBook, i) => {
+      if (i !== index) {
+        otherBook.classList.add("fade-out-other");
+      }
+    });
+
+    setTimeout(() => {
+      albums.forEach((a) => {
+        a.classList.remove("show");
+        a.classList.add("hidden");
+      });
+
+      album.classList.remove("hidden");
+      album.classList.add("show");
+
+      bookContainer.classList.add("hidden");
+    }, 1500);
+  });
+});
+
+backButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (!activeAlbum || !activeBook) return;
+
+    activeAlbum.classList.remove("show");
+    setTimeout(() => {
+      activeAlbum.classList.add("hidden");
+    }, 1500);
+
+    activeBook.classList.remove("fade-out-selected");
+    activeBook.classList.add("fade-in-selected");
+
+    books.forEach((b) => {
+      if (b !== activeBook) {
+        b.classList.remove("fade-out-other");
+        b.classList.add("fade-in-other");
+      }
+    });
+
+    setTimeout(() => {
+      bookContainer.classList.remove("hidden");
+
+      books.forEach((b) => {
+        b.classList.remove("fade-in-selected", "fade-in-other");
+      });
+
+      activeAlbum = null;
+      activeBook = null;
+    }, 1500); 
+  });
+});
+
+/* Main page logo easter egg */
+
+const logo = document.querySelector(".hero-main-logo");
+const easterEgg = document.querySelector(".hero-main-logo__easter-egg");
+
+logo?.addEventListener("click", () => {
+  easterEgg.classList.add("easter-egg-active");
+
+  setTimeout(() => {
+    easterEgg.classList.remove("easter-egg-active");
+  }, 4000);
 });

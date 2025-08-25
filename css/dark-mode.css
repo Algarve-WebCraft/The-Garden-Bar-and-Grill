@@ -24,6 +24,18 @@ html.dark-mode .cmp-info-text {
   color: var(--clr-green-200);
 }
 
+html.dark-mode .tree-svg{
+  opacity: 1;
+  transform: translateY(-120px);
+  transition: transform 2s ease-out 4s, opacity 2s ease-out;
+}
+
+html.dark-mode .flower-svg {
+  opacity: 0;
+  transform: translateY(0px);
+  transition: transform 2s ease-out 2s, opacity 1s ease-out 2s;
+}
+
 html.dark-mode p,
 html.dark-mode li,
 html.dark-mode h1,
@@ -72,19 +84,19 @@ html.dark-mode .hamburger-btn {
   background-color: var(--clr-dark-theme-200);
 }
 
-html.dark-mode .dark-mode-toggle-text-box {
+html.dark-mode .dark-toggle-text-box {
   span {
     transform: rotateY(360deg);
-    transition: transform 7s ease-out;
+    transition: transform 4s ease-out; 
     backface-visibility: hidden;
   }
 
-  .dark-mode-toggle-text__day {
+  .dark-toggle-text__day {
     display: inline-block;
     transform: rotate(11deg);
   }
 
-  .dark-mode-toggle-text__night {
+  .dark-toggle-text__night {
     display: none;
   }
 }
@@ -124,6 +136,7 @@ html.dark-mode #dark-mode-toggle #svg-moon {
   border: none;
   background: transparent;
   cursor: pointer;
+  transition: transform 0.3s ease-in-out;
 
   svg {
     position: absolute;
@@ -144,6 +157,11 @@ html.dark-mode #dark-mode-toggle #svg-moon {
     opacity: 0;
     transition: transform 0.75s, opacity 0.5s;
   }
+
+  &:hover {
+      transform: scale(1.3);
+      transition: transform 0.3s ease-in-out; 
+    }
 
   @media (width > 64rem) {
     position: relative;
