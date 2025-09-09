@@ -11,8 +11,13 @@
 }
 
 html.dark-mode body.home {
-  background: #00000046 url("/assets/images/garden-night.webp") no-repeat center;
   background-size: cover;
+  background-blend-mode: multiply;
+}
+
+html.dark-mode body.home::before,
+html.dark-mode body.home::after {
+  background-color: rgba(0, 0, 0, 0.13);
   background-blend-mode: multiply;
 }
 
@@ -22,18 +27,6 @@ html.dark-mode body.secondary-pages {
 
 html.dark-mode .cmp-info-text {
   color: var(--clr-green-200);
-}
-
-html.dark-mode .tree-svg{
-  opacity: 1;
-  transform: translateY(-120px);
-  transition: transform 2s ease-out 4s, opacity 2s ease-out;
-}
-
-html.dark-mode .flower-svg {
-  opacity: 0;
-  transform: translateY(0px);
-  transition: transform 2s ease-out 2s, opacity 1s ease-out 2s;
 }
 
 html.dark-mode p,
@@ -86,8 +79,6 @@ html.dark-mode .hamburger-btn {
 
 html.dark-mode .dark-toggle-text-box {
   span {
-    transform: rotateY(360deg);
-    transition: transform 4s ease-out; 
     backface-visibility: hidden;
   }
 
@@ -110,8 +101,20 @@ html.dark-mode #hero-title {
 }
 
 html.dark-mode .hero-main-logo {
-  filter: invert(1) brightness(1);
+  filter: invert(1) brightness(2);
   transform: rotateX(360deg);
+}
+
+html.dark-mode .ufo-svg {
+  display: inline;
+}
+
+html.dark-mode .leaf-svg {
+  display: none;
+}
+
+html.dark-mode .cmp-side-wave-svg {
+  fill: #32320c;
 }
 
 /*-- -------------------------- -->
@@ -159,9 +162,9 @@ html.dark-mode #dark-mode-toggle #svg-moon {
   }
 
   &:hover {
-      transform: scale(1.3);
-      transition: transform 0.3s ease-in-out; 
-    }
+    transform: scale(1.3);
+    transition: transform 0.3s ease-in-out;
+  }
 
   @media (width > 64rem) {
     position: relative;
