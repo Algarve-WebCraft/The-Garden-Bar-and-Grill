@@ -9,8 +9,18 @@ function initPageScripts() {
   initDarkToggleText();
   initLogoEasterEgg();
   initAboutCarousel();
-  initMenuModal();
+  initMenu();
   initGallery();
+
+  document.addEventListener("swup:contentReplaced", () => {
+    if (window.lightbox && typeof window.lightbox.destroy === "function") {
+      window.lightbox.destroy();
+    }
+
+    if (document.querySelector(".gallery-page")) {
+      initGallery();
+    }
+  });
 
   document.body.classList.remove("home", "secondary-pages");
 
@@ -34,219 +44,99 @@ swup.hooks.on("page:view", initPageScripts);
 
 /* Change beginning body hero animation classes */
 
-/* document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     document.body.classList.remove("loading");
     document.body.classList.add("loaded");
-  }, 2000);
-}); */
-
-////////////////////////////////* Navigation links and hamburger menu *//////////////////////////////////////////////////////////////////////*
-
-const hamburgerBtn = document.querySelector(".hamburger-btn");
-const navBar = document.querySelector(".nav-bar");
-const navBarList = document.querySelector(".nav-bar ul");
-const navBarLinks = document.querySelectorAll(".nav-bar a");
-
-let isAnimating = false;
-
-hamburgerBtn.addEventListener("click", () => {
-  if (isAnimating) return;
-
-  const isOpen = navBar.classList.contains("hamburger-btn__open");
-
-  if (isOpen) {
-    isAnimating = true;
-    hamburgerBtn.classList.remove("active");
-    navBar.classList.remove("hamburger-btn__open");
-  } else {
-    navBar.style.display = "block";
-    requestAnimationFrame(() => {
-      hamburgerBtn.classList.add("active");
-      navBar.classList.add("hamburger-btn__open");
-    });
-  }
-
-  setNavAttributes();
+  }, 5000);
 });
 
-navBar.addEventListener("transitionend", (e) => {
-  if (e.propertyName !== "transform") return;
+document.addEventListener("DOMContentLoaded", () => {
+  return;
+  const home = document.querySelector("body.home");
 
-  if (!navBar.classList.contains("hamburger-btn__open")) {
-    navBar.style.display = "none";
-  }
-
-  isAnimating = false;
-});
-
-document.addEventListener("click", (e) => {
-  if (
-    !navBar.classList.contains("hamburger-btn__open") ||
-    e.target === navBar ||
-    e.target === hamburgerBtn ||
-    e.target === navBarList
-  )
-    return;
-
-  if (isAnimating) return;
-
-  isAnimating = true;
-  hamburgerBtn.classList.remove("active");
-  navBar.classList.remove("hamburger-btn__open");
-
-  setNavAttributes();
-});
-
-function setNavAttributes() {
-  const navBarHasActiveClass = navBar.classList.contains("hamburger-btn__open");
-
-  if (!navBarHasActiveClass && navBar.contains(document.activeElement)) {
-    document.activeElement.blur();
-  }
-
-  navBar.setAttribute("aria-hidden", String(!navBarHasActiveClass));
-  hamburgerBtn.setAttribute("aria-expanded", String(navBarHasActiveClass));
-
-  navBarLinks.forEach((link) => {
-    link.tabIndex = navBarHasActiveClass ? 0 : -1;
+  const tl = gsap.timeline({
+    defaults: { ease: "power3.out" }, 
+    delay: 1.2,
   });
-}
 
-/////////////////////////////////////* Show the current page *////////////////////////////////////////////////////////////////////////////////*
+  /* tl.fromTo(
+    home,
+    { "--before-opacity": 0, "--after-opacity": 0 },
+    { "--before-opacity": 1, "--after-opacity": 1, duration: 0.5 }
+  ); */
 
-function updateActiveNavLink() {
-  const navBarLinks = document.querySelectorAll(".nav-bar a");
-  const currentPath = window.location.pathname;
-
-  navBarLinks.forEach((link) => {
-    const linkPath = new URL(link.href).pathname;
-
-    if (linkPath === currentPath) {
-      link.classList.add("active-link");
-
-      requestAnimationFrame(() => {
-        link.classList.add("animate-underline");
-      });
-    } else {
-      link.classList.remove("active-link", "animate-underline");
-    }
+  // Header slides from top
+  tl.from("#header", {
+    y: -80,
+    opacity: 0,
+    duration: 2,
   });
-}
 
-/////////////////////////////////////* Prevent navigation transitions happening on resize *////////////////////////////////////////////////////////*
+  // Hero title fades and slides up
+  tl.from(
+    "#hero-title",
+    {
+      y: 50,
+      opacity: 0,
+      duration: 1.2,
+    },
+    "-=0.5"
+  );
 
-let resizeTimeout;
+  // Paragraph text slides in from left
+  tl.from(
+    ".cmp-text--pg1-s1",
+    {
+      x: -60,
+      opacity: 0,
+      duration: 1,
+    },
+    "-=0.7"
+  );
 
-window.addEventListener("resize", () => {
-  navBar.classList.add("no-transition");
+  // Buttons pop in with a slight stagger
+  tl.from(
+    ".button-flex a",
+    {
+      opacity: 0,
+      stagger: 0.05,
+      duration: 1.25,
+    },
+    "-=0.8"
+  );
 
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    navBar.classList.remove("no-transition");
-  }, 1);
+  tl.from(
+    "#footer",
+    {
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+    },
+    "-=1"
+  );
+
+  // Main logo container fades & scales in
+  tl.from(
+    ".hero-main-logo-container",
+    {
+      scale: 0.4,
+      opacity: 0,
+      duration: .5,
+    },
+    "-=0.7"
+  );
+
+  tl.from(
+    ".cmp-info-text--pg1",
+    {
+      scale: 0.5,
+      opacity: 0,
+      duration: 1,
+    },
+    "-=0.5"
+  );
 });
-
-///////////////////////////////////////////////////////* Dark-mode change *////////////////////////////////////////////////////////////////////////*
-
-const darkModeButton = document.getElementById("dark-mode-toggle");
-
-function enableDarkMode() {
-  document.documentElement.classList.add("dark-mode");
-  localStorage.setItem("theme", "dark");
-}
-
-function disableDarkMode() {
-  document.documentElement.classList.remove("dark-mode");
-  localStorage.setItem("theme", "light");
-}
-
-function detectColorScheme() {
-  const preloadLink = document.createElement("link");
-  const bodyEl = document.querySelector("body");
-  let theme = "light";
-  preloadLink.rel = "preload";
-  preloadLink.as = "image";
-
-  if (localStorage.getItem("theme")) {
-    theme = localStorage.getItem("theme");
-  } else if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    theme = "dark";
-  }
-
-  //Logic for setting html pre-load <link> for background images depending on the theme
-  if (theme === "light" && bodyEl.classList.contains("home")) {
-    disableDarkMode();
-    preloadLink.href = "/assets/images/day/garden-day-1.webp";
-    document.head.appendChild(preloadLink);
-  } else if (theme === "dark" && bodyEl.classList.contains("home")) {
-    enableDarkMode();
-    preloadLink.href = "/assets/images/night/garden-night-1.webp";
-    document.head.appendChild(preloadLink);
-  }
-}
-
-detectColorScheme();
-
-function switchTheme(newTheme) {
-  newTheme === "dark" ? enableDarkMode() : disableDarkMode();
-}
-
-darkModeButton.addEventListener("click", () => {
-  const isPressed = darkModeButton.getAttribute("aria-pressed") === "true";
-  darkModeButton.setAttribute("aria-pressed", String(!isPressed));
-
-  const currentTheme = localStorage.getItem("theme") || "light";
-  const newTheme = currentTheme === "light" ? "dark" : "light";
-
-  if (!document.startViewTransition) {
-    switchTheme(newTheme);
-    return;
-  }
-
-  document.startViewTransition(() => {
-    switchTheme(newTheme);
-  });
-});
-
-///////////////////////////////////////////////////////* Dark toggle day/night text change *////////////////////////////////////////////////////////*
-
-function initDarkToggleText() {
-  const textBox = document.querySelector(".dark-toggle-text-box");
-  if (!textBox) return;
-
-  const isHome =
-    window.location.pathname === "/" ||
-    window.location.pathname.endsWith("index.html");
-
-  if (!isHome) {
-    textBox.style.display = "none";
-    return;
-  }
-  textBox.style.display = "block";
-
-  const day = textBox.querySelector(".dark-toggle-text__day");
-  const night = textBox.querySelector(".dark-toggle-text__night");
-  const span = textBox.querySelector("span");
-
-  function updateMode() {
-    const isDark = document.documentElement.classList.contains("dark-mode");
-    span.style.transform = isDark ? "rotateY(360deg)" : "rotateY(0deg)";
-    day.style.display = isDark ? "inline-block" : "none";
-    night.style.display = isDark ? "none" : "inline-block";
-  }
-
-  updateMode();
-
-  const observer = new MutationObserver(updateMode);
-  observer.observe(document.documentElement, {
-    attributes: true,
-    attributeFilter: ["class"],
-  });
-}
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
 
@@ -257,8 +147,10 @@ function initHomeBackground() {
   const home = document.querySelector("body.home");
   if (!home) return;
 
+  home.classList.remove("with-transition"); // Class applied so opacity transition only happens on image change and not loading on or off page
+
   const dayImages = [
-    "/assets/images/day/garden-day-1.webp", 
+    "/assets/images/day/garden-day-1.webp",
     "/assets/images/day/garden-day-2.webp",
     "/assets/images/day/garden-day-3.webp",
     "/assets/images/day/garden-day-4.webp",
@@ -273,8 +165,6 @@ function initHomeBackground() {
     "/assets/images/day/garden-day-13.webp",
     "/assets/images/day/garden-day-14.webp",
     "/assets/images/day/garden-day-15.webp",
-    "/assets/images/day/garden-day-16.webp",
-    "/assets/images/day/garden-day-17.webp",
   ];
 
   const nightImages = [
@@ -293,11 +183,10 @@ function initHomeBackground() {
     "/assets/images/night/garden-night-13.webp",
     "/assets/images/night/garden-night-14.webp",
     "/assets/images/night/garden-night-15.webp",
-    "/assets/images/night/garden-night-16.webp",
-    "/assets/images/night/garden-night-17.webp",
   ];
 
   let currentIndex = 0;
+  let stopBackground = false;
   const intervalTime = 6000;
 
   let theme =
@@ -309,8 +198,17 @@ function initHomeBackground() {
   let currentSet = theme === "dark" ? nightImages : dayImages;
   let toggle = false;
 
+  document.querySelectorAll("nav a").forEach((link) => {
+    link.addEventListener("click", () => {
+      stopBackground = true;
+    });
+  });
+
   function showImage(index) {
+    if (stopBackground) return;
+
     const url = `url(${currentSet[index]})`;
+
     if (toggle) {
       home.style.setProperty("--bg-before", url);
       home.style.setProperty("--before-opacity", 1);
@@ -320,6 +218,7 @@ function initHomeBackground() {
       home.style.setProperty("--before-opacity", 0);
       home.style.setProperty("--after-opacity", 1);
     }
+
     toggle = !toggle;
   }
 
@@ -329,6 +228,10 @@ function initHomeBackground() {
   }
 
   showImage(currentIndex);
+
+  setTimeout(() => {
+    home.classList.add("with-transition");
+  }, 2000);
 
   if (bgInterval) clearInterval(bgInterval);
   bgInterval = setInterval(nextImage, intervalTime);
@@ -367,9 +270,8 @@ function initAboutCarousel() {
 
   function createCarouselTimeline() {
     const scrollDistance = getScrollDistance();
-    const speed = 30; //
+    const speed = 25; //
     const duration = scrollDistance / speed;
-    const pauseDuration = 1;
 
     const tl = gsap.timeline({ repeat: -1 });
 
@@ -377,10 +279,7 @@ function initAboutCarousel() {
       y: -scrollDistance,
       duration,
       ease: "M0,0 C0.95,0.05 0.25,1 1,1",
-    })
-      .to({}, { duration: pauseDuration })
-      .to(track, { y: 0, duration, ease: "power1.in" })
-      .to({}, { duration: pauseDuration });
+    }).to(track, { y: 0, duration, ease: "power1.in" });
 
     return tl;
   }
@@ -410,50 +309,64 @@ function initAboutCarousel() {
 
 /////////////////////////////////////////////////////* Menu section modal image logic *//////////////////////////////////////////////////////////////////////*
 
-function initMenuModal() {
-  const menuData = {
-    en: [
-      "/assets/images/menu/menu-front.webp",
-      "/assets/images/menu/menu-back.webp",
-    ],
-    pt: ["menus/portuguese-front.jpg", "menus/portuguese-back.jpg"],
-    de: ["menus/german-front.jpg", "menus/german-back.jpg"],
-    fr: ["menus/french-front.jpg", "menus/french-back.jpg"],
-    dr: ["menus/french-front.jpg", "menus/french-back.jpg"],
-    bw: ["menus/french-front.jpg", "menus/french-back.jpg"],
-  };
+function initMenu() {
+  document.querySelectorAll(".cmp-main-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+      const lang = button.dataset.lang;
 
-  const buttons = document.querySelectorAll(".menu-buttons button");
-  const modal = document.getElementById("menuModal");
-  const modalContent = document.querySelector(".modal-content");
-  const closeBtn = document.getElementById("closeModal");
-  const frontImg = document.getElementById("menu-front");
-  const backImg = document.getElementById("menu-back");
+      let images = [];
+      switch (lang) {
+        case "en":
+          images = [
+            { href: "../assets/images/menu/menu-front.webp", type: "image" },
+            { href: "../assets/images/menu/menu-back.webp", type: "image" },
+          ];
+          break;
+        case "pt":
+          images = [
+            { href: "images/food-pt-1.jpg", type: "image" },
+            { href: "images/food-pt-2.jpg", type: "image" },
+          ];
+          break;
+        case "de":
+          images = [
+            { href: "images/food-de-1.jpg", type: "image" },
+            { href: "images/food-de-2.jpg", type: "image" },
+          ];
+          break;
+        case "fr":
+          images = [
+            { href: "images/food-fr-1.jpg", type: "image" },
+            { href: "images/food-fr-2.jpg", type: "image" },
+          ];
+          break;
+        case "dr":
+          images = [
+            { href: "images/drinks-1.jpg", type: "image" },
+            { href: "images/drinks-2.jpg", type: "image" },
+          ];
+          break;
+        case "bw":
+          images = [
+            { href: "images/beerwine-1.jpg", type: "image" },
+            { href: "images/beerwine-2.jpg", type: "image" },
+          ];
+          break;
+      }
 
-  if (!buttons.length || !modal || !frontImg || !backImg) return;
-
-  buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const lang = btn.dataset.lang;
-      const [front, back] = menuData[lang];
-      frontImg.src = front;
-      backImg.src = back;
-      modal.classList.add("show");
+      if (images.length > 0) {
+        const menuLightbox = GLightbox({
+          elements: images,
+          loop: false,
+          zoomable: false,
+          keyboardNavigation: true,
+          touchNavigation: true,
+          openEffect: "fade",
+          closeEffect: "fade",
+        });
+        menuLightbox.open();
+      }
     });
-  });
-
-  modalContent?.addEventListener("click", () => {
-    modal.classList.remove("show");
-  });
-
-  closeBtn?.addEventListener("click", () => {
-    modal.classList.remove("show");
-  });
-
-  modal?.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      modal.classList.remove("show");
-    }
   });
 }
 
@@ -468,18 +381,24 @@ function initGallery() {
   )
     return;
 
-    galleryRoot.querySelectorAll("a.glightbox").forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-    });
-  });
+  if (window.lightbox && typeof window.lightbox.destroy === "function") {
+    window.lightbox.destroy();
+  }
 
   window.lightbox = GLightbox({
     selector: ".glightbox",
     loop: true,
     zoomable: false,
     keyboardNavigation: true,
+    openEffect: "fade",
+    closeEffect: "fade",
+  });
+
+  galleryRoot.querySelectorAll("a.glightbox").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
   });
 
   const albumImages = galleryRoot.querySelectorAll(".album-grid img");
@@ -494,6 +413,7 @@ function initGallery() {
   books.forEach((wrapper) => {
     wrapper.addEventListener("mouseenter", () => {
       if (animationOnGoing) return;
+
       gsap.fromTo(
         wrapper,
         { scaleX: 1, scaleY: 1 },
@@ -641,5 +561,220 @@ function initLogoEasterEgg() {
     setTimeout(() => {
       easterEgg.classList.remove("easter-egg-active");
     }, 4000);
+  });
+}
+
+////////////////////////////////* Navigation links and hamburger menu *//////////////////////////////////////////////////////////////////////*
+
+const hamburgerBtn = document.querySelector(".hamburger-btn");
+const navBar = document.querySelector(".nav-bar");
+const navBarList = document.querySelector(".nav-bar ul");
+const navBarLinks = document.querySelectorAll(".nav-bar a");
+
+let isAnimating = false;
+
+hamburgerBtn.addEventListener("click", () => {
+  if (isAnimating) return;
+
+  const isOpen = navBar.classList.contains("hamburger-btn__open");
+
+  if (isOpen) {
+    isAnimating = true;
+    hamburgerBtn.classList.remove("active");
+    navBar.classList.remove("hamburger-btn__open");
+  } else {
+    navBar.style.display = "block";
+    requestAnimationFrame(() => {
+      hamburgerBtn.classList.add("active");
+      navBar.classList.add("hamburger-btn__open");
+    });
+  }
+
+  setNavAttributes();
+});
+
+navBar.addEventListener("transitionend", (e) => {
+  if (e.propertyName !== "transform") return;
+
+  if (!navBar.classList.contains("hamburger-btn__open")) {
+    navBar.style.display = "none";
+  }
+
+  isAnimating = false;
+});
+
+document.addEventListener("click", (e) => {
+  if (
+    !navBar.classList.contains("hamburger-btn__open") ||
+    e.target === navBar ||
+    e.target === hamburgerBtn ||
+    e.target === navBarList
+  )
+    return;
+
+  if (isAnimating) return;
+
+  isAnimating = true;
+  hamburgerBtn.classList.remove("active");
+  navBar.classList.remove("hamburger-btn__open");
+
+  setNavAttributes();
+});
+
+function setNavAttributes() {
+  const navBarHasActiveClass = navBar.classList.contains("hamburger-btn__open");
+
+  if (!navBarHasActiveClass && navBar.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+
+  navBar.setAttribute("aria-hidden", String(!navBarHasActiveClass));
+  hamburgerBtn.setAttribute("aria-expanded", String(navBarHasActiveClass));
+
+  navBarLinks.forEach((link) => {
+    link.tabIndex = navBarHasActiveClass ? 0 : -1;
+  });
+}
+
+/////////////////////////////////////* Show the current page *////////////////////////////////////////////////////////////////////////////////*
+
+function updateActiveNavLink() {
+  const navBarLinks = document.querySelectorAll(".nav-bar a");
+  const currentPath = window.location.pathname;
+
+  navBarLinks.forEach((link) => {
+    const linkPath = new URL(link.href).pathname;
+
+    if (linkPath === currentPath) {
+      link.classList.add("active-link");
+
+      requestAnimationFrame(() => {
+        link.classList.add("animate-underline");
+      });
+    } else {
+      link.classList.remove("active-link", "animate-underline");
+    }
+  });
+}
+
+/////////////////////////////////////* Prevent navigation transitions happening on resize *////////////////////////////////////////////////////////*
+
+let resizeTimeout;
+
+window.addEventListener("resize", () => {
+  navBar.classList.add("no-transition");
+
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    navBar.classList.remove("no-transition");
+  }, 1);
+});
+
+///////////////////////////////////////////////////////* Dark-mode change *////////////////////////////////////////////////////////////////////////*
+
+const darkModeButton = document.getElementById("dark-mode-toggle");
+
+function enableDarkMode() {
+  document.documentElement.classList.add("dark-mode");
+  localStorage.setItem("theme", "dark");
+}
+
+function disableDarkMode() {
+  document.documentElement.classList.remove("dark-mode");
+  localStorage.setItem("theme", "light");
+}
+
+function detectColorScheme() {
+  const preloadLink = document.createElement("link");
+  const bodyEl = document.querySelector("body");
+  let theme = "light";
+  preloadLink.rel = "preload";
+  preloadLink.as = "image";
+
+  if (localStorage.getItem("theme")) {
+    theme = localStorage.getItem("theme");
+  } else if (
+    window.matchMedia &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  ) {
+    theme = "dark";
+  }
+
+  //Logic for setting html pre-load <link> for background images depending on the theme
+
+  if (theme === "light" && bodyEl.classList.contains("home")) {
+    disableDarkMode();
+    preloadLink.href = "/assets/images/day/garden-day-1.webp";
+    document.head.appendChild(preloadLink);
+  } else if (theme === "dark" && bodyEl.classList.contains("home")) {
+    enableDarkMode();
+    preloadLink.href = "/assets/images/night/garden-night-1.webp";
+    document.head.appendChild(preloadLink);
+  }
+}
+
+detectColorScheme();
+
+function switchTheme(newTheme) {
+  newTheme === "dark" ? enableDarkMode() : disableDarkMode();
+}
+
+darkModeButton.addEventListener("click", () => {
+  const home = document.querySelector("body.home");
+  const isPressed = darkModeButton.getAttribute("aria-pressed") === "true";
+  darkModeButton.setAttribute("aria-pressed", String(!isPressed));
+
+  const currentTheme = localStorage.getItem("theme") || "light";
+  const newTheme = currentTheme === "light" ? "dark" : "light";
+
+  home?.classList.remove("with-transition");
+
+  setTimeout(() => {
+    home?.classList.add("with-transition"); // Remove transition class for a small delay as button is pressed to prevent background-image transition from happening
+  }, 1000);
+
+  if (!document.startViewTransition) {
+    switchTheme(newTheme);
+    return;
+  }
+
+  document.startViewTransition(() => {
+    switchTheme(newTheme);
+  });
+});
+
+///////////////////////////////////////////////////////* Dark toggle day/night text change *////////////////////////////////////////////////////////*
+
+function initDarkToggleText() {
+  const textBox = document.querySelector(".dark-toggle-text-box");
+  if (!textBox) return;
+
+  const isHome =
+    window.location.pathname === "/" ||
+    window.location.pathname.endsWith("index.html");
+
+  if (!isHome) {
+    textBox.style.display = "none";
+    return;
+  }
+  textBox.style.display = "block";
+
+  const day = textBox.querySelector(".dark-toggle-text__day");
+  const night = textBox.querySelector(".dark-toggle-text__night");
+  const span = textBox.querySelector("span");
+
+  function updateMode() {
+    const isDark = document.documentElement.classList.contains("dark-mode");
+    span.style.transform = isDark ? "rotateY(360deg)" : "rotateY(0deg)";
+    day.style.display = isDark ? "inline-block" : "none";
+    night.style.display = isDark ? "none" : "inline-block";
+  }
+
+  updateMode();
+
+  const observer = new MutationObserver(updateMode);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
   });
 }
