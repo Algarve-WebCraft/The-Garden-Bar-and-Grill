@@ -521,7 +521,7 @@
   }
 
   body.home {
-    --bg-before: url("/assets/images/day/garden-day-1.webp");
+    --bg-before: url("assets/images/day/garden-day-1.webp");
     --before-opacity: 1;
 
     position: relative;
