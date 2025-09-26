@@ -2,7 +2,10 @@
 
 ////////////////////////////////* Swup page navigation *//////////////////////////////////////////////////////////////////////////////////////*
 
-const swup = new Swup();
+const swup = new Swup({
+  animationScope: "html",
+  cache: true,
+});
 
 function initPageScripts() {
   updateActiveNavLink();
@@ -10,6 +13,7 @@ function initPageScripts() {
   initLogoEasterEgg();
   initAboutCarousel();
   initMenu();
+  createImageTags();
   initGallery();
 
   document.addEventListener("swup:contentReplaced", () => {
@@ -45,10 +49,21 @@ swup.hooks.on("page:view", initPageScripts);
 /* Change beginning body hero animation classes */
 
 document.addEventListener("DOMContentLoaded", () => {
+  const body = document.querySelector("body");
+  if (body.classList.contains("secondary-pages")) {  //Remove wait for transitions if not on the main page
+    document.body.classList.add("loaded");
+    return;
+  }
+
+  requestAnimationFrame(() => {
+    document.body.classList.add("bg-fade-in");
+  });
+
   setTimeout(() => {
     document.body.classList.remove("loading");
+    document.body.classList.remove("bg-fade-in");
     document.body.classList.add("loaded");
-  }, 5000);
+  }, 4500);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -56,43 +71,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const home = document.querySelector("body.home");
 
   const tl = gsap.timeline({
-    defaults: { ease: "power3.out" }, 
-    delay: 1.2,
-  });
-
-  /* tl.fromTo(
-    home,
-    { "--before-opacity": 0, "--after-opacity": 0 },
-    { "--before-opacity": 1, "--after-opacity": 1, duration: 0.5 }
-  ); */
-
-  // Header slides from top
-  tl.from("#header", {
-    y: -80,
-    opacity: 0,
-    duration: 2,
+    defaults: { ease: "power3.out" },
+    delay: 1.5,
   });
 
   // Hero title fades and slides up
-  tl.from(
-    "#hero-title",
-    {
-      y: 50,
-      opacity: 0,
-      duration: 1.2,
-    },
-    "-=0.5"
-  );
+  tl.from("#hero-title", {
+    y: 100,
+    opacity: 0,
+    duration: 1,
+  });
 
   // Paragraph text slides in from left
   tl.from(
     ".cmp-text--pg1-s1",
     {
-      x: -60,
+      x: -200,
       opacity: 0,
       duration: 1,
     },
-    "-=0.7"
+    "-=0.4"
   );
 
   // Buttons pop in with a slight stagger
@@ -100,18 +98,30 @@ document.addEventListener("DOMContentLoaded", () => {
     ".button-flex a",
     {
       opacity: 0,
-      stagger: 0.05,
-      duration: 1.25,
+      stagger: 0.1,
+      duration: 1.5,
     },
     "-=0.8"
   );
 
+  // Header slides from top
+  tl.from(
+    "#header",
+    {
+      y: -80,
+      opacity: 0,
+      duration: 1.5,
+    },
+    "-=1"
+  );
+
+  // Footer slides in from the side
   tl.from(
     "#footer",
     {
       opacity: 0,
-      y: 40,
-      duration: 0.8,
+      x: -1000,
+      duration: 1.25,
     },
     "-=1"
   );
@@ -120,21 +130,21 @@ document.addEventListener("DOMContentLoaded", () => {
   tl.from(
     ".hero-main-logo-container",
     {
-      scale: 0.4,
+      scale: 0.1,
       opacity: 0,
-      duration: .5,
+      duration: 1,
     },
-    "-=0.7"
+    "-=1"
   );
 
   tl.from(
     ".cmp-info-text--pg1",
     {
-      scale: 0.5,
+      scale: 0.3,
       opacity: 0,
-      duration: 1,
+      duration: 2,
     },
-    "-=0.5"
+    "-=0.25"
   );
 });
 
@@ -147,9 +157,13 @@ function initHomeBackground() {
   const home = document.querySelector("body.home");
   if (!home) return;
 
-  home.classList.remove("with-transition"); // Class applied so opacity transition only happens on image change and not loading on or off page
+  home.classList.remove("bg-fade-in", "with-transition"); // Class applied so opacity transition only happens on image change and not loading on or off page
 
-  const dayImages = [
+  requestAnimationFrame(() => {
+    home.classList.add("bg-fade-in");
+  });
+
+  const dayImagesLarge = [
     "/assets/images/day/garden-day-1.webp",
     "/assets/images/day/garden-day-2.webp",
     "/assets/images/day/garden-day-3.webp",
@@ -167,7 +181,25 @@ function initHomeBackground() {
     "/assets/images/day/garden-day-15.webp",
   ];
 
-  const nightImages = [
+  const dayImagesSmall = [
+    "/assets/images/day/garden-day-1-s.webp",
+    "/assets/images/day/garden-day-2-s.webp",
+    "/assets/images/day/garden-day-3-s.webp",
+    "/assets/images/day/garden-day-4-s.webp",
+    "/assets/images/day/garden-day-5-s.webp",
+    "/assets/images/day/garden-day-6-s.webp",
+    "/assets/images/day/garden-day-7-s.webp",
+    "/assets/images/day/garden-day-8-s.webp",
+    "/assets/images/day/garden-day-9-s.webp",
+    "/assets/images/day/garden-day-10-s.webp",
+    "/assets/images/day/garden-day-11-s.webp",
+    "/assets/images/day/garden-day-12-s.webp",
+    "/assets/images/day/garden-day-13-s.webp",
+    "/assets/images/day/garden-day-14-s.webp",
+    "/assets/images/day/garden-day-15-s.webp",
+  ];
+
+  const nightImagesLarge = [
     "/assets/images/night/garden-night-1.webp",
     "/assets/images/night/garden-night-2.webp",
     "/assets/images/night/garden-night-3.webp",
@@ -185,9 +217,47 @@ function initHomeBackground() {
     "/assets/images/night/garden-night-15.webp",
   ];
 
+  const nightImagesSmall = [
+    "/assets/images/night/garden-night-1-s.webp",
+    "/assets/images/night/garden-night-2-s.webp",
+    "/assets/images/night/garden-night-3-s.webp",
+    "/assets/images/night/garden-night-4-s.webp",
+    "/assets/images/night/garden-night-5-s.webp",
+    "/assets/images/night/garden-night-6-s.webp",
+    "/assets/images/night/garden-night-7-s.webp",
+    "/assets/images/night/garden-night-8-s.webp",
+    "/assets/images/night/garden-night-9-s.webp",
+    "/assets/images/night/garden-night-10-s.webp",
+    "/assets/images/night/garden-night-11-s.webp",
+    "/assets/images/night/garden-night-12-s.webp",
+    "/assets/images/night/garden-night-13-s.webp",
+    "/assets/images/night/garden-night-14-s.webp",
+    "/assets/images/night/garden-night-15-s.webp",
+  ];
+
   let currentIndex = 0;
   let stopBackground = false;
+  let toggle = false;
   const intervalTime = 6000;
+
+  function stopImagesOnChange() {
+    const navLinks = document.querySelectorAll("nav a");
+    const pageLinks = document.querySelectorAll(".cmp-main-btn--pg1-s1");
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        stopBackground = true;
+      });
+    });
+
+    pageLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        stopBackground = true;
+      });
+    });
+  }
+
+  stopImagesOnChange();
 
   let theme =
     localStorage.getItem("theme") ||
@@ -195,14 +265,19 @@ function initHomeBackground() {
       ? "dark"
       : "light");
 
-  let currentSet = theme === "dark" ? nightImages : dayImages;
-  let toggle = false;
+  function isLargeScreen() {
+    return window.matchMedia("(min-width: 700px)").matches;
+  }
 
-  document.querySelectorAll("nav a").forEach((link) => {
-    link.addEventListener("click", () => {
-      stopBackground = true;
-    });
-  });
+  function getCurrentSet() {
+    if (theme === "dark") {
+      return isLargeScreen() ? nightImagesLarge : nightImagesSmall;
+    } else {
+      return isLargeScreen() ? dayImagesLarge : dayImagesSmall;
+    }
+  }
+
+  let currentSet = getCurrentSet();
 
   function showImage(index) {
     if (stopBackground) return;
@@ -238,11 +313,11 @@ function initHomeBackground() {
 
   if (bgObserver) bgObserver.disconnect();
   bgObserver = new MutationObserver(() => {
-    if (document.documentElement.classList.contains("dark-mode")) {
-      currentSet = nightImages;
-    } else {
-      currentSet = dayImages;
-    }
+    theme = document.documentElement.classList.contains("dark-mode")
+      ? "dark"
+      : "light";
+
+    currentSet = getCurrentSet();
     currentIndex = 0;
     showImage(currentIndex);
 
@@ -253,6 +328,15 @@ function initHomeBackground() {
   bgObserver.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["class"],
+  });
+
+  window.addEventListener("resize", () => {
+    const newSet = getCurrentSet();
+    if (newSet !== currentSet) {
+      currentSet = newSet;
+      currentIndex = 0;
+      showImage(currentIndex);
+    }
   });
 }
 
@@ -313,46 +397,50 @@ function initMenu() {
   document.querySelectorAll(".cmp-main-btn").forEach((button) => {
     button.addEventListener("click", () => {
       const lang = button.dataset.lang;
-
       let images = [];
+
       switch (lang) {
         case "en":
           images = [
-            { href: "../assets/images/menu/menu-front.webp", type: "image" },
-            { href: "../assets/images/menu/menu-back.webp", type: "image" },
+            { href: "../assets/images/menu/english-1.jpg", type: "image" },
+            { href: "../assets/images/menu/english-2.jpg", type: "image" },
           ];
           break;
         case "pt":
           images = [
-            { href: "images/food-pt-1.jpg", type: "image" },
-            { href: "images/food-pt-2.jpg", type: "image" },
+            { href: "../assets/images/menu/portuguese-1.jpg", type: "image" },
+            { href: "../assets/images/menu/portuguese-2.jpg", type: "image" },
           ];
           break;
         case "de":
           images = [
-            { href: "images/food-de-1.jpg", type: "image" },
-            { href: "images/food-de-2.jpg", type: "image" },
+            { href: "../assets/images/menu/german-1.jpg", type: "image" },
+            { href: "../assets/images/menu/german-2.jpg", type: "image" },
           ];
           break;
         case "fr":
           images = [
-            { href: "images/food-fr-1.jpg", type: "image" },
-            { href: "images/food-fr-2.jpg", type: "image" },
+            { href: "../assets/images/menu/french-1.jpg", type: "image" },
+            { href: "../assets/images/menu/french-2.jpg", type: "image" },
           ];
           break;
         case "dr":
           images = [
-            { href: "images/drinks-1.jpg", type: "image" },
-            { href: "images/drinks-2.jpg", type: "image" },
+            { href: "../assets/images/menu/drinks-1.jpg", type: "image" },
+            { href: "../assets/images/menu/drinks-2.jpg", type: "image" },
           ];
           break;
         case "bw":
           images = [
-            { href: "images/beerwine-1.jpg", type: "image" },
-            { href: "images/beerwine-2.jpg", type: "image" },
+            { href: "../assets/images/menu/beer-wine-1.jpg", type: "image" },
+            { href: "../assets/images/menu/beer-wine-2.jpg", type: "image" },
           ];
           break;
       }
+
+      const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
       if (images.length > 0) {
         const menuLightbox = GLightbox({
@@ -361,9 +449,10 @@ function initMenu() {
           zoomable: false,
           keyboardNavigation: true,
           touchNavigation: true,
-          openEffect: "fade",
-          closeEffect: "fade",
+          openEffect: prefersReducedMotion ? "none" : "fade",
+          closeEffect: prefersReducedMotion ? "none" : "fade",
         });
+
         menuLightbox.open();
       }
     });
@@ -385,13 +474,18 @@ function initGallery() {
     window.lightbox.destroy();
   }
 
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+
   window.lightbox = GLightbox({
     selector: ".glightbox",
-    loop: true,
+    loop: false,
     zoomable: false,
     keyboardNavigation: true,
-    openEffect: "fade",
-    closeEffect: "fade",
+    touchNavigation: true,
+    openEffect: prefersReducedMotion ? "none" : "fade",
+    closeEffect: prefersReducedMotion ? "none" : "fade",
   });
 
   galleryRoot.querySelectorAll("a.glightbox").forEach((link) => {
@@ -411,6 +505,8 @@ function initGallery() {
   let animationOnGoing = false;
 
   books.forEach((wrapper) => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
     wrapper.addEventListener("mouseenter", () => {
       if (animationOnGoing) return;
 
@@ -440,7 +536,9 @@ function initGallery() {
 
   function showAlbum(index) {
     animationOnGoing = true;
+
     const wrapper = wrappers[index];
+    const booksBox = document.querySelector(".gallery-book-svg-box");
     const album = wrapper.querySelector(".album-grid");
     const images = album.querySelectorAll("img");
 
@@ -449,15 +547,17 @@ function initGallery() {
 
     const tl = gsap.timeline({ onComplete: () => (animationOnGoing = false) });
 
+    booksBox.classList.add("absolute-position");
+
     // Animate clicked book
     tl.to(books[index], {
-      duration: 1.5,
-      scale: 4,
+      duration: 1,
+      scale: 3,
       rotation: -20,
       opacity: 0,
       transformOrigin: "50% 50%",
       ease: "power2.inOut",
-      delay: 0.5,
+      delay: 0.2,
     });
 
     // Animate other book flying away
@@ -466,7 +566,7 @@ function initGallery() {
         tl.to(
           book,
           {
-            duration: 1.5,
+            duration: 1,
             opacity: 0,
             x: i % 2 === 0 ? -500 : 500,
             y: -200,
@@ -499,10 +599,10 @@ function initGallery() {
       {
         opacity: 1,
         y: 0,
-        duration: 1,
-        stagger: 0.2,
+        duration: 0.5,
+        stagger: 0.05,
         ease: "steps.out",
-        delay: 2,
+        delay: 1.25,
       }
     );
 
@@ -511,13 +611,21 @@ function initGallery() {
 
   function hideAlbum() {
     animationOnGoing = true;
+
     const openWrapper = galleryRoot.querySelector(
       ".album-wrapper:not(.hidden)"
     );
+
     if (!openWrapper) return;
 
     const albumIndex = [...wrappers].indexOf(openWrapper);
     const tl = bookTimelines[albumIndex];
+    const booksBox = document.querySelector(".gallery-book-svg-box");
+
+    setTimeout(() => {
+      booksBox.classList.remove("absolute-position");
+    }, 2000);
+
     if (tl) {
       const images = openWrapper.querySelectorAll("img");
 
@@ -545,6 +653,93 @@ function initGallery() {
     book.addEventListener("click", () => showAlbum(index))
   );
   backButtons.forEach((btn) => btn.addEventListener("click", hideAlbum));
+}
+
+// Loop to create the image tags within HTML
+function createImageTags() {
+  function tags2012() {
+    const container = document.querySelector(".album-grid--1");
+
+    if (!container) return;
+
+    for (let i = 1; i <= 328; i++) {
+      const a = document.createElement("a");
+      a.className = "glightbox";
+      a.dataset.gallery = "album1";
+
+      a.dataset.href = `/assets/images/book-start/${i}.jpg`;
+      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
+      a.dataset.sizes = "100vw";
+      a.dataset.type = "image";
+
+      const img = document.createElement("img");
+      img.src = `/assets/images/book-start/${i}.jpg`;
+      img.width = 400;
+      img.height = 300;
+      img.alt = `Image ${i}`;
+
+      a.appendChild(img);
+      container.appendChild(a);
+    }
+  }
+
+  function tags2016() {
+    const container = document.querySelector(".album-grid--2");
+
+    if (!container) return;
+
+    for (let i = 1; i <= 365; i++) {
+      if (i === 73) continue;
+
+      const a = document.createElement("a");
+      a.className = "glightbox";
+      a.dataset.gallery = "album2";
+
+      a.dataset.href = `/assets/images/book-2016/${i}.jpg`;
+      a.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
+      a.dataset.sizes = "100vw";
+      a.dataset.type = "image";
+
+      const img = document.createElement("img");
+      img.src = `/assets/images/book-2016/${i}.jpg`;
+      img.width = 400;
+      img.height = 300;
+      img.alt = `Image ${i}`;
+
+      a.appendChild(img);
+      container.appendChild(a);
+    }
+  }
+
+  function tagsBeer() {
+    const container = document.querySelector(".album-grid--3");
+
+    if (!container) return;
+
+    for (let i = 1; i <= 23; i++) {
+      const a = document.createElement("a");
+      a.className = "glightbox";
+      a.dataset.gallery = "album3";
+
+      a.dataset.href = `/assets/images/beer-fest/${i}.jpg`;
+      a.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
+      a.dataset.sizes = "100vw";
+      a.dataset.type = "image";
+
+      const img = document.createElement("img");
+      img.src = `/assets/images/beer-fest/${i}.jpg`;
+      img.width = 400;
+      img.height = 300;
+      img.alt = `Image ${i}`;
+
+      a.appendChild(img);
+      container.appendChild(a);
+    }
+  }
+
+  tags2012();
+  tags2016();
+  tagsBeer();
 }
 
 /////////////////////////////////////////////////////////////* Main page logo easter egg *//////////////////////////////////////////////////////////////////////*
@@ -754,10 +949,10 @@ function initDarkToggleText() {
     window.location.pathname.endsWith("index.html");
 
   if (!isHome) {
-    textBox.style.display = "none";
+    textBox.style.opacity = "0";
     return;
   }
-  textBox.style.display = "block";
+  textBox.style.opacity = "1";
 
   const day = textBox.querySelector(".dark-toggle-text__day");
   const night = textBox.querySelector(".dark-toggle-text__night");

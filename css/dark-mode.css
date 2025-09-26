@@ -22,11 +22,28 @@ html.dark-mode body.home::after {
 }
 
 html.dark-mode body.secondary-pages {
-  background: linear-gradient(180deg, #3e5f44 0%, #1f2e24 100%);
+  background: linear-gradient(180deg, #4d7454 0%, #1f2e24 100%);
 }
 
 html.dark-mode .cmp-main-btn {
   background-color: var(--clr-dark-theme-200);
+
+  &:hover {
+    background-color: var(--clr-dark-theme-100);
+  }
+}
+
+html.dark-mode .cmp-main-btn--pages {
+  color: var(--clr-lighter-white);
+}
+
+html.dark-mode .album-grid__btn {
+  background-color: var(--clr-dark-theme-100);
+  color: var(--clr-lighter-black);
+
+  &:hover {
+    background-color: var(--clr-dark-theme-200);
+  }
 }
 
 html.dark-mode .cmp-info-text {
@@ -34,7 +51,7 @@ html.dark-mode .cmp-info-text {
 }
 
 html.dark-mode .cmp-leaf-svg {
-  fill: var(--clr-dark-theme-200);
+  fill: var(--clr-dark-theme-100);
 }
 
 html.dark-mode p,
@@ -117,7 +134,7 @@ html.dark-mode .ufo-svg {
   display: inline;
 }
 
-html.dark-mode .leaf-svg {
+html.dark-mode .butterfly-svg { 
   display: none;
 }
 
