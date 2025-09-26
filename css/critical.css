@@ -76,7 +76,7 @@
     font-family: "Pacifico";
     font-style: normal;
     font-weight: 400;
-    src: url("/assets/fonts/pacifico-v22-latin-regular.woff2") format("woff2");
+    src: url("/The-Garden-Bar-and-Grill/assets/fonts/pacifico-v22-latin-regular.woff2") format("woff2");
   }
 
   @font-face {
@@ -84,7 +84,7 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 400;
-    src: url("/assets/fonts/open-sans-v43-latin-regular.woff2") format("woff2");
+    src: url("/The-Garden-Bar-and-Grill/assets/fonts/open-sans-v43-latin-regular.woff2") format("woff2");
   }
 
   @font-face {
@@ -92,7 +92,7 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 500;
-    src: url("/assets/fonts/open-sans-v43-latin-500.woff2") format("woff2");
+    src: url("/The-Garden-Bar-and-Grill/assets/fonts/open-sans-v43-latin-500.woff2") format("woff2");
   }
 
   @font-face {
@@ -100,7 +100,7 @@
     font-family: "Open Sans";
     font-style: normal;
     font-weight: 700;
-    src: url("/assets/fonts/open-sans-v43-latin-700.woff2") format("woff2");
+    src: url("/The-Garden-Bar-and-Grill/assets/fonts/open-sans-v43-latin-700.woff2") format("woff2");
   }
 
   :root {
