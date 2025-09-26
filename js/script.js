@@ -164,75 +164,75 @@ function initHomeBackground() {
   });
 
   const dayImagesLarge = [
-    "/assets/images/day/garden-day-1.webp",
-    "/assets/images/day/garden-day-2.webp",
-    "/assets/images/day/garden-day-3.webp",
-    "/assets/images/day/garden-day-4.webp",
-    "/assets/images/day/garden-day-5.webp",
-    "/assets/images/day/garden-day-6.webp",
-    "/assets/images/day/garden-day-7.webp",
-    "/assets/images/day/garden-day-8.webp",
-    "/assets/images/day/garden-day-9.webp",
-    "/assets/images/day/garden-day-10.webp",
-    "/assets/images/day/garden-day-11.webp",
-    "/assets/images/day/garden-day-12.webp",
-    "/assets/images/day/garden-day-13.webp",
-    "/assets/images/day/garden-day-14.webp",
-    "/assets/images/day/garden-day-15.webp",
+    "assets/images/day/garden-day-1.webp",
+    "assets/images/day/garden-day-2.webp",
+    "assets/images/day/garden-day-3.webp",
+    "assets/images/day/garden-day-4.webp",
+    "assets/images/day/garden-day-5.webp",
+    "assets/images/day/garden-day-6.webp",
+    "assets/images/day/garden-day-7.webp",
+    "assets/images/day/garden-day-8.webp",
+    "assets/images/day/garden-day-9.webp",
+    "assets/images/day/garden-day-10.webp",
+    "assets/images/day/garden-day-11.webp",
+    "assets/images/day/garden-day-12.webp",
+    "assets/images/day/garden-day-13.webp",
+    "assets/images/day/garden-day-14.webp",
+    "assets/images/day/garden-day-15.webp",
   ];
 
   const dayImagesSmall = [
-    "/assets/images/day/garden-day-1-s.webp",
-    "/assets/images/day/garden-day-2-s.webp",
-    "/assets/images/day/garden-day-3-s.webp",
-    "/assets/images/day/garden-day-4-s.webp",
-    "/assets/images/day/garden-day-5-s.webp",
-    "/assets/images/day/garden-day-6-s.webp",
-    "/assets/images/day/garden-day-7-s.webp",
-    "/assets/images/day/garden-day-8-s.webp",
-    "/assets/images/day/garden-day-9-s.webp",
-    "/assets/images/day/garden-day-10-s.webp",
-    "/assets/images/day/garden-day-11-s.webp",
-    "/assets/images/day/garden-day-12-s.webp",
-    "/assets/images/day/garden-day-13-s.webp",
-    "/assets/images/day/garden-day-14-s.webp",
-    "/assets/images/day/garden-day-15-s.webp",
+    "assets/images/day/garden-day-1-s.webp",
+    "assets/images/day/garden-day-2-s.webp",
+    "assets/images/day/garden-day-3-s.webp",
+    "assets/images/day/garden-day-4-s.webp",
+    "assets/images/day/garden-day-5-s.webp",
+    "assets/images/day/garden-day-6-s.webp",
+    "assets/images/day/garden-day-7-s.webp",
+    "assets/images/day/garden-day-8-s.webp",
+    "assets/images/day/garden-day-9-s.webp",
+    "assets/images/day/garden-day-10-s.webp",
+    "assets/images/day/garden-day-11-s.webp",
+    "assets/images/day/garden-day-12-s.webp",
+    "assets/images/day/garden-day-13-s.webp",
+    "assets/images/day/garden-day-14-s.webp",
+    "assets/images/day/garden-day-15-s.webp",
   ];
 
   const nightImagesLarge = [
-    "/assets/images/night/garden-night-1.webp",
-    "/assets/images/night/garden-night-2.webp",
-    "/assets/images/night/garden-night-3.webp",
-    "/assets/images/night/garden-night-4.webp",
-    "/assets/images/night/garden-night-5.webp",
-    "/assets/images/night/garden-night-6.webp",
-    "/assets/images/night/garden-night-7.webp",
-    "/assets/images/night/garden-night-8.webp",
-    "/assets/images/night/garden-night-9.webp",
-    "/assets/images/night/garden-night-10.webp",
-    "/assets/images/night/garden-night-11.webp",
-    "/assets/images/night/garden-night-12.webp",
-    "/assets/images/night/garden-night-13.webp",
-    "/assets/images/night/garden-night-14.webp",
-    "/assets/images/night/garden-night-15.webp",
+    "assets/images/night/garden-night-1.webp",
+    "assets/images/night/garden-night-2.webp",
+    "assets/images/night/garden-night-3.webp",
+    "assets/images/night/garden-night-4.webp",
+    "assets/images/night/garden-night-5.webp",
+    "assets/images/night/garden-night-6.webp",
+    "assets/images/night/garden-night-7.webp",
+    "assets/images/night/garden-night-8.webp",
+    "assets/images/night/garden-night-9.webp",
+    "assets/images/night/garden-night-10.webp",
+    "assets/images/night/garden-night-11.webp",
+    "assets/images/night/garden-night-12.webp",
+    "assets/images/night/garden-night-13.webp",
+    "assets/images/night/garden-night-14.webp",
+    "assets/images/night/garden-night-15.webp",
   ];
 
   const nightImagesSmall = [
-    "/assets/images/night/garden-night-1-s.webp",
-    "/assets/images/night/garden-night-2-s.webp",
-    "/assets/images/night/garden-night-3-s.webp",
-    "/assets/images/night/garden-night-4-s.webp",
-    "/assets/images/night/garden-night-5-s.webp",
-    "/assets/images/night/garden-night-6-s.webp",
-    "/assets/images/night/garden-night-7-s.webp",
-    "/assets/images/night/garden-night-8-s.webp",
-    "/assets/images/night/garden-night-9-s.webp",
-    "/assets/images/night/garden-night-10-s.webp",
-    "/assets/images/night/garden-night-11-s.webp",
-    "/assets/images/night/garden-night-12-s.webp",
-    "/assets/images/night/garden-night-13-s.webp",
-    "/assets/images/night/garden-night-14-s.webp",
-    "/assets/images/night/garden-night-15-s.webp",
+    "assets/images/night/garden-night-1-s.webp",
+    "assets/images/night/garden-night-2-s.webp",
+    "assets/images/night/garden-night-3-s.webp",
+    "assets/images/night/garden-night-4-s.webp",
+    "assets/images/night/garden-night-5-s.webp",
+    "assets/images/night/garden-night-6-s.webp",
+    "assets/images/night/garden-night-7-s.webp",
+    "assets/images/night/garden-night-8-s.webp",
+    "assets/images/night/garden-night-9-s.webp",
+    "assets/images/night/garden-night-10-s.webp",
+    "assets/images/night/garden-night-11-s.webp",
+    "assets/images/night/garden-night-12-s.webp",
+    "assets/images/night/garden-night-13-s.webp",
+    "assets/images/night/garden-night-14-s.webp",
+    "assets/images/night/garden-night-15-s.webp",
   ];
 
   let currentIndex = 0;
@@ -402,38 +402,38 @@ function initMenu() {
       switch (lang) {
         case "en":
           images = [
-            { href: "../assets/images/menu/english-1.jpg", type: "image" },
-            { href: "../assets/images/menu/english-2.jpg", type: "image" },
+            { href: "assets/images/menu/english-1.jpg", type: "image" },
+            { href: "assets/images/menu/english-2.jpg", type: "image" },
           ];
           break;
         case "pt":
           images = [
-            { href: "../assets/images/menu/portuguese-1.jpg", type: "image" },
-            { href: "../assets/images/menu/portuguese-2.jpg", type: "image" },
+            { href: "assets/images/menu/portuguese-1.jpg", type: "image" },
+            { href: "assets/images/menu/portuguese-2.jpg", type: "image" },
           ];
           break;
         case "de":
           images = [
-            { href: "../assets/images/menu/german-1.jpg", type: "image" },
-            { href: "../assets/images/menu/german-2.jpg", type: "image" },
+            { href: "assets/images/menu/german-1.jpg", type: "image" },
+            { href: "assets/images/menu/german-2.jpg", type: "image" },
           ];
           break;
         case "fr":
           images = [
-            { href: "../assets/images/menu/french-1.jpg", type: "image" },
-            { href: "../assets/images/menu/french-2.jpg", type: "image" },
+            { href: "assets/images/menu/french-1.jpg", type: "image" },
+            { href: "assets/images/menu/french-2.jpg", type: "image" },
           ];
           break;
         case "dr":
           images = [
-            { href: "../assets/images/menu/drinks-1.jpg", type: "image" },
-            { href: "../assets/images/menu/drinks-2.jpg", type: "image" },
+            { href: "assets/images/menu/drinks-1.jpg", type: "image" },
+            { href: "assets/images/menu/drinks-2.jpg", type: "image" },
           ];
           break;
         case "bw":
           images = [
-            { href: "../assets/images/menu/beer-wine-1.jpg", type: "image" },
-            { href: "../assets/images/menu/beer-wine-2.jpg", type: "image" },
+            { href: "assets/images/menu/beer-wine-1.jpg", type: "image" },
+            { href: "assets/images/menu/beer-wine-2.jpg", type: "image" },
           ];
           break;
       }
@@ -667,13 +667,13 @@ function createImageTags() {
       a.className = "glightbox";
       a.dataset.gallery = "album1";
 
-      a.dataset.href = `/assets/images/book-start/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
+      a.dataset.href = `assets/images/book-start/${i}.jpg`;
+      a.dataset.srcset = `assets/images/book-start/${i}-s.webp 800w, assets/images/book-start/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.src = `/assets/images/book-start/${i}.jpg`;
+      img.src = `assets/images/book-start/${i}.jpg`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -695,13 +695,13 @@ function createImageTags() {
       a.className = "glightbox";
       a.dataset.gallery = "album2";
 
-      a.dataset.href = `/assets/images/book-2016/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
+      a.dataset.href = `assets/images/book-2016/${i}.jpg`;
+      a.dataset.srcset = `assets/images/book-2016/${i}-s.webp 800w, assets/images/book-2016/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.src = `/assets/images/book-2016/${i}.jpg`;
+      img.src = `assets/images/book-2016/${i}.jpg`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -721,13 +721,13 @@ function createImageTags() {
       a.className = "glightbox";
       a.dataset.gallery = "album3";
 
-      a.dataset.href = `/assets/images/beer-fest/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
+      a.dataset.href = `assets/images/beer-fest/${i}.jpg`;
+      a.dataset.srcset = `assets/images/beer-fest/${i}-s.webp 800w, assets/images/beer-fest/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.src = `/assets/images/beer-fest/${i}.jpg`;
+      img.src = `assets/images/beer-fest/${i}.jpg`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -899,11 +899,11 @@ function detectColorScheme() {
 
   if (theme === "light" && bodyEl.classList.contains("home")) {
     disableDarkMode();
-    preloadLink.href = "/assets/images/day/garden-day-1.webp";
+    preloadLink.href = "assets/images/day/garden-day-1.webp";
     document.head.appendChild(preloadLink);
   } else if (theme === "dark" && bodyEl.classList.contains("home")) {
     enableDarkMode();
-    preloadLink.href = "/assets/images/night/garden-night-1.webp";
+    preloadLink.href = "assets/images/night/garden-night-1.webp";
     document.head.appendChild(preloadLink);
   }
 }
