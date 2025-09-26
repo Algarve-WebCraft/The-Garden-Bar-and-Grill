@@ -1015,8 +1015,8 @@
     max-width: 50%;
     right: 0;
     bottom: 0;
-    opacity: 0;
-    transform: translateX(35%);
+    opacity: 0; 
+    transform: translateX(30%);
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 
     @media (width > 62.5rem) {
@@ -1027,7 +1027,7 @@
 
   .easter-egg-active {
     opacity: 1;
-    transform: translateX(-160%);
+    transform: translateX(-150%);
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
   }
 
