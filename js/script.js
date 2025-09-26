@@ -521,9 +521,9 @@ function initGallery() {
   let animationOnGoing = false;
 
   books.forEach((wrapper) => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(max-width: 62.5rem)").matches)  return;
 
-    wrapper.addEventListener("mouseenter", () => {
+    wrapper.addEventListener("mouseenter", () => { 
       if (animationOnGoing) return;
 
       gsap.fromTo(
