@@ -915,9 +915,7 @@
   #hero-title {
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-lighter-white);
-    width: max-content;
     max-width: 25ch;
-    overflow-wrap: normal;
     margin-inline: auto;
     padding-top: 1.25rem;
     margin-bottom: var(--marg-heading-32-48);
@@ -931,9 +929,6 @@
     .hero-title__letters-second-word {
       display: inline-flex;
       white-space: nowrap;
-      vertical-align: baseline;
-      white-space: nowrap;
-      width: max-content;
     }
 
     span {
