@@ -21,7 +21,7 @@
     width: auto;
     min-height: 100vh;
     aspect-ratio: 140 / 680;
-    left: -4rem;
+    left: -4.25rem;
     fill: #434316;
     top: 0;
     z-index: 100;
@@ -35,7 +35,7 @@
 
   .cmp-side-wave-svg-right {
     left: unset;
-    right: -4rem;
+    right: -4.25rem;
     filter: drop-shadow(-4px -3px 4px rgba(0, 0, 0, 0.25))
       drop-shadow(-12px -6px 10px rgba(0, 0, 0, 0.15));
 

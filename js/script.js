@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const body = document.querySelector("body");
   if (body.classList.contains("secondary-pages")) {
     //Remove wait for transitions if not on the main page
+
     document.body.classList.add("loaded");
     return;
   }
@@ -696,7 +697,7 @@ function initGallery() {
         ease: "power1.in",
       });
 
-      books.forEach((book) => book.style.display = "block");
+      books.forEach((book) => (book.style.display = "block"));
 
       // Reverse timeline and reset books
       tl.reverse().then(() => {

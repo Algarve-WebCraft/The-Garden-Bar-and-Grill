@@ -805,7 +805,7 @@
 
     a {
       text-decoration: none;
-      /* color: var(--clr-lighter-black); */
+      color: var(--clr-lighter-black) !important;
       text-shadow: 0 1px 2px rgba(0, 0, 0, 0.215);
       transition: color 0.3s ease-out;
 
@@ -814,7 +814,7 @@
       }
 
       &:visited {
-        color: var(--clr-lighter-black) !important;
+        color: var(--clr-lighter-black);
       }
 
       &:hover,
@@ -908,7 +908,6 @@
   }
 
   #hero-title {
-    display: inline-block;
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-lighter-white);
     max-width: 20ch;
@@ -923,6 +922,12 @@
 
     .hero-title__letters,
     .hero-title__letters-second-word {
+      display: inline-flex;
+      white-space: nowrap;
+      vertical-align: baseline;
+    }
+
+    div {
       display: inline-flex;
       white-space: nowrap;
     }
