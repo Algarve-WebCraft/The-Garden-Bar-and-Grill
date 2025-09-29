@@ -910,7 +910,7 @@
   #hero-title {
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-lighter-white);
-    max-width: 25ch;
+
     margin-inline: auto;
     padding-top: 1.25rem;
     margin-bottom: var(--marg-heading-32-48);
