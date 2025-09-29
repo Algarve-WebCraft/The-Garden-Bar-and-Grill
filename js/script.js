@@ -304,7 +304,10 @@ function initHomeBackground() {
 
   function checkScreenSize() {
     if (window.matchMedia("(max-width: 425px)").matches) return "small";
-    else if (window.matchMedia("(min-width: 425px) and (max-width: 700px)").matches) return `medium`;
+    else if (
+      window.matchMedia("(min-width: 425px) and (max-width: 700px)").matches
+    )
+      return `medium`;
     else return "large";
   }
 
@@ -316,7 +319,7 @@ function initHomeBackground() {
     } else {
       return theme === "light" ? dayImagesLarge : nightImagesLarge;
     }
-  } 
+  }
 
   let currentSet = getCurrentSet();
 
@@ -596,7 +599,12 @@ function initGallery() {
     wrappers.forEach((w) => w.classList.add("hidden"));
     wrapper.classList.remove("hidden");
 
-    const tl = gsap.timeline({ onComplete: () => (animationOnGoing = false) });
+    const tl = gsap.timeline({
+      onComplete: () => {
+        animationOnGoing = false;
+        books.forEach((book) => (book.style.display = "none"));
+      },
+    });
 
     booksBox.classList.add("absolute-position");
 
@@ -687,6 +695,8 @@ function initGallery() {
         y: 20,
         ease: "power1.in",
       });
+
+      books.forEach((book) => book.style.display = "block");
 
       // Reverse timeline and reset books
       tl.reverse().then(() => {

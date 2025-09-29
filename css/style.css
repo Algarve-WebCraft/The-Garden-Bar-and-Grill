@@ -21,7 +21,7 @@
     width: auto;
     min-height: 100vh;
     aspect-ratio: 140 / 680;
-    left: -3.75rem;
+    left: -4rem;
     fill: #434316;
     top: 0;
     z-index: 100;
@@ -35,7 +35,7 @@
 
   .cmp-side-wave-svg-right {
     left: unset;
-    right: -3.75rem;
+    right: -4rem;
     filter: drop-shadow(-4px -3px 4px rgba(0, 0, 0, 0.25))
       drop-shadow(-12px -6px 10px rgba(0, 0, 0, 0.15));
 
@@ -405,7 +405,7 @@
 
   .gallery-book-svg-box.absolute-position {
     position: absolute;
-    margin-top: 4rem;
+    margin-top: 2.75rem;
   }
 
   .gallery-book-svg-box__wrapper {
@@ -528,7 +528,7 @@
   .album-wrapper {
     display: block;
     position: relative;
-    z-index: 10; 
+    z-index: 10;
   }
 
   .album-grid {
