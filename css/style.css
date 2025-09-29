@@ -412,6 +412,8 @@
     position: relative;
     width: clamp(200px, 40vw, 350px);
     margin-top: clamp(5rem, 20vw, 10rem);
+    filter: drop-shadow(8px 6px 4px rgba(0, 0, 0, 0.25))
+      drop-shadow(12px 8px 10px rgba(0, 0, 0, 0.15));
 
     @media (width > 62.5rem) {
       margin-top: 0;
@@ -479,8 +481,6 @@
     opacity: 1;
     cursor: pointer;
     fill: #1c1c1c;
-    filter: drop-shadow(8px 6px 4px rgba(0, 0, 0, 0.25))
-      drop-shadow(12px 8px 10px rgba(0, 0, 0, 0.15));
   }
 
   .gallery-book-svg--one {

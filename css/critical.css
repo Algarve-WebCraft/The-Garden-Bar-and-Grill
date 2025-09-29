@@ -810,7 +810,7 @@
       transition: color 0.3s ease-out;
 
       &.active-link {
-        color: var(--clr-green-300);
+        color: var(--clr-green-300) !important;
       }
 
       &:visited {
@@ -819,14 +819,14 @@
 
       &:hover,
       &:focus-visible {
-        color: var(--clr-green-300) !important;
+        color: var(--clr-green-300);
         transition: color 0.2s ease-out;
       }
 
       @media (width > 62.5rem) {
         &.active-link {
           position: relative;
-          color: var(--clr-lighter-black);
+          color: var(--clr-lighter-black) !important;
         }
 
         &.active-link::after {
@@ -910,7 +910,7 @@
   #hero-title {
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-lighter-white);
-    max-width: 20ch;
+    max-width: 25ch;
     margin-inline: auto;
     padding-top: 1.25rem;
     margin-bottom: var(--marg-heading-32-48);
@@ -925,11 +925,6 @@
       display: inline-flex;
       white-space: nowrap;
       vertical-align: baseline;
-    }
-
-    div {
-      display: inline-flex;
-      white-space: nowrap;
     }
 
     span {
