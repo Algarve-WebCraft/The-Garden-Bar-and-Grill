@@ -75,6 +75,19 @@ html.dark-mode .nav-bar {
   background-color: var(--clr-dark-theme-400);
   opacity: 0.98;
 
+  a {
+      color: var(--clr-lighter-white); 
+
+      &:visited {
+        color: var(--clr-lighter-white);
+      }
+
+      &:hover,
+      &:focus-visible {
+        color: var(--clr-dark-theme-200);
+      }
+  }
+
   & li:not(:last-of-type)::after {
     background-color: var(--clr-lighter-white);
   }

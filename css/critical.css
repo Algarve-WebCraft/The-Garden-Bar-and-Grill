@@ -827,7 +827,7 @@
       @media (width > 62.5rem) {
         &.active-link {
           position: relative;
-          color: var(--clr-lighter-black) !important;
+          color: var(--clr-lighter-black);
         }
 
         &.active-link::after {
@@ -861,6 +861,10 @@
       border-top: none;
       z-index: 0;
       transform: translateY(0);
+
+      a.active-link {
+        color: unset !important;
+      }
 
       & li:not(:last-of-type)::after {
         position: absolute;
@@ -911,6 +915,7 @@
   #hero-title {
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-lighter-white);
+    width: max-content;
     max-width: 25ch;
     overflow-wrap: normal;
     margin-inline: auto;
@@ -920,12 +925,15 @@
     backdrop-filter: blur(0.1rem);
     -webkit-backdrop-filter: blur(0.1rem);
     user-select: none;
+    text-wrap: balance;
 
     .hero-title__letters,
     .hero-title__letters-second-word {
       display: inline-flex;
       white-space: nowrap;
       vertical-align: baseline;
+      white-space: nowrap;
+      width: max-content;
     }
 
     span {
