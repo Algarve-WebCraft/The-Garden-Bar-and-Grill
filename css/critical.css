@@ -164,12 +164,13 @@
     margin-bottom: var(--marg-heading-16-32);
     letter-spacing: 0.25em;
     line-height: 1.6em;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.888);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
     text-transform: uppercase;
 
     @media (width > 62.5rem) {
       letter-spacing: 14px;
       line-height: 85px;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.888);
     }
   }
 
@@ -910,7 +911,8 @@
   #hero-title {
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-lighter-white);
-
+    max-width: 25ch;
+    overflow-wrap: normal;
     margin-inline: auto;
     padding-top: 1.25rem;
     margin-bottom: var(--marg-heading-32-48);
@@ -918,7 +920,6 @@
     backdrop-filter: blur(0.1rem);
     -webkit-backdrop-filter: blur(0.1rem);
     user-select: none;
-    text-wrap: balance;
 
     .hero-title__letters,
     .hero-title__letters-second-word {
