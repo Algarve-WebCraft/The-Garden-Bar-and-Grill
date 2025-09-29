@@ -50,7 +50,8 @@ swup.hooks.on("page:view", initPageScripts);
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.querySelector("body");
-  if (body.classList.contains("secondary-pages")) {  //Remove wait for transitions if not on the main page
+  if (body.classList.contains("secondary-pages")) {
+    //Remove wait for transitions if not on the main page
     document.body.classList.add("loaded");
     return;
   }
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */ 
+  return;
   const home = document.querySelector("body.home");
 
   const tl = gsap.timeline({
@@ -181,6 +182,24 @@ function initHomeBackground() {
     "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-15.webp",
   ];
 
+  const dayImagesMedium = [
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-2-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-3-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-4-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-5-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-6-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-7-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-8-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-9-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-10-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-11-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-12-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-13-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-14-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-15-m.webp",
+  ];
+
   const dayImagesSmall = [
     "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1-s.webp",
     "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-2-s.webp",
@@ -215,6 +234,24 @@ function initHomeBackground() {
     "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-13.webp",
     "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-14.webp",
     "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-15.webp",
+  ];
+
+  const nightImagesMedium = [
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-2-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-3-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-4-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-5-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-6-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-7-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-8-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-9-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-10-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-11-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-12-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-13-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-14-m.webp",
+    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-15-m.webp",
   ];
 
   const nightImagesSmall = [
@@ -257,22 +294,6 @@ function initHomeBackground() {
     });
   }
 
-  /* function stopImagesOnChange() {
-    const navLinks = document.querySelectorAll("nav a");
-    const pageLinks = document.querySelectorAll(".cmp-main-btn--pg1-s1");
-    const addEventListener = link.addEventListener("click", () => {
-      stopBackground = true;
-    });
-
-    navLinks.forEach((link) => {
-      addEventListener;
-    });
-
-    pageLinks.forEach((link) => {
-      addEventListener;
-    });
-  } */
-
   stopImagesOnChange();
 
   let theme =
@@ -281,17 +302,21 @@ function initHomeBackground() {
       ? "dark"
       : "light");
 
-  function isLargeScreen() {
-    return window.matchMedia("(min-width: 700px)").matches;
+  function checkScreenSize() {
+    if (window.matchMedia("(max-width: 425px)").matches) return "small";
+    else if (window.matchMedia("(min-width: 425px) and (max-width: 700px)").matches) return `medium`;
+    else return "large";
   }
 
   function getCurrentSet() {
-    if (theme === "dark") {
-      return isLargeScreen() ? nightImagesLarge : nightImagesSmall;
+    if (checkScreenSize() === "small") {
+      return theme === "light" ? dayImagesSmall : nightImagesSmall;
+    } else if (checkScreenSize() === "medium") {
+      return theme === "light" ? dayImagesMedium : nightImagesMedium;
     } else {
-      return isLargeScreen() ? dayImagesLarge : dayImagesSmall;
+      return theme === "light" ? dayImagesLarge : nightImagesLarge;
     }
-  }
+  } 
 
   let currentSet = getCurrentSet();
 
@@ -418,8 +443,14 @@ function initMenu() {
       switch (lang) {
         case "en":
           images = [
-            { href: "/The-Garden-Bar-and-Grill/assets/images/menu/english-1.jpg", type: "image" },
-            { href: "/The-Garden-Bar-and-Grill/assets/images/menu/english-2.jpg", type: "image" },
+            {
+              href: "/The-Garden-Bar-and-Grill/assets/images/menu/english-1.jpg",
+              type: "image",
+            },
+            {
+              href: "/The-Garden-Bar-and-Grill/assets/images/menu/english-2.jpg",
+              type: "image",
+            },
           ];
           break;
         case "pt":
@@ -521,9 +552,13 @@ function initGallery() {
   let animationOnGoing = false;
 
   books.forEach((wrapper) => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || window.matchMedia("(max-width: 62.5rem)").matches)  return;
+    if (
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      window.matchMedia("(max-width: 62.5rem)").matches
+    )
+      return;
 
-    wrapper.addEventListener("mouseenter", () => { 
+    wrapper.addEventListener("mouseenter", () => {
       if (animationOnGoing) return;
 
       gsap.fromTo(
