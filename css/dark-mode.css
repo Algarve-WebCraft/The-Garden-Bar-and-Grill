@@ -122,6 +122,7 @@ html.dark-mode .dark-toggle-text-box {
 
   .dark-toggle-text__day {
     display: inline-block;
+    text-decoration: underline;
     transform: rotate(11deg);
   }
 

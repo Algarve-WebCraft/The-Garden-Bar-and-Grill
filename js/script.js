@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
   const home = document.querySelector("body.home");
 
   const tl = gsap.timeline({
@@ -388,52 +388,75 @@ function initHomeBackground() {
 ///////////////////////////////////////////////////////* About section carousel function *//////////////////////////////////////////////////////////////*
 
 function initAboutCarousel() {
-  const track = document.querySelector(".about-image-track");
-  const container = document.querySelector(".about-image-block");
+  const container = document?.querySelector(".about-flex__carousel");
+  const images = container?.querySelectorAll("img");
 
-  if (!track || !container || typeof gsap === "undefined") return;
+  if (!container || !images || typeof gsap === "undefined") return;
 
-  function getScrollDistance() {
-    return track.scrollHeight - container.clientHeight;
+  function updateImageVisibility() {
+    const containerRect = container.getBoundingClientRect();
+    const visibilityThreshold = 0.55; // Change to set when the next image fades in
+
+    images.forEach((img) => {
+      const rect = img.getBoundingClientRect();
+      const imgHeight = rect.height;
+
+      const visibleHeight =
+        Math.min(rect.bottom, containerRect.bottom) -
+        Math.max(rect.top, containerRect.top);
+
+      const visibilityRatio = visibleHeight / imgHeight;
+
+      if (visibilityRatio >= visibilityThreshold) {
+        gsap.to(img, { opacity: 1, duration: 0.8, ease: "power3.out" });
+      } else {
+        gsap.to(img, { opacity: 0, duration: 0.8, ease: "power3.out" });
+      }
+    });
   }
 
-  function createCarouselTimeline() {
-    const scrollDistance = getScrollDistance();
-    const speed = 25; //
-    const duration = scrollDistance / speed;
+  updateImageVisibility();
 
-    const tl = gsap.timeline({ repeat: -1 });
+  container.addEventListener("scroll", updateImageVisibility);
 
-    tl.to(track, {
-      y: -scrollDistance,
-      duration,
-      ease: "M0,0 C0.95,0.05 0.25,1 1,1",
-    }).to(track, { y: 0, duration, ease: "power1.in" });
+  let isDown = false;
+  let startY;
+  let scrollTop;
 
-    return tl;
-  }
-
-  let carousel = createCarouselTimeline();
-  carousel.pause();
-  setTimeout(() => carousel.play(), 5000);
-
-  function togglePause() {
-    carousel.paused() ? carousel.play() : carousel.pause();
-  }
-
-  container.addEventListener("click", togglePause);
-
-  document.addEventListener("keydown", (e) => {
-    if (e.code === "Space") {
-      e.preventDefault();
-      togglePause();
-    }
+  container.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startY = e.pageY - container.offsetTop;
+    scrollTop = container.scrollTop;
+    container.style.cursor = "grabbing";
   });
 
-  window.addEventListener("resize", () => {
-    if (carousel) carousel.kill();
-    carousel = createCarouselTimeline();
+  container.addEventListener("mouseleave", () => {
+    isDown = false;
+    container.style.cursor = "grab";
   });
+
+  container.addEventListener("mouseup", () => {
+    isDown = false;
+    container.style.cursor = "grab";
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+
+    const y = e.pageY - container.offsetTop;
+    const walk = (y - startY) * 1; // adjust scroll speed
+
+    gsap.to(container, {
+      scrollTop: scrollTop - walk,
+      duration: 0.2,
+      ease: "power2.out",
+    });
+  });
+
+  container.style.webkitOverflowScrolling = "touch";
+  container.style.overflowY = "auto";
+  container.style.cursor = "grab";
 }
 
 /////////////////////////////////////////////////////* Menu section modal image logic *//////////////////////////////////////////////////////////////////////*
@@ -532,7 +555,7 @@ function initGallery() {
   window.lightbox = GLightbox({
     selector: ".glightbox",
     loop: false,
-    zoomable: false,
+    zoomable: true,
     keyboardNavigation: true,
     touchNavigation: true,
     openEffect: prefersReducedMotion ? "none" : "fade",
@@ -803,6 +826,25 @@ function createImageTags() {
   tags2016();
   tagsBeer();
 }
+
+function scrollToTop() {
+  const button = document.querySelector(".scrollToTopButton");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+      button.style.display = "flex";
+      button.style.opacity = "1";
+    } else {
+      button.style.opacity = "0";
+    }
+  });
+
+  button.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+scrollToTop();
 
 /////////////////////////////////////////////////////////////* Main page logo easter egg *//////////////////////////////////////////////////////////////////////*
 

@@ -164,7 +164,7 @@
     margin-bottom: var(--marg-heading-16-32);
     letter-spacing: 0.25em;
     line-height: 1.6em;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.55);
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
 
     @media (width > 62.5rem) {
@@ -676,6 +676,8 @@
 
     .dark-toggle-text__night {
       display: inline-block;
+      text-decoration: underline;
+      text-underline-offset: .1em;
       transform: rotate(11deg);
     }
   }
@@ -916,6 +918,7 @@
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-lighter-white);
     max-width: 25ch;
+    overflow-wrap: normal;
     margin-inline: auto;
     padding-top: 1.25rem;
     margin-bottom: var(--marg-heading-32-48);
@@ -934,6 +937,7 @@
     span {
       display: inline-block;
       color: var(--clr-green-200);
+      user-select: none;
       animation: bounce 3s ease 6s;
       transition: transform 0.4s ease-out;
 
@@ -958,7 +962,7 @@
     box-shadow: 4px 2px 10px rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(0.5rem);
     -webkit-backdrop-filter: blur(0.5rem);
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.25);
   }
 
   .button-flex {

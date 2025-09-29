@@ -191,104 +191,79 @@
     justify-content: space-between;
     gap: 2rem;
     padding-block: var(--padd-page-48);
-    backdrop-filter: blur(0.25rem);
-    -webkit-backdrop-filter: blur(0.25rem);
 
-    .about-text-block {
+    .about-flex__text-block {
       max-width: 80%;
       margin-inline: auto;
-    }
+      backdrop-filter: blur(0.25rem);
+      -webkit-backdrop-filter: blur(0.25rem);
 
-    @media (width > 62.5rem) {
-      flex-direction: row;
-      gap: 3rem;
-
-      .about-text-block {
+      @media (width > 62.5rem) {
         max-width: 55%;
         margin-inline: unset;
         margin-left: 1rem;
       }
     }
+
+    .about-flex__image-block {
+      position: relative;
+    }
+
+    @media (width > 62.5rem) {
+      flex-direction: row;
+      gap: 3rem;
+    }
   }
 
   .cmp-info-text--pg2 {
-    display: none;
-    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    position: relative;
     color: var(--clr-green-100);
-    right: 10rem;
-    top: 5rem;
-    transform: rotateX(30deg);
-    transform-origin: center;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
+    margin-inline: auto;
     text-decoration: dotted underline;
     text-decoration-thickness: 0.2rem;
     text-underline-offset: 0.25em;
 
     @media (width > 62.5rem) {
-      display: block;
+      position: absolute;
+      right: 9rem;
+      top: 2rem;
     }
   }
 
-  .text--2 {
-    right: 3rem;
-    top: 27.5rem;
-  }
-
-  .about-image-block {
+  .about-flex__carousel {
     position: relative;
-    max-width: 100%;
-    max-height: clamp(8rem, 53vw, 21rem);
-    margin-top: 3rem;
-    padding-bottom: -1rem;
-    margin-inline: 1rem;
-    border-radius: 4rem;
-    overflow: clip;
-    cursor: pointer;
-    z-index: 10;
-    box-shadow: 10px 8px 12px 4px var(--clr-lighter-black);
+    max-height: clamp(8rem, 53vw, 24rem);
+    margin-top: 1rem;
+    margin-inline: 2rem;
+    border-radius: 20%;
+    cursor: n-resize !important;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     .about-image-track {
-      position: relative;
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
-      padding-bottom: clamp(6.6rem, 32vw, 12rem);
-      background-color: #e4e7e3;
-      will-change: transform;
-      transform: translateZ(0);
-
-      @media (width > 34.375rem) {
-        padding-bottom: clamp(10.5rem, 35vw, 12.75rem);
-      }
-
-      @media (width > 62.5rem) {
-        padding-bottom: clamp(7.5rem, 12vw, 10.7rem);
-      }
+      gap: 1rem;
+      padding-block: 2em;
+      user-select: none;
     }
 
     img {
-      position: relative;
-      display: block;
       max-width: 100%;
-      border-radius: 3.75rem;
-      box-shadow: 4px 4px 5px var(--clr-lighter-black);
+      max-height: 400px;
+      border-radius: 10rem;
+      box-shadow: 2px 4px 2px rgba(0, 0, 0, 0.397);
       user-select: none;
-
-      @media (width > 62.5rem) {
-        bottom: 0.4rem;
-        border-radius: 4.5rem;
-      }
-    }
-
-    &:hover {
-      box-shadow: 5px 4px 6px 4px var(--clr-lighter-black);
-      transform: scale(1.7) translateX(-4.5rem);
-      transition: transform 0.3s ease-out;
+      pointer-events: none;
     }
 
     @media (width > 62.5rem) {
-      max-width: 35%;
-      max-height: clamp(13rem, 20vw, 17.5rem);
-      margin-top: 6rem;
+      margin: 8rem 1rem 0;
     }
   }
 
@@ -406,7 +381,11 @@
 
   .gallery-book-svg-box.absolute-position {
     position: absolute;
-    margin-top: 2.75rem;
+    margin-top: 3rem;
+
+    @media (width > 62.5rem) {
+      margin-top: 4rem;
+    }
   }
 
   .gallery-book-svg-box__wrapper {
@@ -561,7 +540,7 @@
         box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.703);
       }
 
-      @media (width > 62.5rem) {
+      @media (width > 35rem) {
         max-width: 100%;
       }
     }
@@ -589,6 +568,36 @@
     &:active {
       transform: scale(0.9);
       box-shadow: none;
+    }
+  }
+
+  .scrollToTopButton {
+    display: none;
+    position: fixed;
+    bottom: 4rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transition: opacity 0.7s ease, transform 0.7s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @media (width > 62.5rem) {
+      top: 4rem;
+      right: 3.75rem;
+      bottom: unset;
     }
   }
 
