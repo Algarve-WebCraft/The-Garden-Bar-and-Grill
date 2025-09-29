@@ -828,7 +828,7 @@ function createImageTags() {
 }
 
 function scrollToTop() {
-  const button = document.querySelector(".scrollToTopButton");
+  const button = document?.querySelector(".scrollToTopButton");
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {
@@ -839,7 +839,7 @@ function scrollToTop() {
     }
   });
 
-  button.addEventListener("click", () => {
+  button?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
