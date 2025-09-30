@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  return;
+  /* return; */
   const home = document.querySelector("body.home");
 
   const tl = gsap.timeline({
@@ -393,6 +393,16 @@ function initAboutCarousel() {
 
   if (!container || !images || typeof gsap === "undefined") return;
 
+  window.lightbox = GLightbox({
+    selector: ".glightbox",
+    loop: false,
+    zoomable: true,
+    keyboardNavigation: true,
+    touchNavigation: true,
+    openEffect: /* prefersReducedMotion ? "none" :  */"fade",
+    closeEffect: /* prefersReducedMotion ? "none" :  */"fade",
+  });
+
   function updateImageVisibility() {
     const containerRect = container.getBoundingClientRect();
     const visibilityThreshold = 0.55; // Change to set when the next image fades in
@@ -445,7 +455,7 @@ function initAboutCarousel() {
     e.preventDefault();
 
     const y = e.pageY - container.offsetTop;
-    const walk = (y - startY) * 1; // adjust scroll speed
+    const walk = (y - startY) * 0.5; // adjust scroll speed
 
     gsap.to(container, {
       scrollTop: scrollTop - walk,
@@ -829,6 +839,8 @@ function createImageTags() {
 
 function scrollToTop() {
   const button = document?.querySelector(".scrollToTopButton");
+
+  if (!button) return;
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 200) {

@@ -22,7 +22,12 @@ html.dark-mode body.home::after {
 }
 
 html.dark-mode body.secondary-pages {
-  background: linear-gradient(180deg, #4d7454 0%, #1f2e24 100%);
+  background: linear-gradient(
+    180deg,
+    #4d7454 0%,
+    #2f4536 60%,
+    #1f2e24 100%
+  );
 }
 
 html.dark-mode .cmp-main-btn {
