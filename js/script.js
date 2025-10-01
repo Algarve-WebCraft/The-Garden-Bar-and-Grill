@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  return;
+  /* return; */
   const home = document.querySelector("body.home");
 
   if (!home) return;
@@ -404,7 +404,7 @@ function initAboutCarousel() {
     a.className = "glightbox";
     a.dataset.gallery = "about-carousel";
     a.dataset.href = `assets/images/carousel/${file}.webp`;
-    a.dataset.srcset = `assets/images/carousel/${file}-s.webp 800w, assets/images/carousel/${file}-l.webp 1920w`;
+    a.dataset.srcset = `assets/images/carousel/${file}-s.webp 600w, assets/images/carousel/${file}-l.webp 1920w`;
     a.dataset.sizes = "100vw";
     a.dataset.type = "image";
 
