@@ -15,6 +15,7 @@ function initPageScripts() {
   initMenu();
   createImageTags();
   initGallery();
+  scrollToTop();
 
   document.addEventListener("swup:contentReplaced", () => {
     if (window.lightbox && typeof window.lightbox.destroy === "function") {
@@ -69,8 +70,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
   const home = document.querySelector("body.home");
+
+  if (!home) return;
 
   const tl = gsap.timeline({
     defaults: { ease: "power3.out" },
@@ -386,10 +389,77 @@ function initHomeBackground() {
 }
 
 ///////////////////////////////////////////////////////* About section carousel function *//////////////////////////////////////////////////////////////*
+function createAboutCarousel() {
+  const container = document.querySelector(".about-image-track");
+
+  if (!container) return;
+
+  const images = [
+    {
+      file: "carousel-1",
+      alt: "a black and white photo of the gardens old resident fat cat named Burnie sitting on hay bales. Image 1 of 8."
+    },
+    {
+      file: "carousel-2",
+      alt: "Kevin and Marko, the owner and manager of The Garden. Image 2 of 8."
+    },
+    {
+      file: "carousel-3",
+      alt: "a black and white photo of the gardens cat Burnie. Image 3 of 8."
+    },
+    {
+      file: "carousel-4",
+      alt: "The Gardens old cat Burnie wrapped up in a blanket. Image 4 of 8."
+    },
+    {
+      file: "carousel-5",
+      alt: "End of season clean up with all the staff waving from 2016. Image 5 of 8."
+    },
+    {
+      file: "carousel-6",
+      alt: "Our resident turtle named Menu roaming The Garden. Image 6 of 8."
+    },
+    {
+      file: "carousel-7",
+      alt: "End of season clean up with all the staff waving from 2018. Image 7 of 8."
+    }
+  ];
+
+  images.forEach(({ file, alt }) => {
+    const a = document.createElement("a");
+    a.className = "glightbox";
+    a.dataset.gallery = "about-carousel";
+
+    // GLightbox source setup (just like gallery code)
+    a.dataset.href = `assets/images/carousel/${file}.jpg`;
+    a.dataset.srcset = `
+      assets/images/carousel/${file}.jpg 600w,
+      assets/images/carousel/${file}.webp 1200w
+    `;
+    a.dataset.sizes = "(max-width: 600px) 100vw, 530px";
+    a.dataset.type = "image";
+
+    // Preview <img>
+    const img = document.createElement("img");
+    img.src = `assets/images/carousel/${file}.jpg`;
+    img.width = 530;
+    img.height = 350;
+    img.decoding = "async";
+    img.loading = "lazy";
+    img.alt = alt;
+
+    a.appendChild(img);
+    container.appendChild(a);
+  });
+}
+
+createAboutCarousel();
+
 
 function initAboutCarousel() {
   const container = document?.querySelector(".about-flex__carousel");
   const images = container?.querySelectorAll("img");
+  const imageTags = document?.querySelectorAll("a.glightbox");
 
   if (!container || !images || typeof gsap === "undefined") return;
 
@@ -399,13 +469,20 @@ function initAboutCarousel() {
     zoomable: true,
     keyboardNavigation: true,
     touchNavigation: true,
-    openEffect: /* prefersReducedMotion ? "none" :  */"fade",
-    closeEffect: /* prefersReducedMotion ? "none" :  */"fade",
+    openEffect: "fade",
+    closeEffect: "fade",
+  });
+
+  imageTags.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    });
   });
 
   function updateImageVisibility() {
     const containerRect = container.getBoundingClientRect();
-    const visibilityThreshold = 0.55; // Change to set when the next image fades in
+    const visibilityThreshold = 0.4; // Change to set when the next image fades in
 
     images.forEach((img) => {
       const rect = img.getBoundingClientRect();
@@ -418,9 +495,9 @@ function initAboutCarousel() {
       const visibilityRatio = visibleHeight / imgHeight;
 
       if (visibilityRatio >= visibilityThreshold) {
-        gsap.to(img, { opacity: 1, duration: 0.8, ease: "power3.out" });
+        gsap.to(img, { opacity: 1, duration: 0.5, ease: "power1.out" });
       } else {
-        gsap.to(img, { opacity: 0, duration: 0.8, ease: "power3.out" });
+        gsap.to(img, { opacity: 0, duration: 0.5, ease: "power1.out" });
       }
     });
   }
@@ -455,12 +532,12 @@ function initAboutCarousel() {
     e.preventDefault();
 
     const y = e.pageY - container.offsetTop;
-    const walk = (y - startY) * 0.5; // adjust scroll speed
+    const walk = (y - startY) * 0.9; // adjust scroll speed
 
     gsap.to(container, {
       scrollTop: scrollTop - walk,
       duration: 0.2,
-      ease: "power2.out",
+      ease: "power1.out",
     });
   });
 
@@ -699,6 +776,8 @@ function initGallery() {
       }
     );
 
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
     bookTimelines[index] = tl;
   }
 
@@ -855,8 +934,6 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
-
-scrollToTop();
 
 /////////////////////////////////////////////////////////////* Main page logo easter egg *//////////////////////////////////////////////////////////////////////*
 

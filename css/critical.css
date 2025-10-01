@@ -314,7 +314,7 @@
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    /* Initial main page animations */
+    /* Main page animations */
 
     .loaded .transition-main-heading,
     .loaded .transition-main-text-left,
@@ -1136,7 +1136,7 @@
       width: 1.75rem;
       height: auto;
       border-radius: 25%;
-      filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
+      filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.4));
       transition: transform 0.8s ease-in-out;
       /* prettier-ignore */
       transition-timing-function: linear(
@@ -1144,6 +1144,10 @@
 
       &:hover {
         transform: rotate(360deg);
+      }
+
+      @media (width > 62.5rem) {
+        filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
       }
     }
   }
