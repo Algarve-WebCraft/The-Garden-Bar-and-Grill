@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
   const home = document.querySelector("body.home");
 
   if (!home) return;
@@ -389,121 +389,6 @@ function initHomeBackground() {
 }
 
 ///////////////////////////////////////////////////////* About section carousel function *//////////////////////////////////////////////////////////////*
-/* function createAboutCarousel() {
-  const container = document.querySelector(".about-image-track");
-
-  if (!container) return;
-
-  const images = [
-    {
-      file: "carousel-1",
-      alt: "a black and white photo of the gardens old resident fat cat named Burnie sitting on hay bales. Image 1 of 8."
-    },
-    {
-      file: "carousel-2",
-      alt: "Kevin and Marko, the owner and manager of The Garden. Image 2 of 8."
-    },
-    {
-      file: "carousel-3",
-      alt: "a black and white photo of the gardens cat Burnie. Image 3 of 8."
-    },
-    {
-      file: "carousel-4",
-      alt: "The Gardens old cat Burnie wrapped up in a blanket. Image 4 of 8."
-    },
-    {
-      file: "carousel-5",
-      alt: "End of season clean up with all the staff waving from 2016. Image 5 of 8."
-    },
-    {
-      file: "carousel-6",
-      alt: "Our resident turtle named Menu roaming The Garden. Image 6 of 8."
-    },
-    {
-      file: "carousel-7",
-      alt: "End of season clean up with all the staff waving from 2018. Image 7 of 8."
-    }
-  ];
-
-  images.forEach(({ file, alt }) => {
-    const a = document.createElement("a");
-    a.className = "glightbox";
-    a.dataset.gallery = "about-carousel";
-
-    a.dataset.href = `assets/images/carousel/${file}.webp`;
-    a.dataset.srcset = `
-      assets/images/carousel/${file}-s.webp 600w,
-      assets/images/carousel/${file}-l.webp 1200w
-    `;
-    a.dataset.sizes = "(max-width: 600px) 100vw, 530px";
-    a.dataset.type = "image";
-
-    const img = document.createElement("img");
-    img.src = `assets/images/carousel/${file}.jpg`;
-    img.width = 530;
-    img.height = 350;
-    img.decoding = "async";
-    img.loading = "lazy";
-    img.alt = alt;
-
-    a.appendChild(img);
-    container.appendChild(a);
-  });
-}
-
-function initAboutCarousel() {
-  const container = document?.querySelector(".about-flex__carousel");
-  const images = container?.querySelectorAll("img");
-  const imageTags = document?.querySelectorAll("a.glightbox");
-
-  if (!container || !images || typeof gsap === "undefined") return;
-  
-  window.lightbox = GLightbox({
-    selector: ".glightbox",
-    loop: false,
-    zoomable: true,
-    keyboardNavigation: true,
-    touchNavigation: true,
-    openEffect: "fade",
-    closeEffect: "fade",
-  });
-
-  imageTags.forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-    });
-  });
-
-  function updateImageVisibility() {
-    const containerRect = container.getBoundingClientRect();
-    const visibilityThreshold = 0.4; // Change to set when the next image fades in
-
-    images.forEach((img) => {
-      const rect = img.getBoundingClientRect();
-      const imgHeight = rect.height;
-
-      const visibleHeight =
-        Math.min(rect.bottom, containerRect.bottom) -
-        Math.max(rect.top, containerRect.top);
-
-      const visibilityRatio = visibleHeight / imgHeight;
-
-      if (visibilityRatio >= visibilityThreshold) {
-        gsap.to(img, { opacity: 1, duration: 0.5, ease: "power1.out" });
-      } else {
-        gsap.to(img, { opacity: 0, duration: 0.5, ease: "power1.out" });
-      }
-    });
-  }
-
-  updateImageVisibility();
-
-  container.addEventListener("scroll", updateImageVisibility);
-
-  container.style.webkitOverflowScrolling = "touch";
-  container.style.overflowY = "auto";
-} */
 
 function initAboutCarousel() {
   const track = document.querySelector(".about-image-track");
@@ -511,45 +396,15 @@ function initAboutCarousel() {
 
   if (!track || !container || typeof gsap === "undefined") return;
 
-  const images = [
-    {
-      file: "carousel-1",
-      alt: "a black and white photo of the gardens old resident fat cat named Burnie sitting on hay bales. Image 1 of 8.",
-    },
-    {
-      file: "carousel-2",
-      alt: "Kevin and Marko, the owner and manager of The Garden. Image 2 of 8.",
-    },
-    {
-      file: "carousel-3",
-      alt: "a black and white photo of the gardens cat Burnie. Image 3 of 8.",
-    },
-    {
-      file: "carousel-4",
-      alt: "The Gardens old cat Burnie wrapped up in a blanket. Image 4 of 8.",
-    },
-    {
-      file: "carousel-5",
-      alt: "End of season clean up with all the staff waving from 2016. Image 5 of 8.",
-    },
-    {
-      file: "carousel-6",
-      alt: "Our resident turtle named Menu roaming The Garden. Image 6 of 8.",
-    },
-    {
-      file: "carousel-7",
-      alt: "End of season clean up with all the staff waving from 2018. Image 7 of 8.",
-    },
-  ];
+  for (let i = 1; i <= 20; i++) {
+    const file = `${i}`;
+    const alt = `Carousel image ${i} of 20.`;
 
-  images.forEach(({ file, alt }) => {
     const a = document.createElement("a");
     a.className = "glightbox";
     a.dataset.gallery = "about-carousel";
     a.dataset.href = `assets/images/carousel/${file}.webp`;
-    a.dataset.srcset = `
-      assets/images/carousel/${file}-s.webp 800w, assets/images/carousel/${file}.webp 1920w
-    `;
+    a.dataset.srcset = `assets/images/carousel/${file}-s.webp 800w, assets/images/carousel/${file}-l.webp 1920w`;
     a.dataset.sizes = "100vw";
     a.dataset.type = "image";
 
@@ -563,7 +418,7 @@ function initAboutCarousel() {
 
     a.appendChild(img);
     track.appendChild(a);
-  });
+  }
 
   window.lightbox = GLightbox({
     selector: ".glightbox",
@@ -836,7 +691,9 @@ function initGallery() {
       }
     );
 
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 700);
 
     bookTimelines[index] = tl;
   }
