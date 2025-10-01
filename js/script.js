@@ -889,6 +889,8 @@ hamburgerBtn.addEventListener("click", () => {
 
   const isOpen = navBar.classList.contains("hamburger-btn__open");
 
+  isAnimating = true;
+
   if (isOpen) {
     isAnimating = true;
     hamburgerBtn.classList.remove("active");
