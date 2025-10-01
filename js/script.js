@@ -903,6 +903,10 @@ hamburgerBtn.addEventListener("click", () => {
   }
 
   setNavAttributes();
+
+  setTimeout(() => {
+    isAnimating = false;
+  }, 400);
 });
 
 navBar.addEventListener("transitionend", (e) => {
