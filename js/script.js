@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
   const home = document.querySelector("body.home");
 
   if (!home) return;
