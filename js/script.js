@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  return;
+  /* return; */
   const home = document.querySelector("body.home");
 
   if (!home) return;
@@ -664,6 +664,8 @@ function initGallery() {
       }
     });
 
+    album.style.pointerEvents = "none"; // Prevent opening image while animating
+
     // Fade in album
     tl.fromTo(
       album,
@@ -673,6 +675,9 @@ function initGallery() {
         opacity: 1,
         y: 0,
         ease: "elastic.out",
+        onComplete: () => {
+          album.style.pointerEvents = "auto";
+        },
       },
       "-=0.3"
     );
@@ -704,15 +709,18 @@ function initGallery() {
     const openWrapper = galleryRoot.querySelector(
       ".album-wrapper:not(.hidden)"
     );
-
+    
     if (!openWrapper) return;
 
     const albumIndex = [...wrappers].indexOf(openWrapper);
     const tl = bookTimelines[albumIndex];
     const booksBox = document.querySelector(".gallery-book-svg-box");
+    const album = document.querySelector(`.album-grid--${albumIndex + 1}`);
+
+    album.style.pointerEvents = "none"; // Prevent opening image while animating
 
     setTimeout(() => {
-      booksBox.classList.remove("absolute-position");
+      booksBox.classList.remove("absolute-position"); // Remove absolute class which was preventing books from taking up dom space
     }, 2000);
 
     if (tl) {
