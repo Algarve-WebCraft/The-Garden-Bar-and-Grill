@@ -124,7 +124,7 @@
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
     --fs-text-hero-heading: clamp(2.5rem, 9vw, 3.75rem);
     --fs-text-heading: clamp(3.25rem, 8vw, 4rem);
-    --fs-text-body: clamp(1.2rem, 3vw, 1.25rem);
+    --fs-text-body: clamp(1.1rem, 3vw, 1.25rem);
 
     --ff-heading-pacifico: "Kaushan Script", Arial, sans-serif;
     --ff-body-sans: "Open-Sans", Arial, sans-serif;
