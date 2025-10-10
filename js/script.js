@@ -19,7 +19,7 @@ function initPageScripts() {
   scrollToTop();
 
   setTimeout(() => {
-    secondaryPageSvgInit();
+    secondaryPageSvgInit(); // Re-run to make sure code prevents the side svg from animating when coming from home page after the inital animation
   }, 1500);
 
   document.addEventListener("swup:contentReplaced", () => {
@@ -398,11 +398,10 @@ function secondaryPageSvgInit() {
   const leafBox = document.querySelector(".background-leaf-svg-box");
   const body = document.querySelector("body");
 
-  if (body?.classList.contains("secondary-pages")) {
-    console.log("working");
-    svgBox?.classList.remove("transition-fades");
-    leafBox?.classList.remove("transition-fades");
-  }
+  if (!body.classList.contains("secondary-pages")) return;
+
+  svgBox?.classList.remove("transition-side-fade");
+  leafBox?.classList.remove("transition-side-fade");
 }
 
 ///////////////////////////////////////////////////////* About section carousel function *//////////////////////////////////////////////////////////////*

@@ -119,11 +119,11 @@
 
     --fs-logo-dark-text: clamp(0.7rem, 2vw, 0.9rem);
     --fs-logo-light-text: clamp(1.5rem, 3.5vw, 3rem);
-    --fs-nav-text-s: clamp(1.15rem, 2.5vw, 1.25rem);
+    --fs-nav-text-s: clamp(1.35rem, 2.5vw, 1.45rem);
     --fs-nav-text-l: clamp(1rem, 1.25vw, 1.15rem);
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
     --fs-text-hero-heading: clamp(2.5rem, 7vw, 3.75rem);
-    --fs-text-heading: clamp(2.5rem, 7vw, 4rem);
+    --fs-text-heading: clamp(3.25rem, 8vw, 4rem);
     --fs-text-body: clamp(1.2rem, 3vw, 1.25rem);
 
     --ff-heading-pacifico: "Kaushan Script", Arial, sans-serif;
@@ -473,12 +473,12 @@
       opacity: 0;
     }
 
-    .transition-fades {
+    .transition-side-fade {
       transition: opacity 1s ease;
     }
 
-    html.is-leaving .transition-fades,
-    html.is-rendering .transition-fades {
+    html.is-leaving .transition-side-fade,
+    html.is-rendering .transition-side-fade {
       opacity: 0 !important;
     }
 
@@ -1029,7 +1029,7 @@
     transform: translateX(30%);
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 
-    @media (width > 62.5rem) {
+    @media (width > 87.5rem) {
       max-width: 100%;
       top: 10rem;
     }
