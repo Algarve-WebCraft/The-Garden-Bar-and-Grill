@@ -11,11 +11,16 @@ function initPageScripts() {
   updateActiveNavLink();
   initDarkToggleText();
   initLogoEasterEgg();
+  secondaryPageSvgInit();
   initAboutCarousel();
   initMenu();
   createImageTags();
   initGallery();
   scrollToTop();
+
+  setTimeout(() => {
+    secondaryPageSvgInit();
+  }, 1500);
 
   document.addEventListener("swup:contentReplaced", () => {
     if (window.lightbox && typeof window.lightbox.destroy === "function") {
@@ -388,6 +393,18 @@ function initHomeBackground() {
   });
 }
 
+function secondaryPageSvgInit() {
+  const svgBox = document.querySelector(".side-svg-decor-box");
+  const leafBox = document.querySelector(".background-leaf-svg-box");
+  const body = document.querySelector("body");
+
+  if (body?.classList.contains("secondary-pages")) {
+    console.log("working");
+    svgBox?.classList.remove("transition-fades");
+    leafBox?.classList.remove("transition-fades");
+  }
+}
+
 ///////////////////////////////////////////////////////* About section carousel function *//////////////////////////////////////////////////////////////*
 
 function initAboutCarousel() {
@@ -709,7 +726,7 @@ function initGallery() {
     const openWrapper = galleryRoot.querySelector(
       ".album-wrapper:not(.hidden)"
     );
-    
+
     if (!openWrapper) return;
 
     const albumIndex = [...wrappers].indexOf(openWrapper);
@@ -930,13 +947,12 @@ navBar.addEventListener("transitionend", (e) => {
 document.addEventListener("click", (e) => {
   if (
     !navBar.classList.contains("hamburger-btn__open") ||
+    isAnimating ||
     e.target === navBar ||
     e.target === hamburgerBtn ||
     e.target === navBarList
   )
     return;
-
-  if (isAnimating) return;
 
   isAnimating = true;
   hamburgerBtn.classList.remove("active");
@@ -1028,11 +1044,13 @@ function detectColorScheme() {
 
   if (theme === "light" && bodyEl.classList.contains("home")) {
     disableDarkMode();
-    preloadLink.href = "assets/images/day/garden-day-1.webp";
+    preloadLink.href =
+      "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1.webp";
     document.head.appendChild(preloadLink);
   } else if (theme === "dark" && bodyEl.classList.contains("home")) {
     enableDarkMode();
-    preloadLink.href = "assets/images/night/garden-night-1.webp";
+    preloadLink.href =
+      "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1.webp";
     document.head.appendChild(preloadLink);
   }
 }

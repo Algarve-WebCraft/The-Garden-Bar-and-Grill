@@ -215,6 +215,10 @@
     }
   }
 
+  .cmp-heading--pg2 {
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
+  }
+
   .cmp-info-text--pg2 {
     position: relative;
     color: var(--clr-green-100);
@@ -345,7 +349,7 @@
 
     @media (width > 62.5rem) {
       width: 6.5rem;
-      transform: translate(-200px, 100px);
+      transform: translate(-250px, 100px);
       animation: turtlePath-L 170s linear infinite var(--turtle-delay),
         wiggle 0.5s ease-in-out infinite var(--turtle-delay);
     }
@@ -404,11 +408,11 @@
 
   .cmp-info-text--pg4,
   .beer-image-box > span {
-    font-size: clamp(1.25rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     pointer-events: none;
 
     @media (width > 62.5rem) {
-      font-size: clamp(1.5rem, 2.4vw, 1.85rem);
+      font-size: clamp(1.5rem, 2.75vw, 2rem);
     }
   }
 
@@ -416,7 +420,7 @@
     top: -30%;
     left: 50%;
     color: var(--clr-lighter-white);
-    letter-spacing: 10px;
+    letter-spacing: 0.15em;
     transform: translate(-50%, -50%);
     filter: drop-shadow(4px 2px 2px rgba(0, 0, 0, 0.25));
 
@@ -433,7 +437,7 @@
     }
   }
 
-  .cmp-info-text--pg4--second {
+  .cmp-info-text--pg4--black {
     @media (width > 87.5rem) {
       left: unset;
       right: -1rem;
@@ -454,7 +458,7 @@
     z-index: 999;
   }
 
-  .gallery-svg-image--second {
+  .gallery-svg-image--black {
     max-width: 68%;
   }
 
@@ -494,11 +498,12 @@
       color: var(--clr-lighter-white);
       top: -30%;
       left: 50%;
-      letter-spacing: 10px;
+      letter-spacing: 0.15em;
       line-height: 2em;
       transform: translate(-50%, -50%);
 
       @media (width > 87.5rem) {
+        top: -40%;
         animation: beer-scale 1s ease-in-out 5s;
       }
     }
@@ -579,7 +584,7 @@
     display: none;
     position: fixed;
     bottom: 5rem;
-    right: 1.5rem;
+    right: 0.75rem;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -734,7 +739,7 @@
 
   .wrapper--mobile-L {
     @media (width < 62.5rem) {
-      max-width: calc(37rem + 2rem);
+      max-width: calc(39rem + 2rem);
     }
   }
 

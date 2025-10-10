@@ -63,7 +63,9 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    * {
+    *,
+    *::before,
+    *::after {
       transition: none !important;
       animation: none !important;
     }
@@ -73,10 +75,10 @@
 @layer components {
   @font-face {
     font-display: swap;
-    font-family: "Pacifico";
+    font-family: "Kaushan Script";
     font-style: normal;
     font-weight: 400;
-    src: url("/The-Garden-Bar-and-Grill/assets/fonts/pacifico-v22-latin-regular.woff2")
+    src: url("/The-Garden-Bar-and-Grill/assets/fonts/kaushan-script-v19-latin-regular.woff2")
       format("woff2");
   }
 
@@ -118,16 +120,16 @@
     --fs-logo-dark-text: clamp(0.7rem, 2vw, 0.9rem);
     --fs-logo-light-text: clamp(1.5rem, 3.5vw, 3rem);
     --fs-nav-text-s: clamp(1.15rem, 2.5vw, 1.25rem);
-    --fs-nav-text-l: clamp(0.85rem, 1.25vw, 1rem);
+    --fs-nav-text-l: clamp(1rem, 1.25vw, 1.15rem);
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
-    --fs-text-hero-heading: clamp(2.3rem, 8vw, 3rem);
-    --fs-text-heading: clamp(2.5rem, 9vw, 3.5rem);
+    --fs-text-hero-heading: clamp(2.5rem, 7vw, 3.75rem);
+    --fs-text-heading: clamp(2.5rem, 7vw, 4rem);
     --fs-text-body: clamp(1.2rem, 3vw, 1.25rem);
 
-    --ff-heading-pacifico: "Pacifico", Arial, sans-serif;
+    --ff-heading-pacifico: "Kaushan Script", Arial, sans-serif;
     --ff-body-sans: "Open-Sans", Arial, sans-serif;
 
-    --padd-page-48: clamp(1rem, 6vw, 1.9rem);
+    --padd-page-48: clamp(1rem, 6vw, 1.6rem);
     --padd-page-60: clamp(3rem, 6vw, 4rem);
     --marg-heading-16-32: clamp(1rem, 4vw, 2rem);
     --marg-heading-32-48: clamp(2rem, 5vw, 3rem);
@@ -162,14 +164,14 @@
     font-size: var(--fs-text-heading);
     color: var(--clr-green-100);
     margin-bottom: var(--marg-heading-16-32);
-    letter-spacing: 0.25em;
-    line-height: 1.6em;
+    letter-spacing: 0.2em;
+    line-height: 1.45em;
     text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
     text-transform: uppercase;
 
     @media (width > 62.5rem) {
-      letter-spacing: 14px;
-      line-height: 85px;
+
+      /* line-height: 85px; */
       text-shadow: 0 1px 8px rgba(0, 0, 0, 0.888);
     }
   }
@@ -471,18 +473,14 @@
       opacity: 0;
     }
 
-    /* .transition-fades {
-      transition: opacity 0.6s ease 0.2s;
+    .transition-fades {
+      transition: opacity 1s ease;
     }
 
     html.is-leaving .transition-fades,
     html.is-rendering .transition-fades {
-      opacity: 0;
+      opacity: 0 !important;
     }
-
-    body.secondary-pages .transition-fades {
-      opacity: 1 !important;
-    } */
 
     /* Animation change for dark-mode */
     ::view-transition-old(root) {
@@ -565,7 +563,7 @@
 
   body.home.with-transition::before,
   body.home.with-transition::after {
-    transition: opacity 0.75s ease-in-out;
+    transition: opacity 0.75s ease-in-out; /* Change the speed of background images changing*/
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
@@ -742,11 +740,6 @@
         display: none;
       }
     }
-
-    @media (prefers-reduced-motion: reduce) {
-      transition: none !important;
-      transform: none !important;
-    }
   }
 
   .nav-bar {
@@ -777,20 +770,20 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 1.75rem;
       width: fit-content;
       left: 0.5em;
       margin-right: auto;
       margin-bottom: 0;
       font-size: var(--fs-nav-text-s);
       color: var(--clr-lighter-black);
-      letter-spacing: 0.5rem;
+      letter-spacing: 0.2em; 
       list-style: none;
 
       @media (width > 62.5rem) {
         font-size: var(--fs-nav-text-l);
         flex-direction: row;
-        gap: 3.5rem;
+        gap: 5rem;
       }
     }
 
@@ -921,9 +914,10 @@
     max-width: 25ch;
     overflow-wrap: normal;
     margin-inline: auto;
-    padding-top: 1.25rem;
+    padding-top: .75em;
     margin-bottom: var(--marg-heading-32-48);
     border-radius: 5rem;
+    letter-spacing: .1em;
     backdrop-filter: blur(0.1rem);
     -webkit-backdrop-filter: blur(0.1rem);
     user-select: none;
@@ -949,7 +943,8 @@
     }
 
     @media (width > 62.5rem) {
-      padding-top: 0;
+      padding-top: .1em;
+      letter-spacing: .13em;
     }
   }
 
@@ -971,7 +966,7 @@
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     max-width: 65%;
     margin-inline: auto;
 
@@ -1055,11 +1050,11 @@
     filter: drop-shadow(6px 4px 2px rgba(0, 0, 0, 0.25))
       drop-shadow(8px 4px 4px rgba(0, 0, 0, 0.15));
 
-    transform: translateX(-1100%);
+    transform: translateX(-2600%);
     animation: ufoFly 16s ease-out 20s, wiggle 0.5s ease-in-out infinite 20s;
 
     @media (width > 62.5rem) {
-      width: 5%;
+      width: 2%;
     }
   }
 
@@ -1363,13 +1358,13 @@
 
   @keyframes ufoFly {
     0% {
-      transform: translateX(-1100%) translateY(-140%) scale(1);
+      transform: translateX(-2600%) translateY(-140%) scale(1);
     }
     15% {
-      transform: translateX(-800%) translateY(25%) scale(0.4);
+      transform: translateX(-500%) translateY(125%) scale(0.4);
     }
     30% {
-      transform: translateX(-390%) translateY(-100%) scale(0.7);
+      transform: translateX(-390%) translateY(-200%) scale(0.7);
     }
     45% {
       transform: translateX(285%) translateY(-140%) scale(1.1);
@@ -1378,34 +1373,34 @@
       transform: translateX(100%) translateY(30%) scale(0.8);
     }
     80% {
-      transform: translateX(190%) translateY(-45%) scale(0.6);
+      transform: translateX(390%) translateY(245%) scale(0.6);
     }
     100% {
-      transform: translateX(1000%) translateY(-200%) scale(0.1);
+      transform: translateX(2000%) translateY(-200%) scale(0.1);
     }
   }
 
   @keyframes butterFly {
     0% {
-      transform: translateX(-1100%) translateY(140%) rotate(50deg) scale(0.3);
+      transform: translateX(-2600%) translateY(140%) rotate(50deg) scale(0.3);
     }
     15% {
-      transform: translateX(-600%) translateY(-25%) rotate(30deg) scale(1.1);
+      transform: translateX(-900%) translateY(-25%) rotate(40deg) scale(1.1);
     }
     30% {
-      transform: translateX(-390%) translateY(180%) rotate(10deg) scale(0.6);
+      transform: translateX(-590%) translateY(180%) rotate(80deg) scale(0.6);
     }
     45% {
-      transform: translateX(-125%) translateY(-140%) rotate(80deg) scale(0.4);
+      transform: translateX(-125%) translateY(-140%) rotate(50deg) scale(0.4);
     }
     60% {
-      transform: translateX(0%) translateY(-40%) rotate(80deg) scale(0.9);
+      transform: translateX(100%) translateY(-340%) rotate(100deg) scale(0.9);
     }
     80% {
-      transform: translateX(490%) translateY(-95%) rotate(60deg) scale(1.1);
+      transform: translateX(390%) translateY(-450%) rotate(60deg) scale(1.1);
     }
     100% {
-      transform: translateX(1000%) translateY(-200%) rotate(60deg) scale(0.1);
+      transform: translateX(2000%) translateY(-400%) rotate(80deg) scale(0.1);
     }
   }
 }
