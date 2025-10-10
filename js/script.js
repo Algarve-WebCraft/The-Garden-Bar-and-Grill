@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
   const home = document.querySelector("body.home");
 
   if (!home) return;
@@ -393,18 +393,16 @@ function initHomeBackground() {
   });
 }
 
+///////////////////////////////////////////////////////* Secondary pages side-svg transitions */////////////////////////////////////////////////////////////*
+
 function secondaryPageSvgInit() {
   const svgBox = document.querySelector(".side-svg-decor-box");
-  const leafBox = document.querySelector(".background-leaf-svg-box");
   const body = document.querySelector("body");
 
-  if (!body.classList.contains("secondary-pages")) return;
-
-  svgBox?.classList.remove("transition-side-fade");
-  leafBox?.classList.remove("transition-side-fade");
+  if (body.classList.contains("secondary-pages")) svgBox?.classList.remove("transition-side-fade");
 }
 
-///////////////////////////////////////////////////////* About section carousel function *//////////////////////////////////////////////////////////////*
+///////////////////////////////////////////////////////* About section carousel function *///////////////////////////////////////////////////////////////////*
 
 function initAboutCarousel() {
   const track = document.querySelector(".about-image-track");
@@ -551,7 +549,7 @@ function initMenu() {
   });
 }
 
-////////////////////////////////////////////////////* Gallery section album books *//////////////////////////////////////////////////////////////////////*
+////////////////////////////////////////////////////* Gallery section album books *///////////////////////////////////////////////////////////////////////////*
 
 function initGallery() {
   const galleryRoot = document.querySelector(".gallery-page");

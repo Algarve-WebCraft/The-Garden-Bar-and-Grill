@@ -122,7 +122,7 @@
     --fs-nav-text-s: clamp(1.35rem, 2.5vw, 1.45rem);
     --fs-nav-text-l: clamp(1rem, 1.25vw, 1.15rem);
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
-    --fs-text-hero-heading: clamp(2.5rem, 7vw, 3.75rem);
+    --fs-text-hero-heading: clamp(2.5rem, 9vw, 3.75rem);
     --fs-text-heading: clamp(3.25rem, 8vw, 4rem);
     --fs-text-body: clamp(1.2rem, 3vw, 1.25rem);
 
@@ -930,7 +930,6 @@
     }
 
     span {
-      display: inline-block;
       color: var(--clr-green-200);
       user-select: none;
       animation: bounce 3s ease 6s;
