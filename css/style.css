@@ -224,8 +224,8 @@
     right: 3.5rem;
     top: .25rem;
     text-decoration: dotted underline;
-    text-decoration-thickness: 0.2rem;
-    text-underline-offset: 0.45em;
+    text-decoration-thickness: 0.15rem;
+    text-underline-offset: 0.25em;
     rotate: 6deg;
 
     .cmp-info-text--pg2__swipe {
@@ -406,7 +406,7 @@
 
   .gallery-book-svg-box.absolute-position {
     position: absolute;
-    margin-top: 3rem;
+    margin-top: 1.5rem;
 
     @media (width > 62.5rem) {
       margin-top: 4rem;
