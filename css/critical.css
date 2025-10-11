@@ -215,7 +215,7 @@
     box-shadow: 3px 2px 4px var(--clr-lighter-black);
     transition: transform 0.2s ease-out, background-color 0.2s ease-out !important;
 
-    @media (width > 62.5rem) {
+    @media (hover: hover) and (pointer: fine) {
       &:hover {
         transform: scale(1.07) !important;
         box-shadow: 0 1px 4px var(--clr-lighter-black);
@@ -922,7 +922,7 @@
     user-select: none;
     text-wrap: balance;
 
-    .hero-title__letters{
+    .hero-title__letters {
       display: inline-flex;
       white-space: nowrap;
     }
