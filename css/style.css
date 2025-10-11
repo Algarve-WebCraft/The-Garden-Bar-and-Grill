@@ -222,10 +222,10 @@
     color: var(--clr-green-100);
     font-size: clamp(1.25rem, 2vw, 1.75rem);
     right: 3.5rem;
-    top: 1rem;
+    top: .25rem;
     text-decoration: dotted underline;
-    text-decoration-thickness: 0.15rem;
-    text-underline-offset: 0.3em;
+    text-decoration-thickness: 0.2rem;
+    text-underline-offset: 0.45em;
     rotate: 6deg;
 
     .cmp-info-text--pg2__swipe {
@@ -254,7 +254,7 @@
   .about-flex__carousel {
     position: relative;
     max-height: clamp(8rem, 53vw, 24rem);
-    margin-top: 6rem;
+    margin-top: 5rem;
     margin-inline: 2rem;
     border-radius: 20%;
     scrollbar-width: none;
@@ -352,7 +352,7 @@
   }
 
   .menu-turtle-svg {
-    --turtle-delay: 4s;
+    --turtle-delay: 5s;
 
     position: absolute;
     width: 4.25rem;
@@ -945,10 +945,10 @@
       transform: translate(50px, -120px) rotate(180deg);
     }
     40% {
-      transform: translate(50px, 950px) rotate(180deg);
+      transform: translate(50px, 880px) rotate(180deg);
     }
     50% {
-      transform: translate(50px, 950px) rotate(0deg);
+      transform: translate(50px, 880px) rotate(0deg);
     }
     90% {
       transform: translate(50px, 0) rotate(0deg);

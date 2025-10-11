@@ -326,7 +326,7 @@
     }
 
     .loaded .transition-main-heading {
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     html.is-leaving .loaded .transition-main-heading,
@@ -337,7 +337,7 @@
 
     .loaded .transition-main-text-left,
     .loaded .transition-main-text-right {
-      transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
+      transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s;
     }
 
     html.is-leaving .loaded .transition-main-text-left,
@@ -353,7 +353,7 @@
     }
 
     .loaded .transition-main-fade {
-      transition: opacity 0.6s ease 0.2s !important;
+      transition: opacity 0.3s ease 0.2s !important;
     }
 
     html.is-leaving .loaded .transition-main-fade,
@@ -376,7 +376,7 @@
     }
 
     .transition-slide-heading {
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     html.is-leaving .transition-slide-heading,
@@ -386,7 +386,7 @@
     }
 
     .transition-slide-images-down {
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     html.is-leaving .transition-slide-images-down {
@@ -399,7 +399,7 @@
     .transition-slide-text-right,
     .transition-slide-book-right,
     .transition-slide-book-left {
-      transition: transform 0.5s ease 0.1s, opacity 0.5s ease 0.1s;
+      transition: transform 0.3s ease 0.1s, opacity 0.3s ease 0.1s;
     }
 
     html.is-leaving .transition-slide-text-left,
@@ -433,8 +433,8 @@
     }
 
     .transition-fade {
-      transition: opacity 0.6s ease 0.2s, transform 0.2s ease-out,
-        background-color 0.3s ease, color 0.3s ease;
+      transition: opacity 0.3s ease 0.2s, transform 0.2s ease-out,
+        background-color 0.2s ease, color 0.2s ease;
     }
 
     html.is-leaving .transition-fade,
@@ -443,13 +443,13 @@
     }
 
     .transition-slide-carousel {
-      transition: transform 0.5s ease 0.5s, opacity 0.5s ease 0.5s;
+      transition: transform 0.3s ease 0.3s, opacity 0.3s ease 0.3s;
     }
 
     html.is-leaving .transition-slide-carousel {
       transform: translateX(100%);
       opacity: 0;
-      transition: transform 0.5s ease, opacity 0.5s ease;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     html.is-rendering .transition-slide-carousel {
@@ -459,7 +459,7 @@
 
     .transition-turtle-spin {
       transform: rotate(0deg);
-      transition: transform 0.3s ease, opacity 0.3s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
     html.is-rendering .transition-turtle-spin {
@@ -473,7 +473,7 @@
     }
 
     .transition-side-fade {
-      transition: opacity 1s ease;
+      transition: opacity 0.6s ease;
     }
 
     html.is-leaving .transition-side-fade,
