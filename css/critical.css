@@ -131,7 +131,7 @@
 
     --padd-page-48: clamp(1rem, 6vw, 1.6rem);
     --padd-page-60: clamp(3rem, 6vw, 4rem);
-    --marg-heading-16-32: clamp(1rem, 4vw, 2rem);
+    --marg-heading-16-32: clamp(1.5rem, 4vw, 2rem);
     --marg-heading-32-48: clamp(2rem, 5vw, 3rem);
 
     --clr-lighter-white: #0f84f9;

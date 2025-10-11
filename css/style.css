@@ -215,30 +215,44 @@
     }
   }
 
-  .cmp-heading--pg2 {
-    margin-bottom: clamp(1.5rem, 4vw, 2rem);
-  }
-
   .cmp-info-text--pg2 {
-    position: relative;
+    position: absolute;
     color: var(--clr-green-100);
     font-size: clamp(1.25rem, 2vw, 1.75rem);
-    margin-inline: auto;
+    right: 3.5rem;
+    top: 1rem;
     text-decoration: dotted underline;
-    text-decoration-thickness: 0.2rem;
-    text-underline-offset: 0.25em;
+    text-decoration-thickness: 0.15rem;
+    text-underline-offset: 0.3em;
+    rotate: 6deg;
+
+    .cmp-info-text--pg2__swipe {
+      display: inline;
+    }
+
+    .cmp-info-text--pg2__scroll {
+      display: none;
+    }
 
     @media (width > 62.5rem) {
-      position: absolute;
-      right: 9rem;
+      right: 16rem;
       top: 2rem;
+      rotate: -10deg;
+
+      .cmp-info-text--pg2__swipe {
+        display: none;
+      }
+
+      .cmp-info-text--pg2__scroll {
+        display: inline;
+      }
     }
   }
 
   .about-flex__carousel {
     position: relative;
     max-height: clamp(8rem, 53vw, 24rem);
-    margin-top: 2rem;
+    margin-top: 6rem;
     margin-inline: 2rem;
     border-radius: 20%;
     scrollbar-width: none;
@@ -286,9 +300,10 @@
   .cmp-heading--sub-pg3 {
     font-size: clamp(2.25rem, 7vw, 3rem);
     font-family: var(--ff-body-sans);
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
     margin: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    line-height: 1em;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
   }
 
   .menu-grid-box {
@@ -372,8 +387,8 @@
     width: 100%;
     height: auto;
     left: 0;
-    gap: 5rem;
-    margin-top: 4rem;
+    gap: 4rem;
+    margin-top: 2.5rem;
     padding-inline: 1.5rem;
     padding-bottom: 1rem;
     z-index: 5;
@@ -409,6 +424,7 @@
   .cmp-info-text--pg4,
   .beer-image-box > span {
     font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-family: Open-Sans;
     pointer-events: none;
 
     @media (width > 62.5rem) {
@@ -611,7 +627,7 @@
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 / SECTION-ONE / RESERVE ***       \\\\\\\\\\\\\\\\\\\\\\ */
+  /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 / SECTION-ONE / CONTACT ***       \\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
   #contact-section {
@@ -667,9 +683,9 @@
     }
 
     &:first-of-type {
-      margin-top: 1.5rem;
       font-size: clamp(2rem, 6vw, 2.5rem);
       font-weight: 600;
+      line-height: 1.35em;
     }
 
     &:last-of-type {
