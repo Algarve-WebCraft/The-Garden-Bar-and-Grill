@@ -406,7 +406,7 @@
 
   .gallery-book-svg-box.absolute-position {
     position: absolute;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 
     @media (width > 62.5rem) {
       margin-top: 4rem;

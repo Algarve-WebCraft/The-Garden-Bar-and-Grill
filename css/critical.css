@@ -433,8 +433,8 @@
     }
 
     .transition-fade {
-      transition: opacity 0.3s ease 0.2s, transform 0.2s ease-out,
-        background-color 0.2s ease, color 0.2s ease;
+      transition: opacity 0.4s ease 0.1s, transform 0.4s ease-out,
+        background-color 0.1s ease, color 0.1s ease;
     }
 
     html.is-leaving .transition-fade,
@@ -744,14 +744,15 @@
   .nav-bar {
     display: none;
     position: fixed;
-    background-color: #fffffff4;
+    background-color: #ffffff;
     color: var(--clr-green-300);
     font-weight: 400;
     font-family: var(--ff-heading-pacifico);
-    top: 25vh;
+    top: 20vh;
     right: -400px;
     width: 28rem;
     padding: 2em;
+    opacity: 0.98;
     text-align: center;
     text-transform: uppercase;
     z-index: -10;
