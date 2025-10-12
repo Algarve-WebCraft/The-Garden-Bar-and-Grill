@@ -670,10 +670,12 @@
 
     .dark-toggle-text__day {
       display: none;
+      pointer-events: none;
     }
 
     .dark-toggle-text__night {
       display: inline-block;
+      pointer-events: none;
       text-decoration: underline;
       text-underline-offset: 0.1em;
       transform: rotate(11deg);
