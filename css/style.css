@@ -417,6 +417,8 @@
     position: relative;
     width: clamp(200px, 40vw, 350px);
     margin-top: clamp(5rem, 20vw, 10rem);
+    overflow: visible;
+    isolation: isolate;
 
     @media (width > 62.5rem) {
       margin-top: 0;

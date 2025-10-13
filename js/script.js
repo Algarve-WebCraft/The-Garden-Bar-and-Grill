@@ -36,22 +36,23 @@ function initPageScripts() {
     if (bgInterval) clearInterval(bgInterval);
     if (bgObserver) bgObserver.disconnect();
   }
+  
+  // Re-run svgs to force repaint of box-shadows for mobile
+  document.addEventListener("swup:animationInDone", () => {
+    document.querySelectorAll(".gallery-book-svg").forEach((svg) => {
+      svg.style.willChange = "transform";
+      svg.style.transform = "translateZ(0)";
+      setTimeout(() => {
+        svg.style.transform = "";
+        svg.style.willChange = "";
+      }, 50);
+    });
+  });
 }
 
 document.addEventListener("DOMContentLoaded", initPageScripts);
 
 swup.hooks.on("page:view", initPageScripts);
-
-document.addEventListener("swup:animationInDone", () => {
-  document.querySelectorAll(".gallery-book-svg").forEach((svg) => {  // Re-run svgs to force repaint of box-shadows for mobile
-    svg.style.willChange = "transform";
-    svg.style.transform = "translateZ(0)";
-    setTimeout(() => {
-      svg.style.transform = "";
-      svg.style.willChange = "";
-    }, 50);
-  });
-});
 
 /* Change beginning body hero animation classes */
 
@@ -118,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
   tl.from(
     "#header",
     {
-      y: -80,
       opacity: 0,
       duration: 1.5,
     },

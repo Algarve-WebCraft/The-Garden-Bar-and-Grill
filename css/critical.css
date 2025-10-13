@@ -183,12 +183,16 @@
     html.is-rendering .transition-slide-book-right {
       transform: translateX(-150%);
       opacity: 0;
+      overflow: visible;
+      isolation: isolate;
     }
 
     html.is-leaving .transition-slide-book-left,
     html.is-rendering .transition-slide-book-left {
       transform: translateX(150%);
       opacity: 0;
+      overflow: visible;
+      isolation: isolate;
     }
 
     html.is-leaving .transition-slide-down,
