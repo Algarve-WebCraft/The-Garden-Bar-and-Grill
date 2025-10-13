@@ -222,7 +222,7 @@
     color: var(--clr-green-100);
     font-size: clamp(1.25rem, 2vw, 1.75rem);
     right: 3.5rem;
-    top: .25rem;
+    top: 0.25rem;
     text-decoration: dotted underline;
     text-decoration-thickness: 0.15rem;
     text-underline-offset: 0.25em;
@@ -450,8 +450,9 @@
       top: -8rem;
       left: -1rem;
       rotate: -8deg;
+      opacity: 0;
       transform: none;
-      animation: jello-diagonal 1.5s ease-in-out 1s;
+      animation: jello-diagonal 1.5s ease-in-out 0.5s forwards;
     }
   }
 
@@ -460,7 +461,7 @@
       left: unset;
       right: -1rem;
       rotate: 9deg;
-      animation: jello-diagonal 1.5s ease-in-out 3s;
+      animation: jello-diagonal 1.5s ease-in-out 1.25s forwards;
     }
   }
 
@@ -482,7 +483,6 @@
 
   .gallery-book-svg {
     max-width: 100%;
-    opacity: 1;
     cursor: pointer;
     fill: #1c1c1c;
     filter: drop-shadow(8px 6px 4px rgba(0, 0, 0, 0.25))
@@ -522,7 +522,8 @@
 
       @media (width > 87.5rem) {
         top: -40%;
-        animation: beer-scale 1s ease-in-out 5s;
+        opacity: 0;
+        animation: swirl-in 1.5s ease-in-out 2s forwards;
       }
     }
 
@@ -836,6 +837,7 @@
   @keyframes jello-diagonal {
     0% {
       transform: skew(0deg 0deg);
+      opacity: 0;
     }
     30% {
       transform: skew(-25deg -25deg);
@@ -854,17 +856,18 @@
     }
     100% {
       transform: skew(0deg 0deg);
+      opacity: 1;
     }
   }
 
-  @keyframes beer-scale {
+  @keyframes swirl-in {
     0% {
-      rotate: 0deg;
-      transform-origin: left;
+      transform: translate(-50%, -50%) rotate(0deg) scale(0.5);
+      opacity: 0;
     }
     100% {
-      rotate: 360deg;
-      transform-origin: left;
+      transform: translate(-50%, -50%) rotate(-360deg) scale(1);
+      opacity: 1;
     }
   }
 

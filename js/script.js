@@ -23,13 +23,14 @@ function initPageScripts() {
   }, 1500);
 
   document.addEventListener("swup:contentReplaced", () => {
-    if (window.lightbox && typeof window.lightbox.destroy === "function") {
-      window.lightbox.destroy();
-    }
-
-    if (document.querySelector(".gallery-page")) {
-      initGallery();
-    }
+    document.querySelectorAll(".gallery-book-svg").forEach((svg) => {
+      svg.style.willChange = "transform";
+      svg.style.transform = "translateZ(0)";
+      setTimeout(() => {
+        svg.style.transform = "";
+        svg.style.willChange = "";
+      }, 50);
+    });
   });
 
   document.body.classList.remove("home", "secondary-pages");
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
   const home = document.querySelector("body.home");
 
   if (!home) return;
@@ -399,7 +400,8 @@ function secondaryPageSvgInit() {
   const svgBox = document.querySelector(".side-svg-decor-box");
   const body = document.querySelector("body");
 
-  if (body.classList.contains("secondary-pages")) svgBox?.classList.remove("transition-side-fade");
+  if (body.classList.contains("secondary-pages"))
+    svgBox?.classList.remove("transition-side-fade");
 }
 
 ///////////////////////////////////////////////////////* About section carousel function *///////////////////////////////////////////////////////////////////*
