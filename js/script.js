@@ -19,19 +19,8 @@ function initPageScripts() {
   scrollToTop();
 
   setTimeout(() => {
-    secondaryPageSvgInit(); // Re-run to make sure code prevents the side svg from animating when coming from home page after the inital animation
+    secondaryPageSvgInit(); // Re-run to make sure code prevents the side svg from animating in when coming from home page after the inital animation
   }, 1500);
-
-  document.addEventListener("swup:contentReplaced", () => {
-    document.querySelectorAll(".gallery-book-svg").forEach((svg) => {
-      svg.style.willChange = "transform";
-      svg.style.transform = "translateZ(0)";
-      setTimeout(() => {
-        svg.style.transform = "";
-        svg.style.willChange = "";
-      }, 50);
-    });
-  });
 
   document.body.classList.remove("home", "secondary-pages");
 
@@ -53,13 +42,23 @@ document.addEventListener("DOMContentLoaded", initPageScripts);
 
 swup.hooks.on("page:view", initPageScripts);
 
+document.addEventListener("swup:animationInDone", () => {
+  document.querySelectorAll(".gallery-book-svg").forEach((svg) => {  // Re-run svgs to force repaint of box-shadows for mobile
+    svg.style.willChange = "transform";
+    svg.style.transform = "translateZ(0)";
+    setTimeout(() => {
+      svg.style.transform = "";
+      svg.style.willChange = "";
+    }, 50);
+  });
+});
+
 /* Change beginning body hero animation classes */
 
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.querySelector("body");
   if (body.classList.contains("secondary-pages")) {
     //Remove wait for transitions if not on the main page
-
     document.body.classList.add("loaded");
     return;
   }
@@ -76,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  return;
+  /* return; */
   const home = document.querySelector("body.home");
 
   if (!home) return;
