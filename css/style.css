@@ -230,10 +230,12 @@
 
     .cmp-info-text--pg2__swipe {
       display: inline;
+      color: var(--clr-green-250)
     }
 
     .cmp-info-text--pg2__scroll {
       display: none;
+      color: var(--clr-green-250)
     }
 
     @media (width > 62.5rem) {

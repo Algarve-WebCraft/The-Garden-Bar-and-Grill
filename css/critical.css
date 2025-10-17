@@ -613,17 +613,12 @@
     width: max-content;
     font-family: var(--ff-heading-pacifico);
     font-size: var(--fs-logo-dark-text);
-    top: 3.85rem;
-    left: 1.5rem;
+    top: 3.5rem;
+    left: 3.25rem;
     letter-spacing: 2.5px;
     text-shadow: 0px 1px 2px var(--clr-lighter-black);
     opacity: 0;
     animation: glitch var(--glitch-timing) linear infinite forwards;
-
-    @media (width <= 62.5rem), (width >= 71.875rem) {
-      top: 3.85rem;
-      left: 3.5rem;
-    }
   }
 
   .business-logo-text-dark:before,

@@ -25,6 +25,16 @@ html.dark-mode body.secondary-pages {
   background: linear-gradient(180deg, #4d7454 0%, #2f4536 60%, #1f2e24 100%);
 }
 
+html.dark-mode p,
+html.dark-mode li,
+html.dark-mode h1,
+html.dark-mode h2,
+html.dark-mode h3,
+html.dark-mode a,
+html.dark-mode span {
+  color: var(--clr-text-white);
+}
+
 html.dark-mode .cmp-main-btn {
   background-color: var(--clr-dark-theme-200);
 
@@ -52,16 +62,6 @@ html.dark-mode .cmp-info-text {
 
 html.dark-mode .cmp-leaf-svg {
   fill: var(--clr-dark-theme-100);
-}
-
-html.dark-mode p,
-html.dark-mode li,
-html.dark-mode h1,
-html.dark-mode h2,
-html.dark-mode h3,
-html.dark-mode a,
-html.dark-mode span {
-  color: var(--clr-text-white);
 }
 
 html.dark-mode #header {
@@ -157,7 +157,7 @@ html.dark-mode .cmp-side-wave-svg {
 }
 
 /*-- -------------------------- -->
-<---      Dark Mode Toggle      -->
+<---    Dark Mode SVG Toggle    -->
 <--- -------------------------- -*/
 
 html.dark-mode #dark-mode-toggle #svg-sun {
@@ -166,13 +166,12 @@ html.dark-mode #dark-mode-toggle #svg-sun {
 }
 
 html.dark-mode #dark-mode-toggle #svg-moon {
-  transform: translate(-50%, 50%);
+  transform: translate(50%, 50%);
   opacity: 0;
 }
 
 #dark-mode-toggle {
   display: block;
-  right: 5.25rem;
   width: 3rem;
   height: 3rem;
   border: none;
@@ -192,24 +191,17 @@ html.dark-mode #dark-mode-toggle #svg-moon {
 
   #svg-moon {
     z-index: 2;
-    transition: transform 0.75s, opacity 0.5s;
+    transition: transform 1s, opacity 0.75s;
   }
 
   #svg-sun {
     z-index: 1;
-    transform: translate(-50%, 100%);
+    transform: translate(50%, -100%);
     opacity: 0;
-    transition: transform 0.75s, opacity 0.5s;
+    transition: transform 1s, opacity 0.75s;
   }
 
   @media (width > 64rem) {
-    position: relative;
-    top: auto;
-    right: auto;
-    transform: none;
-    margin-left: 1.875rem;
-    margin-bottom: 0rem;
-
     &:hover {
       transform: scale(1.3);
     }
