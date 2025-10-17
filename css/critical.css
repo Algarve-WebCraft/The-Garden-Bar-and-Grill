@@ -256,7 +256,7 @@
     }
 
     ::view-transition-new(root) {
-      animation: circle-in-S 2.5s ease-out;
+      animation: circle-in-S 1.5s ease-out;
     }
 
     @media (width > 47.5rem) {
@@ -590,9 +590,10 @@
     position: relative;
     width: 100%;
     max-width: 90px;
-    aspect-ratio: 120 / 110;
     height: auto;
     padding-block: 0.5rem;
+    user-select: none;
+    aspect-ratio: 120 / 110;
     transition: transform 2.5s ease-out;
 
     @media (prefers-reduced-motion: reduce) {
@@ -616,6 +617,7 @@
     top: 3.5rem;
     left: 3.25rem;
     letter-spacing: 2.5px;
+    user-select: none;
     text-shadow: 0px 1px 2px var(--clr-lighter-black);
     opacity: 0;
     animation: glitch var(--glitch-timing) linear infinite forwards;
