@@ -256,7 +256,7 @@
     }
 
     ::view-transition-new(root) {
-      animation: circle-in-S 1.5s ease-out;
+      animation: circle-in-S 1s ease-out;
     }
 
     @media (width > 47.5rem) {

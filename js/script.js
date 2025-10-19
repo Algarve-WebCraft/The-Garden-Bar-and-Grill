@@ -36,7 +36,7 @@ function initPageScripts() {
     if (bgInterval) clearInterval(bgInterval);
     if (bgObserver) bgObserver.disconnect();
   }
-  
+
   // Re-run svgs to force repaint of box-shadows for mobile
   document.addEventListener("swup:animationInDone", () => {
     document.querySelectorAll(".gallery-book-svg").forEach((svg) => {
@@ -57,9 +57,12 @@ swup.hooks.on("page:view", initPageScripts);
 /* Change beginning body hero animation classes */
 
 document.addEventListener("DOMContentLoaded", () => {
+  /* return; */
   const body = document.querySelector("body");
+  const home = document.querySelector("body.home");
+
+  //Remove wait for transitions if not on the main page
   if (body.classList.contains("secondary-pages")) {
-    //Remove wait for transitions if not on the main page
     document.body.classList.add("loaded");
     return;
   }
@@ -73,11 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("bg-fade-in");
     document.body.classList.add("loaded");
   }, 4500);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
-  const home = document.querySelector("body.home");
 
   if (!home) return;
 
@@ -86,76 +84,77 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 1.5,
   });
 
-  // Hero title fades and slides up
-  tl.from("#hero-title", {
-    y: 100,
-    opacity: 0,
-    duration: 1,
-  });
-
-  // Paragraph text slides in from left
-  tl.from(
-    ".cmp-text--pg1-s1",
-    {
-      x: -200,
+  tl
+    // Hero title fades and slides up
+    .from("#hero-title", {
+      y: 100,
       opacity: 0,
       duration: 1,
-    },
-    "-=0.4"
-  );
+    })
 
-  // Buttons pop in with a slight stagger
-  tl.from(
-    ".button-flex a",
-    {
-      opacity: 0,
-      stagger: 0.1,
-      duration: 1.5,
-    },
-    "-=0.8"
-  );
+    // Paragraph text slides in from left
+    .from(
+      ".cmp-text--pg1-s1",
+      {
+        x: -200,
+        opacity: 0,
+        duration: 1,
+      },
+      "-=0.4"
+    )
 
-  // Header slides from top
-  tl.from(
-    "#header",
-    {
-      opacity: 0,
-      duration: 1.5,
-    },
-    "-=1"
-  );
+    // Buttons pop in with a slight stagger
+    .from(
+      ".button-flex a",
+      {
+        opacity: 0,
+        stagger: 0.1,
+        duration: 1.5,
+      },
+      "-=0.8"
+    )
 
-  // Footer slides in from the side
-  tl.from(
-    "#footer",
-    {
-      opacity: 0,
-      x: -1000,
-      duration: 1.25,
-    },
-    "-=1"
-  );
+    // Header slides from top
+    .from(
+      "#header",
+      {
+        opacity: 0,
+        duration: 1.5,
+      },
+      "-=1"
+    )
 
-  // Main logo container fades & scales in
-  tl.from(
-    ".hero-main-logo-container",
-    {
-      scale: 0.1,
-      opacity: 0,
-      duration: 1,
-    },
-    "-=1"
-  );
+    // Footer slides in from the side
+    .from(
+      "#footer",
+      {
+        opacity: 0,
+        x: -1000,
+        duration: 1.25,
+      },
+      "-=1"
+    )
 
-  tl.from(
-    ".cmp-info-text--pg1",
-    {
-      scale: 0.3,
-      opacity: 0,
-      duration: 2,
-    },
-    "-=0.25"
-  );
+    // Main logo container fades & scales in
+    .from(
+      ".hero-main-logo-container",
+      {
+        scale: 0.1,
+        opacity: 0,
+        duration: 1,
+      },
+      "-=1"
+    )
+
+    .from(
+      ".cmp-info-text--pg1",
+      {
+        scale: 0.3,
+        opacity: 0,
+        duration: 2,
+      },
+      "-=0.25"
+    );
 });
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
@@ -934,10 +933,6 @@ hamburgerBtn.addEventListener("click", () => {
 
 navBar.addEventListener("transitionend", (e) => {
   if (e.propertyName !== "transform") return;
-
-  if (!navBar.classList.contains("hamburger-btn__open")) {
-    navBar.style.display = "none";
-  }
 
   isAnimating = false;
 });
