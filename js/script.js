@@ -81,10 +81,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tl = gsap.timeline({
     defaults: { ease: "power3.out" },
-    delay: 1.5,
+    delay: 0.5,
   });
 
-  tl
+  tl.fromTo(
+    ".home",
+    {
+      opacity: 0,
+      rotateX: -90,
+      rotateY: 120,
+      scale: 0.01,
+      backfaceVisibility: "hidden",
+      transformOrigin: "center center",
+    },
+    {
+      opacity: 1,
+      rotateX: 0,
+      rotateY: 0,
+      scale: 1,
+      duration: 2.5,
+      ease: "power3.out",
+    }
+  )
     // Hero title fades and slides up
     .from("#hero-title", {
       y: 100,
@@ -768,7 +786,7 @@ function initGallery() {
   backButtons.forEach((btn) => btn.addEventListener("click", hideAlbum));
 }
 
-// Loop to create the image tags within HTML
+// Loop to create the image tags within the HTML
 function createImageTags() {
   function tags2012() {
     const container = document.querySelector(".album-grid--1");

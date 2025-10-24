@@ -18,8 +18,8 @@
     shape-margin: 1rem;
   }
 
-  ul[role="list"],
-  ol[role="list"] {
+  ul,
+  ol {
     list-style: none;
   }
 
@@ -782,12 +782,11 @@
       font-size: var(--fs-nav-text-s);
       color: var(--clr-lighter-black);
       letter-spacing: 0.2em;
-      list-style: none;
 
       @media (width > 62.5rem) {
         font-size: var(--fs-nav-text-l);
         flex-direction: row;
-        gap: 5rem;
+        gap: 4rem;
       }
     }
 
