@@ -304,7 +304,7 @@ function initHomeBackground() {
   let currentIndex = 0;
   let stopBackground = false;
   let toggle = false;
-  const intervalTime = 6000;
+  const intervalTime = 7000;
 
   function stopImagesOnChange() {
     const navLinks = document.querySelectorAll("nav a");
