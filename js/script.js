@@ -75,12 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("bg-fade-in");
   });
 
-  setTimeout(() => {
-    document.body.classList.remove("loading");
-    document.body.classList.remove("bg-fade-in");
-    document.body.classList.add("loaded");
-  }, 4500);
-
   if (!home || isMotionReduced) return;
 
   const tl = gsap.timeline({
@@ -99,9 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     "-=0.2"
   )
-
     .to({}, { duration: 0.25 })
-
     .to(
       ".split-overlay--top",
       { yPercent: -110, duration: 2.25, ease: "power4.out" },
@@ -118,29 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
         gsap.set(".split-overlay", { display: "none", clearProps: "all" });
       },
     })
-
-    /* tl.fromTo(
-    ".home",
-    {
-      opacity: 0,
-      rotateX: -90,
-      rotateY: 120,
-      scale: 0.01,
-      backfaceVisibility: "hidden",
-      transformOrigin: "center center",
-    },
-    {
-      opacity: 1,
-      rotateX: 0,
-      rotateY: 0,
-      scale: 1,
-      duration: 2.5,
-      ease: "power3.out",
-      onComplete: () => gsap.set(".home", { clearProps: "all" })
-    }
-    ) */
-
-    // Hero title fades and slides up
     .from(
       "#hero-title",
       {
@@ -150,8 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "-=1"
     )
-
-    // Paragraph text slides in from left
     .from(
       ".cmp-text--pg1-s1",
       {
@@ -161,19 +128,21 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "-=0.4"
     )
-
-    // Buttons pop in with a slight stagger
     .from(
       ".button-flex a",
       {
         opacity: 0,
         stagger: 0.1,
         duration: 1.5,
+        onComplete() {
+          // Change body classes so swup takes over animations for page changes
+          document.body.classList.remove("loading");
+          document.body.classList.remove("bg-fade-in");
+          document.body.classList.add("loaded");
+        },
       },
       "-=0.8"
     )
-
-    // Header slides from top
     .from(
       "#header",
       {
@@ -182,8 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "-=1"
     )
-
-    // Footer slides in from the side
     .from(
       "#footer",
       {
@@ -193,8 +160,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "-=1"
     )
-
-    // Main logo container fades & scales in
     .from(
       ".hero-main-logo-container",
       {
@@ -204,7 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "-=1"
     )
-
     .from(
       ".cmp-info-text--pg1",
       {
