@@ -58,8 +58,12 @@ swup.hooks.on("page:view", initPageScripts);
 
 document.addEventListener("DOMContentLoaded", () => {
   /* return; */
+
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
+  const isMotionReduced = matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
 
   //Remove wait for transitions if not on the main page
   if (body.classList.contains("secondary-pages")) {
@@ -77,14 +81,45 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("loaded");
   }, 4500);
 
-  if (!home) return;
+  if (!home || isMotionReduced) return;
 
   const tl = gsap.timeline({
     defaults: { ease: "power3.out" },
-    delay: 0.5,
+    delay: 0.75,
   });
 
-  tl.fromTo(
+  gsap.set(".split-overlay", { display: "block" });
+
+  tl.to(
+    ".split-overlay--center",
+    {
+      clipPath: "inset(0% 0% 0% 100%)",
+      duration: 0.75,
+      ease: "power1.out",
+    },
+    "-=0.2"
+  )
+
+    .to({}, { duration: 0.25 })
+
+    .to(
+      ".split-overlay--top",
+      { yPercent: -110, duration: 2.25, ease: "power4.out" },
+      "+=0.1"
+    )
+    .to(
+      ".split-overlay--bottom",
+      { yPercent: 100, duration: 2.25, ease: "power4.out" },
+      "-=2.25"
+    )
+    .to(".split-overlay", {
+      duration: 0.01,
+      onComplete() {
+        gsap.set(".split-overlay", { display: "none", clearProps: "all" });
+      },
+    })
+
+    /* tl.fromTo(
     ".home",
     {
       opacity: 0,
@@ -101,14 +136,20 @@ document.addEventListener("DOMContentLoaded", () => {
       scale: 1,
       duration: 2.5,
       ease: "power3.out",
+      onComplete: () => gsap.set(".home", { clearProps: "all" })
     }
-  )
+    ) */
+
     // Hero title fades and slides up
-    .from("#hero-title", {
-      y: 100,
-      opacity: 0,
-      duration: 1,
-    })
+    .from(
+      "#hero-title",
+      {
+        y: 100,
+        opacity: 0,
+        duration: 1,
+      },
+      "-=1"
+    )
 
     // Paragraph text slides in from left
     .from(
