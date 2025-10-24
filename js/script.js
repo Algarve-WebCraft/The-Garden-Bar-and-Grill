@@ -61,9 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
-  const isMotionReduced = matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  const isMotionReduced = matchMedia("(prefers-reduced-motion: reduce)");
 
   //Remove wait for transitions if not on the main page
   if (body.classList.contains("secondary-pages")) {
@@ -75,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("bg-fade-in");
   });
 
-  if (!home || isMotionReduced) return;
+  if (!home || isMotionReduced.matches) return;
 
   const tl = gsap.timeline({
     defaults: { ease: "power3.out" },
@@ -93,16 +91,16 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     "-=0.2"
   )
-    .to({}, { duration: 0.25 })
+    .to({}, { duration: 0.65 })
     .to(
       ".split-overlay--top",
-      { yPercent: -110, duration: 2.25, ease: "power4.out" },
-      "+=0.1"
+      { yPercent: -100, duration: 4, ease: "power4.out" },
+      "+=0"
     )
     .to(
       ".split-overlay--bottom",
-      { yPercent: 100, duration: 2.25, ease: "power4.out" },
-      "-=2.25"
+      { yPercent: 100, duration: 4, ease: "power4.out" },
+      "-=4"
     )
     .to(".split-overlay", {
       duration: 0.01,
@@ -115,18 +113,18 @@ document.addEventListener("DOMContentLoaded", () => {
       {
         y: 100,
         opacity: 0,
-        duration: 1,
+        duration: 1.5,
       },
-      "-=1"
+      "-=2"
     )
     .from(
       ".cmp-text--pg1-s1",
       {
         x: -200,
         opacity: 0,
-        duration: 1,
+        duration: 1.5,
       },
-      "-=0.4"
+      "-=1.5"
     )
     .from(
       ".button-flex a",
@@ -158,25 +156,25 @@ document.addEventListener("DOMContentLoaded", () => {
         x: -1000,
         duration: 1.25,
       },
-      "-=1"
+      "-=0.8"
     )
     .from(
       ".hero-main-logo-container",
       {
         scale: 0.1,
         opacity: 0,
-        duration: 1,
+        duration: 0.75,
       },
       "-=1"
     )
     .from(
       ".cmp-info-text--pg1",
       {
-        scale: 0.3,
+        scale: 0.1,
         opacity: 0,
         duration: 2,
       },
-      "-=0.25"
+      "-=0"
     );
 });
 
