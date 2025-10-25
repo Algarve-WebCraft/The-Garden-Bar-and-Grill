@@ -79,39 +79,41 @@
     }
   }
 
-  .split-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    height: 100svh;
-    background-color: #0a0a0a;
-    z-index: 999;
-    pointer-events: none;
-    clip-path: inset(0% 0% 0% 0%);
-    will-change: transform, clip-path;
-  }
-
-  .split-overlay--top {
-    top: 0;
-    height: 50%;
-    transform-origin: center bottom;
-  }
-
-  .split-overlay--center {
-    top: 50%;
-    height: 5%; 
-    transform: translateY(-50%);
-    clip-path: inset(0% 0% 0% 0%);
-  }
-
-  .split-overlay--bottom {
-    top: 52%;
-    height: 50%;
-    transform-origin: center top;
-    will-change: transform;
-  }
-
   @media (prefers-reduced-motion: no-preference) {
+    /* Opening animation overlay */
+
+    .split-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      height: 100svh;
+      background-color: #0a0a0a;
+      z-index: 999;
+      pointer-events: none;
+      clip-path: inset(0% 0% 0% 0%);
+      will-change: transform, clip-path;
+    }
+
+    .split-overlay--top {
+      top: 0;
+      height: 50%;
+      transform-origin: center bottom;
+    }
+
+    .split-overlay--center {
+      top: 50%;
+      height: 5%;
+      transform: translateY(-50%);
+      clip-path: inset(0% 0% 0% 0%);
+    }
+
+    .split-overlay--bottom {
+      top: 52%;
+      height: 50%;
+      transform-origin: center top;
+      will-change: transform;
+    }
+
     /* Main page animations */
 
     .loaded .transition-main-heading,

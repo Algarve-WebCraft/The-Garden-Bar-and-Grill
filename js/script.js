@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 0.75,
       ease: "power1.out",
     },
-    "-=0.2"
+    "-=0.3"
   )
     .to({}, { duration: 0.65 })
     .to(
