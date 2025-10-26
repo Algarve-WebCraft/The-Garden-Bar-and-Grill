@@ -982,7 +982,6 @@
   .button-flex {
     position: relative;
     max-width: 50%;
-    margin-bottom: 1.5rem;
     margin-inline: auto;
     z-index: 10;
 
@@ -1012,18 +1011,22 @@
     &:first-of-type {
       right: 5.5rem;
       top: 3rem;
+      rotate: 4deg;
     }
     &:nth-child(2) {
-      left: 5rem;
-      top: 3rem;
+      left: 6rem;
+      top: 2.5rem;
+      rotate: -11deg;
     }
     &:nth-child(3) {
-      right: 3rem;
+      right: 4rem;
       top: 3rem;
+      rotate: 13deg;
     }
     &:last-of-type {
       left: 6rem;
       top: 4rem;
+      rotate: -3deg;
     }
 
     @media (width > 37.5rem) {

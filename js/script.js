@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 0.75,
   });
 
-/* gsap.set(".split-overlay", { display: "block" });
+  /* gsap.set(".split-overlay", { display: "block" });
 
    tl.to(
     ".split-overlay--center",
@@ -197,13 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Animate from previous layout
     Flip.from(state, {
-      duration: 1,
+      duration: 0.5,
       ease: "power3.inOut",
-      stagger: 1,
+      stagger: 0.25,
     });
   }
 
-  setInterval(swapButtons, 12000);
+  /* setInterval(swapButtons, 4000); */
 });
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
