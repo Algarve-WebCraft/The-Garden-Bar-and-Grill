@@ -126,6 +126,9 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 0.5,
         stagger: 0.3,
         ease: "power3.out",
+        onComplete() {
+          gsap.set(".button-flex a", { clearProps: "all" });
+        },
       },
       "-=0.8"
     )
