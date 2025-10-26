@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 0.75,
   });
 
-  gsap.set(".split-overlay", { display: "block" });
+  /* gsap.set(".split-overlay", { display: "block" });
 
   tl.to(
     ".split-overlay--center",
@@ -107,37 +107,25 @@ document.addEventListener("DOMContentLoaded", () => {
       onComplete() {
         gsap.set(".split-overlay", { display: "none", clearProps: "all" });
       },
-    })
-    .from(
-      "#hero-title",
-      {
-        y: 100,
-        opacity: 0,
-        duration: 1.5,
-      },
-      "-=2"
-    )
-    .from(
-      ".cmp-text--pg1-s1",
-      {
-        x: -200,
-        opacity: 0,
-        duration: 1.5,
-      },
-      "-=1.5"
-    )
-    .from(
+    }) */
+  tl.from(
+    "#hero-title",
+    {
+      y: 100,
+      opacity: 0,
+      duration: 1.5,
+    },
+    "-=0"
+  )
+    .fromTo(
       ".button-flex a",
+      { opacity: 0, xPercent: 300 },
       {
-        opacity: 0,
-        stagger: 0.1,
-        duration: 1.5,
-        onComplete() {
-          // Change body classes so swup takes over animations for page changes
-          document.body.classList.remove("loading");
-          document.body.classList.remove("bg-fade-in");
-          document.body.classList.add("loaded");
-        },
+        xPercent: 0,
+        opacity: 1,
+        duration: 0.5,
+        stagger: 0.3,
+        ease: "power3.out",
       },
       "-=0.8"
     )
@@ -164,6 +152,12 @@ document.addEventListener("DOMContentLoaded", () => {
         scale: 0.1,
         opacity: 0,
         duration: 0.75,
+        onComplete() {
+          // Change body classes so swup takes over animations for page changes
+          document.body.classList.remove("loading");
+          document.body.classList.remove("bg-fade-in");
+          document.body.classList.add("loaded");
+        },
       },
       "-=1"
     )
