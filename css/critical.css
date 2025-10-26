@@ -982,18 +982,18 @@
   .button-flex {
     position: relative;
     max-width: 50%;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
     margin-inline: auto;
     z-index: 10;
 
-    /* @media (width > 62.5rem) {
+    @media (width > 62.5rem) {
       display: grid;
       place-content: center;
       grid-template-columns: 1fr 1fr;
       column-gap: 3rem;
       row-gap: 1.5rem;
       max-width: 30%;
-    } */
+    }
 
     @media (width > 62.5rem) {
       margin-inline: auto;
@@ -1002,28 +1002,28 @@
 
   .cmp-main-btn--pg1-s1 {
     position: relative;
-    opacity: 0.9;
+    opacity: 0.95;
     width: 45vw;
-    max-width: 17rem;
+    max-width: 12rem;
     box-shadow: 2px 5px 10px var(--clr-lighter-black);
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
 
     &:first-of-type {
-      right: 4.5rem;
-      top: 2rem;
+      right: 5.5rem;
+      top: 3rem;
     }
     &:nth-child(2) {
       left: 5rem;
-      top: 2rem;
+      top: 3rem;
     }
     &:nth-child(3) {
       right: 3rem;
-      top: 2rem;
+      top: 3rem;
     }
     &:last-of-type {
       left: 6rem;
-      top: 3rem;
+      top: 4rem;
     }
 
     @media (width > 37.5rem) {
@@ -1046,7 +1046,22 @@
     }
 
     @media (width > 62.5rem) {
-      top: unset;
+      &:first-of-type {
+        right: unset;
+        top: unset;
+      }
+      &:nth-child(2) {
+        left: unset;
+        top: unset;
+      }
+      &:nth-child(3) {
+        right: unset;
+        top: unset;
+      }
+      &:last-of-type {
+        left: unset;
+        top: unset;
+      }
     }
   }
 
@@ -1063,9 +1078,9 @@
       right: 0.5rem;
     }
 
-    @media (width > 81.25rem) {
+    @media (width > 70rem) {
       top: 13rem;
-      right: 6rem;
+      right: 5rem;
     }
   }
 

@@ -57,8 +57,6 @@ swup.hooks.on("page:view", initPageScripts);
 /* Change beginning body hero animation classes */
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
-
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
   const isMotionReduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -80,9 +78,9 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 0.75,
   });
 
-  /* gsap.set(".split-overlay", { display: "block" });
+/* gsap.set(".split-overlay", { display: "block" });
 
-  tl.to(
+   tl.to(
     ".split-overlay--center",
     {
       clipPath: "inset(0% 0% 0% 100%)",
@@ -107,16 +105,16 @@ document.addEventListener("DOMContentLoaded", () => {
       onComplete() {
         gsap.set(".split-overlay", { display: "none", clearProps: "all" });
       },
-    }) */
-  tl.from(
-    "#hero-title",
-    {
-      y: 100,
-      opacity: 0,
-      duration: 1.5,
-    },
-    "-=0"
-  )
+    })
+    .from(
+      "#hero-title",
+      {
+        y: 100,
+        opacity: 0,
+        duration: 1.5,
+      },
+      "-=2"
+    )
     .fromTo(
       ".button-flex a",
       { opacity: 0, xPercent: 300 },
@@ -130,7 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
           gsap.set(".button-flex a", { clearProps: "all" });
         },
       },
-      "-=0.8"
+      "-=1.2"
     )
     .from(
       "#header",
@@ -172,7 +170,40 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 2,
       },
       "-=0"
-    );
+    ); */
+
+  gsap.registerPlugin(Flip);
+
+  const buttonBox = document.querySelector(".button-flex");
+
+  buttonBox.addEventListener("mouseenter", () =>
+    buttonBox.classList.add("no-animation")
+  );
+  buttonBox.addEventListener("mouseleave", () =>
+    buttonBox.classList.remove("no-animation")
+  );
+
+  function swapButtons() {
+    if (buttonBox.classList.contains("no-animation")) return;
+
+    const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
+
+    const state = Flip.getState(buttons, {
+      props: "opacity,transform",
+    });
+
+    const first = buttons[0];
+    buttonBox.appendChild(first);
+
+    // Animate from previous layout
+    Flip.from(state, {
+      duration: 1,
+      ease: "power3.inOut",
+      stagger: 1,
+    });
+  }
+
+  setInterval(swapButtons, 12000);
 });
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
