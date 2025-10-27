@@ -1010,22 +1010,22 @@
     &:first-of-type {
       right: 5.5rem;
       top: 3rem;
-      rotate: -2deg;
+      transform: rotate(-2deg);
     }
     &:nth-child(2) {
       left: 6rem;
       top: 2.5rem;
-      rotate: -6deg;
+      transform: rotate(-6deg);
     }
     &:nth-child(3) {
       right: 4rem;
       top: 3rem;
-      rotate: 8deg;
+      transform: rotate(8deg);
     }
     &:last-of-type {
       left: 2rem;
       top: 5rem;
-      rotate: -3deg;
+      transform: rotate(-3deg);
     }
 
     @media (width > 37.5rem) {
@@ -1034,11 +1034,11 @@
         top: 2rem;
       }
       &:nth-child(2) {
-        left: 12rem;
+        left: 8rem;
         top: 4rem;
       }
       &:nth-child(3) {
-        right: 11rem;
+        right: 5rem;
         top: 2rem;
       }
       &:last-of-type {
@@ -1051,22 +1051,22 @@
       &:first-of-type {
         right: 1rem;
         top: -2rem;
-        rotate: -7deg;
+        transform: rotate(-7deg);
       }
       &:nth-child(2) {
         left: 5rem;
         top: 1.5rem;
-        rotate: 4deg;
+        transform: rotate(4deg);
       }
       &:nth-child(3) {
         left: 4rem;
         top: -1.5rem;
-        rotate: 7deg;
+        transform: rotate(5deg);
       }
       &:last-of-type {
         left: 0rem;
         top: 4rem;
-        rotate: -6deg;
+        transform: rotate(-6deg);
       }
     }
   }

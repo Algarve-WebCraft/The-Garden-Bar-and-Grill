@@ -54,9 +54,11 @@ document.addEventListener("DOMContentLoaded", initPageScripts);
 
 swup.hooks.on("page:view", initPageScripts);
 
-/* Change beginning body hero animation classes */
+///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 document.addEventListener("DOMContentLoaded", () => {
+  /* return; */
+
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
   const isMotionReduced = matchMedia("(prefers-reduced-motion: reduce)");
@@ -80,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gsap.set(".split-overlay", { display: "block" });
 
-   tl.to(
+  tl.to(
     ".split-overlay--center",
     {
       clipPath: "inset(0% 0% 0% 100%)",
@@ -117,7 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     )
     .fromTo(
       ".button-flex a",
-      { opacity: 0, xPercent: 300 },
+      { opacity: 0, xPercent: -50 },
       {
         xPercent: 0,
         opacity: 1,
@@ -171,7 +173,10 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       "-=0"
     );
+});
 
+///////////////////////////////////////////////////////////* Home buttons shifting *//////////////////////////////////////////////////////////////////////////*
+function swapButtons() {
   gsap.registerPlugin(Flip);
 
   const buttonBox = document.querySelector(".button-flex");
@@ -179,32 +184,28 @@ document.addEventListener("DOMContentLoaded", () => {
   buttonBox.addEventListener("mouseenter", () =>
     buttonBox.classList.add("no-animation")
   );
+
   buttonBox.addEventListener("mouseleave", () =>
     buttonBox.classList.remove("no-animation")
   );
 
-  function swapButtons() {
-    if (buttonBox.classList.contains("no-animation")) return;
+  if (buttonBox.classList.contains("no-animation")) return;
 
-    const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
+  const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
 
-    const state = Flip.getState(buttons, {
-      props: "transform,rotate",
-    });
+  const state = Flip.getState(buttons, {
+    props: "transform",
+  });
 
-    const first = buttons[0];
-    buttonBox.appendChild(first);
+  const first = buttons[0];
+  buttonBox.appendChild(first);
 
-    // Animate from previous layout
-    Flip.from(state, {
-      duration: 0.4,
-      ease: "power3.out",
-      stagger: 0.25,
-    });
-  }
-
-  setInterval(swapButtons, 10000);
-});
+  Flip.from(state, {
+    duration: 0.4,
+    ease: "power3.out",
+    stagger: 0.25,
+  }); /* The function is called in the 'initHomeBackground' below so the change matches the background images change */
+}
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
 
@@ -332,7 +333,7 @@ function initHomeBackground() {
   let currentIndex = 0;
   let stopBackground = false;
   let toggle = false;
-  const intervalTime = 7000;
+  const intervalTime = 7500;
 
   function stopImagesOnChange() {
     const navLinks = document.querySelectorAll("nav a");
@@ -382,6 +383,10 @@ function initHomeBackground() {
 
   function showImage(index) {
     if (stopBackground) return;
+
+    setTimeout(() => {
+      swapButtons();
+    }, 300); /* Switch the home buttons around with a small delay to match the images changing */
 
     const url = `url(${currentSet[index]})`;
 
