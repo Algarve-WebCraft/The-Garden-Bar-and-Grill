@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     delay: 0.75,
   });
 
-  /* gsap.set(".split-overlay", { display: "block" });
+  gsap.set(".split-overlay", { display: "block" });
 
    tl.to(
     ".split-overlay--center",
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 2,
       },
       "-=0"
-    ); */
+    );
 
   gsap.registerPlugin(Flip);
 
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* setInterval(swapButtons, 4000); */
+  setInterval(swapButtons, 8000);
 });
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*

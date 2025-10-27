@@ -989,8 +989,7 @@
       display: grid;
       place-content: center;
       grid-template-columns: 1fr 1fr;
-      column-gap: 3rem;
-      row-gap: 1.5rem;
+      row-gap: 2rem;
       max-width: 30%;
     }
 
@@ -1003,7 +1002,7 @@
     position: relative;
     opacity: 0.95;
     width: 45vw;
-    max-width: 12rem;
+    max-width: 13rem;
     box-shadow: 2px 5px 10px var(--clr-lighter-black);
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
@@ -1050,20 +1049,24 @@
 
     @media (width > 62.5rem) {
       &:first-of-type {
-        right: unset;
-        top: unset;
+        right: 0rem;
+        top: -1rem;
+        rotate: -4deg;
       }
       &:nth-child(2) {
-        left: unset;
-        top: unset;
+        left: 3rem;
+        top: 0.5rem;
+        rotate: -11deg;
       }
       &:nth-child(3) {
-        right: unset;
-        top: unset;
+        left: 3rem;
+        top: -1rem;
+        rotate: 8deg;
       }
       &:last-of-type {
-        left: unset;
-        top: unset;
+        left: 0rem;
+        top: 4rem;
+        rotate: -4deg;
       }
     }
   }
