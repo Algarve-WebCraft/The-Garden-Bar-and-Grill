@@ -690,18 +690,30 @@
     svg {
       position: absolute;
       width: 1.75rem;
-      top: 0.9rem;
       right: 4rem;
       animation: arrow-rotate 5s linear infinite;
+      rotate: 15deg;
+
+      @media (width > 62.5rem) {
+        top: 1rem;
+        rotate: unset;
+      }
     }
 
     .cmp-info-text--pg1 {
       font-size: clamp(1rem, 2vw, 1.25rem);
-      top: 3rem;
-      right: -2rem;
+      max-width: 10ch;
+      top: -2.5rem;
+      right: 6rem;
       pointer-events: none;
       backface-visibility: hidden;
       animation: heartbeat 8s cubic-bezier(0.645, 0.045, 0.355, 1) 4s infinite;
+
+      @media (width > 62.5rem) {
+        max-width: unset;
+        top: 3rem;
+        right: 2rem;
+      }
     }
 
     .dark-toggle-text__day {
@@ -1003,7 +1015,8 @@
     opacity: 0.95;
     width: 45vw;
     max-width: 12rem;
-    box-shadow: 2px 5px 10px var(--clr-lighter-black);
+    box-shadow: -8px 5px 6px #000000b9;
+
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
 
@@ -1074,7 +1087,7 @@
   .hero-main-logo-container {
     position: absolute;
     right: 0rem;
-    top: 16rem;
+    top: 17.5rem;
     width: fit-content;
     transform: rotate(-19deg);
     z-index: 1;
