@@ -1002,7 +1002,7 @@
     position: relative;
     opacity: 0.95;
     width: 45vw;
-    max-width: 13rem;
+    max-width: 12rem;
     box-shadow: 2px 5px 10px var(--clr-lighter-black);
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
@@ -1010,12 +1010,12 @@
     &:first-of-type {
       right: 5.5rem;
       top: 3rem;
-      rotate: 4deg;
+      rotate: -3deg;
     }
     &:nth-child(2) {
       left: 6rem;
       top: 2.5rem;
-      rotate: -11deg;
+      rotate: -10deg;
     }
     &:nth-child(3) {
       right: 4rem;
@@ -1023,9 +1023,9 @@
       rotate: 13deg;
     }
     &:last-of-type {
-      left: 6rem;
-      top: 4rem;
-      rotate: -3deg;
+      left: 2rem;
+      top: 5rem;
+      rotate: -6deg;
     }
 
     @media (width > 37.5rem) {
@@ -1049,24 +1049,24 @@
 
     @media (width > 62.5rem) {
       &:first-of-type {
-        right: 3rem;
+        right: 4rem;
         top: -2rem;
-        rotate: -3deg;
+        rotate: -7deg;
       }
       &:nth-child(2) {
-        left: 4rem;
-        top: 0.5rem;
-        rotate: 3deg;
+        left: 5rem;
+        top: 1.5rem;
+        rotate: 4deg;
       }
       &:nth-child(3) {
-        left: 2rem;
+        left: 3rem;
         top: -1.5rem;
-        rotate: 5deg;
+        rotate: 7deg;
       }
       &:last-of-type {
         left: 0rem;
         top: 4rem;
-        rotate: -8deg;
+        rotate: -6deg;
       }
     }
   }

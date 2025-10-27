@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
 
     const state = Flip.getState(buttons, {
-      props: "opacity,transform",
+      props: "transform,rotate",
     });
 
     const first = buttons[0];
@@ -197,13 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Animate from previous layout
     Flip.from(state, {
-      duration: .5,
+      duration: 0.4,
       ease: "power3.out",
       stagger: 0.25,
     });
   }
 
-  setInterval(swapButtons, 4000);
+  setInterval(swapButtons, 10000);
 });
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
