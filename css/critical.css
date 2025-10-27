@@ -1009,22 +1009,22 @@
 
     &:first-of-type {
       right: 5.5rem;
-      top: 3rem;
+      top: 1.5rem;
       transform: rotate(-2deg);
     }
     &:nth-child(2) {
       left: 6rem;
-      top: 2.5rem;
+      top: 1rem;
       transform: rotate(-6deg);
     }
     &:nth-child(3) {
       right: 4rem;
-      top: 3rem;
+      top: 1.5rem;
       transform: rotate(8deg);
     }
     &:last-of-type {
       left: 2rem;
-      top: 5rem;
+      top: 3.5rem;
       transform: rotate(-3deg);
     }
 
@@ -1074,19 +1074,20 @@
   .hero-main-logo-container {
     position: absolute;
     right: 0rem;
-    top: 20rem;
+    top: 16rem;
     width: fit-content;
-    transform: rotate(-9deg);
+    transform: rotate(-19deg);
     z-index: 1;
 
     @media (width > 37.5rem) {
-      top: 23rem;
+      /* top: 23rem; */
       right: 0.5rem;
     }
 
     @media (width > 70rem) {
       top: 13rem;
-      right: 5rem;
+      right: 7rem;
+      transform: rotate(-12deg);
     }
   }
 
