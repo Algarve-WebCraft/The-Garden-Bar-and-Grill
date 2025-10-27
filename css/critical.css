@@ -687,6 +687,7 @@
     svg {
       position: absolute;
       width: 1.75rem;
+      top: 0.5rem;
       right: 4rem;
       animation: arrow-rotate 5s linear infinite;
       rotate: 15deg;
@@ -702,7 +703,7 @@
       font-size: clamp(1rem, 1.8vw, 1.5rem);
       color: var(--clr-green-100);
       top: -2.5rem;
-      right: 5rem;
+      right: 4rem;
       pointer-events: none;
       backface-visibility: hidden;
       animation: heartbeat 8s cubic-bezier(0.645, 0.045, 0.355, 1) 4s infinite;
@@ -710,7 +711,10 @@
       @media (width < 25rem), (width > 62.5rem) {
         max-width: unset;
         top: 3rem;
-        right: 2rem;
+        right: 0;
+        padding: 0.25em 0.5em;
+        box-shadow: -4px 2px 8px 6px rgba(0, 0, 0, 0.6);
+        border-radius: 10%;
       }
     }
 

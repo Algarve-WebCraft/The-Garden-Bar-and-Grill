@@ -57,7 +57,7 @@ swup.hooks.on("page:view", initPageScripts);
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -382,9 +382,9 @@ function initHomeBackground() {
   function showImage(index) {
     if (stopBackground) return;
 
-    setTimeout(() => {
+    /* setTimeout(() => {
       swapButtons();
-    }, 200); /* Switch the home buttons from the function above to be called with a small delay to match the images changing */
+    }, 200); */ /* Switch the home buttons from the function above to be called with a small delay to match the images changing */
 
     const url = `url(${currentSet[index]})`;
 
