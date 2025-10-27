@@ -955,12 +955,13 @@
     color: var(--clr-lighter-white);
     width: fit-content;
     margin-inline: auto;
-    padding-top: 0.75em;
+    margin-top: 0.75em;
     margin-bottom: var(--marg-heading-32-48);
     border-radius: 5rem;
     letter-spacing: 0.1em;
-    backdrop-filter: blur(0.1rem);
-    -webkit-backdrop-filter: blur(0.1rem);
+    backdrop-filter: blur(0.05rem);
+    -webkit-backdrop-filter: blur(0.05rem);
+    clip-path: ellipse(60% 80% at 50% 25%);
     overflow-wrap: normal;
     user-select: none;
     text-wrap: balance;
@@ -984,8 +985,9 @@
     }
 
     @media (width > 62.5rem) {
-      padding-top: 0.1em;
+      margin-top: 0.25em;
       letter-spacing: 0.13em;
+      clip-path: ellipse(60% 80% at 50% 25%);
     }
   }
 
@@ -1085,20 +1087,29 @@
   .hero-main-logo-container {
     position: absolute;
     right: 0rem;
-    top: 17.5rem;
+    top: 22rem;
     width: fit-content;
     transform: rotate(-19deg);
     z-index: 1;
 
-    @media (width > 37.5rem) {
-      /* top: 23rem; */
+    @media (width > 22.5rem) {
+      top: 17.5rem;
+    }
+
+    @media (width > 31.25rem) {
+      top: 21rem;
       right: 0.5rem;
     }
 
-    @media (width > 70rem) {
-      top: 13rem;
-      right: 7rem;
+    @media (width > 62.5rem) {
+      top: 15rem;
+      right: 0;
       transform: rotate(-12deg);
+    }
+
+    @media (width > 87.5rem) {
+      top: 13.5rem;
+      right: 15rem;
     }
   }
 
@@ -1117,21 +1128,22 @@
 
   .hero-main-logo__easter-egg {
     position: absolute;
-    width: 35%;
+    max-width: 65%;
+    top: 1rem;
     right: 0;
     bottom: 0;
     opacity: 0;
-    transform: translateX(30%);
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 
-    @media (width > 87.5rem) {
-      top: 10rem;
+    @media (width > 62.5rem) {
+      top: 2rem;
+      right: 7rem;
     }
   }
 
   .easter-egg-active {
     opacity: 1;
-    transform: translateX(-150%);
+    transform: translateX(-90%);
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
   }
 
