@@ -181,24 +181,22 @@ function swapButtons() {
 
   const buttonBox = document.querySelector(".button-flex");
 
-  buttonBox.addEventListener("mouseenter", () =>
-    buttonBox.classList.add("no-animation")
+  buttonBox?.addEventListener("mouseenter", () =>
+    buttonBox?.classList.add("no-animation")
   );
 
-  buttonBox.addEventListener("mouseleave", () =>
-    buttonBox.classList.remove("no-animation")
+  buttonBox?.addEventListener("mouseleave", () =>
+    buttonBox?.classList.remove("no-animation")
   );
 
-  if (buttonBox.classList.contains("no-animation")) return;
+  if (buttonBox?.classList.contains("no-animation")) return;
 
-  const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
+  const buttons = [...buttonBox?.querySelectorAll(".cmp-main-btn--pg1-s1")];
 
-  const state = Flip.getState(buttons, {
-    props: "transform",
-  });
+  const state = Flip.getState(buttons);
 
   const first = buttons[0];
-  buttonBox.appendChild(first);
+  buttonBox?.appendChild(first);
 
   Flip.from(state, {
     duration: 0.4,
