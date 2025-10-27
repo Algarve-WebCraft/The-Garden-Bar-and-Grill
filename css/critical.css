@@ -1010,22 +1010,22 @@
     &:first-of-type {
       right: 5.5rem;
       top: 3rem;
-      rotate: -3deg;
+      rotate: -2deg;
     }
     &:nth-child(2) {
       left: 6rem;
       top: 2.5rem;
-      rotate: -10deg;
+      rotate: -6deg;
     }
     &:nth-child(3) {
       right: 4rem;
       top: 3rem;
-      rotate: 13deg;
+      rotate: 8deg;
     }
     &:last-of-type {
       left: 2rem;
       top: 5rem;
-      rotate: -6deg;
+      rotate: -3deg;
     }
 
     @media (width > 37.5rem) {
@@ -1049,7 +1049,7 @@
 
     @media (width > 62.5rem) {
       &:first-of-type {
-        right: 4rem;
+        right: 1rem;
         top: -2rem;
         rotate: -7deg;
       }
@@ -1059,7 +1059,7 @@
         rotate: 4deg;
       }
       &:nth-child(3) {
-        left: 3rem;
+        left: 4rem;
         top: -1.5rem;
         rotate: 7deg;
       }
