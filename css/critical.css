@@ -614,11 +614,8 @@
     z-index: 900;
     background-color: var(--clr-nav-background-light);
     box-shadow: 1px 1px 25px var(--clr-nav-shadow-light);
-
-    @media (width > 47.5rem) {
-      backdrop-filter: blur(0.25rem);
-      -webkit-backdrop-filter: blur(0.25rem);
-    }
+    backdrop-filter: blur(0.25rem);
+    -webkit-backdrop-filter: blur(0.25rem);
   }
 
   .business-logo {
@@ -649,8 +646,8 @@
     width: max-content;
     font-family: var(--ff-heading-pacifico);
     font-size: var(--fs-logo-dark-text);
-    top: 3.5rem;
-    left: 3.25rem;
+    top: 4rem;
+    left: 2.5rem;
     letter-spacing: 2.5px;
     user-select: none;
     text-shadow: 0px 1px 2px var(--clr-lighter-black);
@@ -701,15 +698,16 @@
     }
 
     .cmp-info-text--pg1 {
-      font-size: clamp(1rem, 2vw, 1.25rem);
       max-width: 10ch;
+      font-size: clamp(1rem, 1.8vw, 1.5rem);
+      color: var(--clr-green-100);
       top: -2.5rem;
-      right: 6rem;
+      right: 5rem;
       pointer-events: none;
       backface-visibility: hidden;
       animation: heartbeat 8s cubic-bezier(0.645, 0.045, 0.355, 1) 4s infinite;
 
-      @media (width > 62.5rem) {
+      @media (width < 25rem), (width > 62.5rem) {
         max-width: unset;
         top: 3rem;
         right: 2rem;
