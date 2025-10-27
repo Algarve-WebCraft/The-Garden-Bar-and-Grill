@@ -705,7 +705,6 @@
       top: -2.5rem;
       right: 4rem;
       pointer-events: none;
-      backface-visibility: hidden;
       animation: heartbeat 8s cubic-bezier(0.645, 0.045, 0.355, 1) 4s infinite;
 
       @media (width < 25rem), (width > 62.5rem) {
@@ -1017,7 +1016,7 @@
   .cmp-main-btn--pg1-s1 {
     position: relative;
     opacity: 0.95;
-    width: 45vw;
+    width: 35vw;
     max-width: 12rem;
     box-shadow: -8px 5px 6px #000000b9;
 
@@ -1137,6 +1136,7 @@
     right: 0;
     bottom: 0;
     opacity: 0;
+    pointer-events: none;
     transition: transform 0.8s ease-out, opacity 0.6s ease-out;
 
     @media (width > 62.5rem) {
