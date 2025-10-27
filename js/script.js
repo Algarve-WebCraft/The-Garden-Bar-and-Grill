@@ -197,13 +197,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Animate from previous layout
     Flip.from(state, {
-      duration: 0.5,
-      ease: "power3.inOut",
+      duration: .5,
+      ease: "power3.out",
       stagger: 0.25,
     });
   }
 
-  setInterval(swapButtons, 8000);
+  setInterval(swapButtons, 4000);
 });
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*

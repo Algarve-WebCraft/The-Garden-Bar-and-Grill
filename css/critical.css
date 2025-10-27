@@ -1049,24 +1049,24 @@
 
     @media (width > 62.5rem) {
       &:first-of-type {
-        right: 0rem;
-        top: -1rem;
-        rotate: -4deg;
+        right: 3rem;
+        top: -2rem;
+        rotate: -3deg;
       }
       &:nth-child(2) {
-        left: 3rem;
+        left: 4rem;
         top: 0.5rem;
-        rotate: -11deg;
+        rotate: 3deg;
       }
       &:nth-child(3) {
-        left: 3rem;
-        top: -1rem;
-        rotate: 8deg;
+        left: 2rem;
+        top: -1.5rem;
+        rotate: 5deg;
       }
       &:last-of-type {
         left: 0rem;
         top: 4rem;
-        rotate: -4deg;
+        rotate: -8deg;
       }
     }
   }
