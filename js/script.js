@@ -192,10 +192,7 @@ function shuffleHomeButtons() {
 
   if (buttonBox?.classList.contains("no-animation")) return;
 
-  const buttons = [
-    ...buttonBox?.querySelectorAll(".cmp-main-btn--pg1-s1"),
-    mainLogo,
-  ];
+  const buttons = [...buttonBox?.querySelectorAll(".cmp-main-btn--pg1-s1")];
 
   const state = Flip.getState(buttons);
 
