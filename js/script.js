@@ -57,7 +57,7 @@ swup.hooks.on("page:view", initPageScripts);
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -176,7 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 ///////////////////////////////////////////////////////////* Home buttons shifting *//////////////////////////////////////////////////////////////////////////*
-function swapButtons() {
+
+function shuffleHomeButtons() {
   gsap.registerPlugin(Flip);
 
   const buttonBox = document.querySelector(".button-flex");
@@ -191,7 +192,10 @@ function swapButtons() {
 
   if (buttonBox?.classList.contains("no-animation")) return;
 
-  const buttons = [...buttonBox?.querySelectorAll(".cmp-main-btn--pg1-s1")];
+  const buttons = [
+    ...buttonBox?.querySelectorAll(".cmp-main-btn--pg1-s1"),
+    mainLogo,
+  ];
 
   const state = Flip.getState(buttons);
 
@@ -205,7 +209,7 @@ function swapButtons() {
   }); /* The function is called in the 'initHomeBackground' below so the change matches the background images change */
 }
 
-///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
+///////////////////////////////////////////////////////* Home section background image transitions *////////////////////////////////////////////////////////*
 
 const dayImagesLarge = [];
 const dayImagesMedium = [];
@@ -215,6 +219,24 @@ const nightImagesMedium = [];
 const nightImagesSmall = [];
 let bgInterval = null;
 let bgObserver = null;
+
+(function fillImageArrays() {
+  for (let i = 1; i < 16; i++) {
+    const dayLarge = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}.webp`;
+    const dayMedium = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-m.webp`;
+    const daySmall = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-s.webp`;
+    const nightLarge = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}.webp`;
+    const nightMedium = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-m.webp`;
+    const nightSmall = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-s.webp`;
+
+    dayImagesLarge.push(dayLarge);
+    dayImagesMedium.push(dayMedium);
+    dayImagesSmall.push(daySmall);
+    nightImagesLarge.push(nightLarge);
+    nightImagesMedium.push(nightMedium);
+    nightImagesSmall.push(nightSmall);
+  }
+})();
 
 function initHomeBackground() {
   const home = document.querySelector("body.home");
@@ -265,25 +287,6 @@ function initHomeBackground() {
     else return "large";
   }
 
-  function createAllImageArrays() {
-    for (let i = 1; i < 16; i++) {
-      const dayLarge = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}.webp`;
-      const dayMedium = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-m.webp`;
-      const daySmall = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-s.webp`;
-      const nightLarge = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}.webp`;
-      const nightMedium = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-m.webp`;
-      const nightSmall = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-s.webp`;
-
-      dayImagesLarge.push(dayLarge); 
-      dayImagesMedium.push(dayMedium);
-      dayImagesSmall.push(daySmall);
-      nightImagesLarge.push(nightLarge);
-      nightImagesMedium.push(nightMedium);
-      nightImagesSmall.push(nightSmall);
-    }
-  }
-  createAllImageArrays();
-
   function getCurrentSet() {
     if (checkScreenSize() === "small") {
       return theme === "light" ? dayImagesSmall : nightImagesSmall;
@@ -300,7 +303,7 @@ function initHomeBackground() {
     if (stopBackground) return;
 
     setTimeout(() => {
-      swapButtons();
+      shuffleHomeButtons();
     }, 200); /* Switch the home buttons from the function above to be called with a small delay to match the images changing */
 
     const url = `url(${currentSet[index]})`;
@@ -986,7 +989,7 @@ function disableDarkMode() {
   localStorage.setItem("theme", "light");
 }
 
-function detectColorScheme() {
+(function detectColorScheme() {
   const preloadLink = document.createElement("link");
   const bodyEl = document.querySelector("body");
   let theme = "light";
@@ -1015,9 +1018,7 @@ function detectColorScheme() {
       "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1.webp";
     document.head.appendChild(preloadLink);
   }
-}
-
-detectColorScheme();
+})();
 
 function switchTheme(newTheme) {
   newTheme === "dark" ? enableDarkMode() : disableDarkMode();
@@ -1073,8 +1074,6 @@ function initDarkToggleText() {
     day.style.display = isDark ? "inline-block" : "none";
     night.style.display = isDark ? "none" : "inline-block";
   }
-
-  updateMode();
 
   const observer = new MutationObserver(updateMode);
   observer.observe(document.documentElement, {
