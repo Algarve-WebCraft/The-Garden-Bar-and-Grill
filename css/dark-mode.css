@@ -131,10 +131,6 @@ html.dark-mode .dark-toggle-text-box {
   }
 }
 
-html.dark-mode .cmp-info-text--pg1 {
-  background-color: rgba(62, 95, 68, 0.6);
-}
-
 html.dark-mode #hero-title {
   color: var(--clr-green-100);
 

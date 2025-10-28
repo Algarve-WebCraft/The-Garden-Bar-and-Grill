@@ -207,6 +207,12 @@ function swapButtons() {
 
 ///////////////////////////////////////////////////////* Main section background image transitions *////////////////////////////////////////////////////////*
 
+const dayImagesLarge = [];
+const dayImagesMedium = [];
+const dayImagesSmall = [];
+const nightImagesLarge = [];
+const nightImagesMedium = [];
+const nightImagesSmall = [];
 let bgInterval = null;
 let bgObserver = null;
 
@@ -214,124 +220,16 @@ function initHomeBackground() {
   const home = document.querySelector("body.home");
   if (!home) return;
 
+  let currentIndex = 0;
+  let stopBackground = false;
+  let toggle = false;
+  const intervalTime = 7500;
+
   home.classList.remove("bg-fade-in", "with-transition"); // Class applied so opacity transition only happens on image change and not loading on or off page
 
   requestAnimationFrame(() => {
     home.classList.add("bg-fade-in");
   });
-
-  const dayImagesLarge = [
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-2.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-3.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-4.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-5.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-6.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-7.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-8.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-9.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-10.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-11.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-12.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-13.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-14.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-15.webp",
-  ];
-
-  const dayImagesMedium = [
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-2-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-3-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-4-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-5-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-6-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-7-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-8-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-9-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-10-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-11-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-12-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-13-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-14-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-15-m.webp",
-  ];
-
-  const dayImagesSmall = [
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-2-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-3-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-4-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-5-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-6-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-7-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-8-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-9-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-10-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-11-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-12-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-13-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-14-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-15-s.webp",
-  ];
-
-  const nightImagesLarge = [
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-2.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-3.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-4.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-5.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-6.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-7.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-8.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-9.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-10.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-11.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-12.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-13.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-14.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-15.webp",
-  ];
-
-  const nightImagesMedium = [
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-2-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-3-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-4-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-5-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-6-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-7-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-8-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-9-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-10-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-11-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-12-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-13-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-14-m.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-15-m.webp",
-  ];
-
-  const nightImagesSmall = [
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-2-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-3-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-4-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-5-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-6-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-7-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-8-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-9-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-10-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-11-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-12-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-13-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-14-s.webp",
-    "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-15-s.webp",
-  ];
-
-  let currentIndex = 0;
-  let stopBackground = false;
-  let toggle = false;
-  const intervalTime = 7500;
 
   function stopImagesOnChange() {
     const navLinks = document.querySelectorAll("nav a");
@@ -366,6 +264,25 @@ function initHomeBackground() {
       return `medium`;
     else return "large";
   }
+
+  function createAllImageArrays() {
+    for (let i = 1; i < 16; i++) {
+      const dayLarge = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}.webp`;
+      const dayMedium = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-m.webp`;
+      const daySmall = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-s.webp`;
+      const nightLarge = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}.webp`;
+      const nightMedium = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-m.webp`;
+      const nightSmall = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-s.webp`;
+
+      dayImagesLarge.push(dayLarge); 
+      dayImagesMedium.push(dayMedium);
+      dayImagesSmall.push(daySmall);
+      nightImagesLarge.push(nightLarge);
+      nightImagesMedium.push(nightMedium);
+      nightImagesSmall.push(nightSmall);
+    }
+  }
+  createAllImageArrays();
 
   function getCurrentSet() {
     if (checkScreenSize() === "small") {
