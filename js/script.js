@@ -178,7 +178,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ///////////////////////////////////////////////////////////* Home buttons shifting *//////////////////////////////////////////////////////////////////////////*
 
 function shuffleHomeButtons() {
-  /* return; */
+  return;
   gsap.registerPlugin(Flip);
 
   const buttonBox = document.querySelector(".button-flex");

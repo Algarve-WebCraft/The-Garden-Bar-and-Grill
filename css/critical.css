@@ -153,6 +153,12 @@
 
     .loaded .transition-main-fade {
       transition: opacity 0.3s ease 0.2s !important;
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          transition: transform 0.3s ease !important;
+        }
+      }
     }
 
     html.is-leaving .loaded .transition-main-fade,
@@ -448,6 +454,7 @@
     @media (hover: hover) and (pointer: fine) {
       &:hover {
         transform: translateY(-2px) !important;
+        transition: transform 0.2s ease-out !important;
         box-shadow: inset 0 1px 2px #00000010, 0 3px 6px #00000025,
           0 6px 10px #00000015;
       }
@@ -1018,7 +1025,7 @@
 
   .cmp-main-btn--pg1-s1 {
     position: relative;
-    opacity: 0.95;
+    opacity: 0.96;
     width: 35vw;
     max-width: 12rem;
     backdrop-filter: blur(0.25rem);
@@ -1221,8 +1228,10 @@
       /* prettier-ignore */
       transition-timing-function: linear( 0, 0.264 10.2%, 0.428 15.4%, 0.642 20.6%, 0.998 27.7%, 0.766 33.3%, 0.713 35.6%, 0.696 37.8%, 0.713 39.9%, 0.761 42%, 0.998 48%, 0.88 51.6%, 0.853 53.1%, 0.844 54.6%, 0.853 56.1%, 0.878 57.6%, 1 62%, 0.937 64.8%, 0.918 67.2%, 0.935 69.6%, 1 73.4%, 0.97 75.6%, 0.96 77.7%, 0.968 79.7%, 1 83.2%, 0.984 86.8%, 1 92%, 1);
 
-      &:hover {
-        transform: scale(1.4);
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          transform: scale(1.4);
+        }
       }
     }
 
@@ -1260,8 +1269,10 @@
       transition-timing-function: linear(
         0, -0.004 8.7%, -0.019 16.8%, -0.111 41.5%, -0.13 49.9%, -0.13 54.6%, -0.12 59%, -0.099 63.1%, -0.067 67%, -0.008 71.8%, 0.071 76.3%, 0.289 84.7%, 0.598 92.6%, 1);
 
-      &:hover {
-        transform: rotate(360deg);
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          transform: rotate(360deg);
+        }
       }
 
       @media (width > 62.5rem) {
