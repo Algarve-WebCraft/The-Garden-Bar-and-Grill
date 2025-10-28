@@ -302,9 +302,9 @@ function initHomeBackground() {
   function showImage(index) {
     if (stopBackground) return;
 
-    /* setTimeout(() => {
+    setTimeout(() => {
       shuffleHomeButtons();
-    }, 200);  *//* Switch the home buttons from the function above to be called with a small delay to match the images changing */
+    }, 200); /* Switch the home buttons from the function above to be called with a small delay to match the images changing */
 
     const url = `url(${currentSet[index]})`;
 
