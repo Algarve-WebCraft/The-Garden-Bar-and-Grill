@@ -119,9 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
     )
     .fromTo(
       ".button-flex a",
-      { opacity: 0, xPercent: -50 },
+      { opacity: 0, x: 100 },
       {
-        xPercent: 0,
+        x: 0,
         opacity: 1,
         duration: 0.5,
         stagger: 0.3,

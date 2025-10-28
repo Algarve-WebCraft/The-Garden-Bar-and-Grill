@@ -964,7 +964,7 @@
     letter-spacing: 0.1em;
     backdrop-filter: blur(0.05rem);
     -webkit-backdrop-filter: blur(0.05rem);
-    clip-path: ellipse(60% 80% at 50% 25%);
+    clip-path: ellipse(60% 80% at 50% 28%);
     overflow-wrap: normal;
     user-select: none;
     text-wrap: balance;
