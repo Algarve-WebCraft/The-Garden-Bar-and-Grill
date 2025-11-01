@@ -1130,9 +1130,9 @@
       transform: rotate(-12deg);
     }
 
-    @media (width > 87.5rem) {
+    @media (width > 82.5rem) {
       top: 13.5rem;
-      right: 15rem;
+      right: 9rem;
     }
   }
 
