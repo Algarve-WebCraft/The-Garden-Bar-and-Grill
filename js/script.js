@@ -1069,8 +1069,8 @@ function initDarkToggleText() {
   function updateMode() {
     const isDark = document.documentElement.classList.contains("dark-mode");
     span.style.transform = isDark ? "rotateY(360deg)" : "rotateY(0deg)";
-    day.style.display = isDark ? "inline-block" : "none";
-    night.style.display = isDark ? "none" : "inline-block";
+    day.style.display = isDark ? "flex" : "none";
+    night.style.display = isDark ? "none" : "flex";
   }
 
   const observer = new MutationObserver(updateMode);
