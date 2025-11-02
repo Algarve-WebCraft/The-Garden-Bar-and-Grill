@@ -132,20 +132,6 @@ html.dark-mode .hamburger-btn {
   background-color: var(--clr-dark-theme-200);
 }
 
-html.dark-mode .dark-toggle-text-box {
-  span {
-    backface-visibility: hidden;
-  }
-
-  .dark-toggle-text__day {
-    display: inline-block;
-  }
-
-  .dark-toggle-text__night {
-    display: none !important;
-  }
-}
-
 html.dark-mode #hero-title {
   color: var(--clr-green-100);
 
