@@ -1008,17 +1008,17 @@
     .hero-title__letters {
       display: inline-flex;
       white-space: nowrap;
-    }
 
-    span {
-      color: var(--clr-green-200);
-      user-select: none;
-      animation: bounce 3s ease 6s;
-      transition: transform 0.4s ease-out;
-
-      &:hover {
-        transform: translateY(-1rem);
+      span {
+        color: var(--clr-green-200);
+        user-select: none;
+        animation: bounce 3s ease 6s;
         transition: transform 0.4s ease-out;
+
+        &:hover {
+          transform: translateY(-1rem);
+          transition: transform 0.4s ease-out;
+        }
       }
     }
 
