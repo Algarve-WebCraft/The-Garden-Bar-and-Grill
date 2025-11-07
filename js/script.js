@@ -8,6 +8,7 @@ const swup = new Swup({
 
 function initPageScripts() {
   updateActiveNavLink();
+  darkMode();
   initDarkToggleText();
   initLogoEasterEgg();
   secondaryPageSvgInit();
@@ -974,100 +975,93 @@ window.addEventListener("resize", () => {
 
 ///////////////////////////////////////////////////////* Dark-mode change *////////////////////////////////////////////////////////////////////////*
 
-const darkModeButton = document.getElementById("dark-mode-toggle");
+function darkMode() {
+  const darkModeButton = document.getElementById("dark-mode-toggle");
 
-function enableDarkMode() {
-  document.documentElement.classList.add("dark-mode");
-  localStorage.setItem("theme", "dark");
-}
-
-function disableDarkMode() {
-  document.documentElement.classList.remove("dark-mode");
-  localStorage.setItem("theme", "light");
-}
-
-(function detectColorScheme() {
-  const preloadLink = document.createElement("link");
-  const bodyEl = document.querySelector("body");
-  let theme = "light";
-  preloadLink.rel = "preload";
-  preloadLink.as = "image";
-
-  if (localStorage.getItem("theme")) {
-    theme = localStorage.getItem("theme");
-  } else if (
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches
-  ) {
-    theme = "dark";
+  function enableDarkMode() {
+    document.documentElement.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
   }
 
-  //Logic for setting html pre-load <link> for background images depending on the theme
-
-  if (theme === "light" && bodyEl.classList.contains("home")) {
-    disableDarkMode();
-    preloadLink.href =
-      "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1.webp";
-    document.head.appendChild(preloadLink);
-  } else if (theme === "dark" && bodyEl.classList.contains("home")) {
-    enableDarkMode();
-    preloadLink.href =
-      "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1.webp";
-    document.head.appendChild(preloadLink);
-  }
-})();
-
-function switchTheme(newTheme) {
-  newTheme === "dark" ? enableDarkMode() : disableDarkMode();
-}
-
-darkModeButton.addEventListener("click", () => {
-  const home = document.querySelector("body.home");
-  const isPressed = darkModeButton.getAttribute("aria-pressed") === "true";
-  darkModeButton.setAttribute("aria-pressed", String(!isPressed));
-
-  const currentTheme = localStorage.getItem("theme") || "light";
-  const newTheme = currentTheme === "light" ? "dark" : "light";
-
-  home?.classList.remove("with-transition");
-
-  setTimeout(() => {
-    home?.classList.add("with-transition"); // Remove transition class for a small delay as button is pressed to prevent background-image transition from happening
-  }, 1000);
-
-  if (!document.startViewTransition) {
-    switchTheme(newTheme);
-    return;
+  function disableDarkMode() {
+    document.documentElement.classList.remove("dark-mode");
+    localStorage.setItem("theme", "light");
   }
 
-  document.startViewTransition(() => {
-    switchTheme(newTheme);
+  (function detectColorScheme() {
+    const preloadLink = document.createElement("link");
+    const bodyEl = document.querySelector("body");
+    let theme = "light";
+    preloadLink.rel = "preload";
+    preloadLink.as = "image";
+
+    if (localStorage.getItem("theme")) {
+      theme = localStorage.getItem("theme");
+    } else if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
+      theme = "dark";
+    }
+
+    //Logic for setting html pre-load <link> for background images depending on the theme
+
+    if (theme === "light" && bodyEl.classList.contains("home")) {
+      disableDarkMode();
+      preloadLink.href =
+        "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1.webp";
+      document.head.appendChild(preloadLink);
+    } else if (theme === "dark" && bodyEl.classList.contains("home")) {
+      enableDarkMode();
+      preloadLink.href =
+        "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1.webp";
+      document.head.appendChild(preloadLink);
+    }
+  })();
+
+  function switchTheme(newTheme) {
+    newTheme === "dark" ? enableDarkMode() : disableDarkMode();
+  }
+
+  darkModeButton.addEventListener("click", () => {
+    const home = document.querySelector("body.home");
+    const isPressed = darkModeButton.getAttribute("aria-pressed") === "true";
+    darkModeButton.setAttribute("aria-pressed", String(!isPressed));
+
+    const currentTheme = localStorage.getItem("theme") || "light";
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+
+    home?.classList.remove("with-transition");
+
+    setTimeout(() => {
+      home?.classList.add("with-transition"); // Remove transition class for a small delay as button is pressed to prevent background-image transition from happening
+    }, 1000);
+
+    if (!document.startViewTransition) {
+      switchTheme(newTheme);
+      return;
+    }
+
+    document.startViewTransition(() => {
+      switchTheme(newTheme);
+    });
   });
-});
+}
 
 ///////////////////////////////////////////////////////* Dark toggle day/night text change *////////////////////////////////////////////////////////*
 
 function initDarkToggleText() {
   const textBox = document.querySelector(".dark-toggle-text-box");
+
   if (!textBox) return;
-
-  const isHome =
-    window.location.pathname === "/" ||
-    window.location.pathname.endsWith("index.html");
-
-  if (!isHome) {
-    textBox.style.opacity = "0";
-    return;
-  }
-  textBox.style.opacity = "1";
 
   const day = textBox.querySelector(".dark-toggle-text__day");
   const night = textBox.querySelector(".dark-toggle-text__night");
-  const span = textBox.querySelector("span");
 
   function updateMode() {
+    if (!day && !night) return;
+
     const isDark = document.documentElement.classList.contains("dark-mode");
-    span.style.transform = isDark ? "rotateY(360deg)" : "rotateY(0deg)";
     day.style.display = isDark ? "flex" : "none";
     night.style.display = isDark ? "none" : "flex";
   }
