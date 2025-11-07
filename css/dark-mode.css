@@ -118,6 +118,10 @@ html.dark-mode .business-logo-text-dark-wrapper {
   display: block;
 }
 
+html.dark-mode body.home .business-logo-text-dark {
+  display: none;
+}
+
 html.dark-mode .business-logo-text-dark {
   opacity: 1;
   transition: opacity 2s ease-out 3s;

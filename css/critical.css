@@ -696,7 +696,7 @@
       position: absolute;
       width: 1.75rem;
       top: 0.5rem;
-      right: 4rem;
+      right: 3.75rem;
       animation: arrow-rotate 5s linear infinite;
       rotate: 15deg;
 
@@ -712,7 +712,7 @@
       font-size: clamp(1.75rem, 2.75vw, 2.5rem);
       color: var(--clr-green-100);
       top: -0.5rem;
-      right: 6.5rem;
+      right: 5.75rem;
       text-shadow: 1px 3px 4px rgba(0, 0, 0, 0.75), 
         0 0 6px rgba(0, 255, 100, 0.4);
 
@@ -1033,6 +1033,7 @@
     position: relative;
     max-width: 50%;
     margin-inline: auto;
+    top: 2.5rem;
     z-index: 10;
 
     @media (width > 62.5rem) {
@@ -1040,11 +1041,8 @@
       place-content: center;
       grid-template-columns: 1fr 1fr;
       row-gap: 2rem;
+      top: 0;
       max-width: 30%;
-    }
-
-    @media (width > 62.5rem) {
-      margin-inline: auto;
     }
   }
 
@@ -1141,7 +1139,7 @@
     z-index: 1;
 
     @media (width > 22.5rem) {
-      top: 17.5rem;
+      top: 19rem;
     }
 
     @media (width > 31.25rem) {
@@ -1157,7 +1155,7 @@
 
     @media (width > 82.5rem) {
       top: 13.5rem;
-      right: 9rem;
+      right: 13%;
     }
   }
 
