@@ -119,7 +119,10 @@ html.dark-mode .business-logo-text-dark-wrapper {
 }
 
 html.dark-mode body.home .business-logo-text-dark {
-  display: none;
+  @media (width < 62.5rem) {
+    /* on screens smaller than a laptop, it is hidden */
+    display: none;
+  }
 }
 
 html.dark-mode .business-logo-text-dark {
