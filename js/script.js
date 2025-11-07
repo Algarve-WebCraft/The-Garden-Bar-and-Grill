@@ -3,8 +3,7 @@
 ////////////////////////////////* Swup page navigation *//////////////////////////////////////////////////////////////////////////////////////*
 
 const swup = new Swup({
-  animationScope: "html",
-  cache: true,
+  containers: ["#swup", "#header", "#footer"],
 });
 
 function initPageScripts() {
@@ -57,7 +56,7 @@ swup.hooks.on("page:view", initPageScripts);
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 document.addEventListener("DOMContentLoaded", () => {
-  return;
+  /* return; */
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
