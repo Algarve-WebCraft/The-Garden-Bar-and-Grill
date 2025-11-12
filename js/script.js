@@ -1,12 +1,17 @@
 "use strict";
 
+document.addEventListener("DOMContentLoaded", initPageScripts);
+
 ////////////////////////////////* Swup page navigation *//////////////////////////////////////////////////////////////////////////////////////*
 
 const swup = new Swup({
-  containers: ["#swup", "#header", "#footer"],
+  containers: ["#swup", "#swup-header-container", "#footer"],
 });
 
+swup.hooks.on("page:view", initPageScripts);
+
 function initPageScripts() {
+  activateHamburgerMenu();
   updateActiveNavLink();
   darkMode();
   initDarkToggleText();
@@ -17,6 +22,7 @@ function initPageScripts() {
   createImageTags();
   initGallery();
   scrollToTop();
+  stopTransitionOnResize();
 
   setTimeout(() => {
     secondaryPageSvgInit(); // Re-run to make sure code prevents the side svg from animating in when coming from home page after the inital animation
@@ -50,14 +56,10 @@ function initPageScripts() {
   });
 }
 
-document.addEventListener("DOMContentLoaded", initPageScripts);
-
-swup.hooks.on("page:view", initPageScripts);
-
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -869,63 +871,67 @@ function initLogoEasterEgg() {
 
 ////////////////////////////////* Navigation links and hamburger menu *//////////////////////////////////////////////////////////////////////*
 
-const hamburgerBtn = document.querySelector(".hamburger-btn");
-const navBar = document.querySelector(".nav-bar");
-const navBarList = document.querySelector(".nav-bar ul");
-const navBarLinks = document.querySelectorAll(".nav-bar a");
+function activateHamburgerMenu() {
+  const hamburgerBtn = document.querySelector(".hamburger-btn");
+  const navBar = document.querySelector(".nav-bar");
+  const navBarList = document.querySelector(".nav-bar ul");
 
-let isAnimating = false;
+  let isAnimating = false;
 
-hamburgerBtn.addEventListener("click", () => {
-  if (isAnimating) return;
+  hamburgerBtn.addEventListener("click", () => {
+    if (isAnimating) return;
 
-  const isOpen = navBar.classList.contains("hamburger-btn__open");
+    const isOpen = navBar.classList.contains("hamburger-btn__open");
 
-  if (isOpen) {
+    if (isOpen) {
+      isAnimating = true;
+      hamburgerBtn.classList.remove("active");
+      navBar.classList.remove("hamburger-btn__open");
+    } else {
+      navBar.style.display = "block";
+      requestAnimationFrame(() => {
+        isAnimating = true;
+        hamburgerBtn.classList.add("active");
+        navBar.classList.add("hamburger-btn__open");
+      });
+    }
+
+    setNavAttributes();
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 400);
+  });
+
+  navBar.addEventListener("transitionend", (e) => {
+    if (e.propertyName !== "transform") return;
+
+    isAnimating = false;
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      !navBar.classList.contains("hamburger-btn__open") ||
+      isAnimating ||
+      e.target === navBar ||
+      e.target === hamburgerBtn ||
+      e.target === navBarList
+    )
+      return;
+
     isAnimating = true;
     hamburgerBtn.classList.remove("active");
     navBar.classList.remove("hamburger-btn__open");
-  } else {
-    navBar.style.display = "block";
-    requestAnimationFrame(() => {
-      isAnimating = true;
-      hamburgerBtn.classList.add("active");
-      navBar.classList.add("hamburger-btn__open");
-    });
-  }
 
-  setNavAttributes();
-
-  setTimeout(() => {
-    isAnimating = false;
-  }, 400);
-});
-
-navBar.addEventListener("transitionend", (e) => {
-  if (e.propertyName !== "transform") return;
-
-  isAnimating = false;
-});
-
-document.addEventListener("click", (e) => {
-  if (
-    !navBar.classList.contains("hamburger-btn__open") ||
-    isAnimating ||
-    e.target === navBar ||
-    e.target === hamburgerBtn ||
-    e.target === navBarList
-  )
-    return;
-
-  isAnimating = true;
-  hamburgerBtn.classList.remove("active");
-  navBar.classList.remove("hamburger-btn__open");
-
-  setNavAttributes();
-});
+    setNavAttributes();
+  });
+}
 
 function setNavAttributes() {
+  const navBar = document.querySelector(".nav-bar");
+  const navBarLinks = document.querySelectorAll(".nav-bar a");
   const navBarHasActiveClass = navBar.classList.contains("hamburger-btn__open");
+  const hamburgerBtn = document.querySelector(".hamburger-btn");
 
   if (!navBarHasActiveClass && navBar.contains(document.activeElement)) {
     document.activeElement.blur();
@@ -959,19 +965,6 @@ function updateActiveNavLink() {
     }
   });
 }
-
-/////////////////////////////////////* Prevent navigation transitions happening on resize *////////////////////////////////////////////////////////*
-
-let resizeTimeout;
-
-window.addEventListener("resize", () => {
-  navBar.classList.add("no-transition");
-
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    navBar.classList.remove("no-transition");
-  }, 1);
-});
 
 ///////////////////////////////////////////////////////* Dark-mode change *////////////////////////////////////////////////////////////////////////*
 
@@ -1070,5 +1063,21 @@ function initDarkToggleText() {
   observer.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["class"],
+  });
+}
+
+/////////////////////////////////////* Prevent navigation transitions happening on resize *////////////////////////////////////////////////////////*
+
+function stopTransitionOnResize() {
+  const navBar = document.querySelector(".nav-bar");
+  let resizeTimeout;
+
+  window.addEventListener("resize", () => {
+    navBar.classList.add("no-transition");
+
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      navBar.classList.remove("no-transition");
+    }, 1);
   });
 }
