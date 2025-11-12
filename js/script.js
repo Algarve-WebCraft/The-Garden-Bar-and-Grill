@@ -59,7 +59,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 document.addEventListener("DOMContentLoaded", () => {
-  return;
+  /* return; */
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
