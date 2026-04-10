@@ -20,7 +20,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    rootMargin: "200px",
+    rootMargin: "400px",
   },
 );
 
