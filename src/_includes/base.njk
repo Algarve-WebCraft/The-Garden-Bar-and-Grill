@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" class="is-loading">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Garden Bar and Grill is an outdoor restaurant located in Lagos, Portugal, offering a unique dining experience with a focus on fresh, local ingredients and a relaxed atmosphere.">
+    <script>
+      (function () {
+        let theme = localStorage.getItem("theme");
+        if (!theme && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          theme = "dark";
+        }
+        if (theme === "dark") {
+          document.documentElement.classList.add("dark-mode");
+        }
+      })();
+    </script>
+    <link rel="icon" href="/assets/logos/garden-favicon.webp" type="image/x-icon">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/pacifico-v22-latin-regular.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/open-sans-v43-latin-regular.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/open-sans-v43-latin-500.woff2">
+    <link rel="preload" as="font" type="font/woff2" crossorigin href="/assets/fonts/open-sans-v43-latin-700.woff2">
+    <link rel="preload" as="image" type="image/webp" href="/assets/images/extra/creeper.webp">
+    <link rel="preload" as="image" type="image/webp" href="/assets/images/extra/creeper-2.webp">
+    <link rel="preload" as="image" type="image/webp" href="/assets/images/extra/bird-image.webp">
+    <link rel="preload" as="image" type="image/webp" href="/assets/images/extra/bird-image-2.webp">
+    <link rel="preload" href="/css/critical.css" as="style">
+    <link rel="stylesheet" href="/css/critical.css">
+    <link rel="preload" href="/css/style.css" as="style">
+    <link rel="stylesheet" href="/css/style.css" media="print" onload="this.media='all'">
+    <link rel="preload" href="/css/dark-mode.css" as="style">
+    <link rel="stylesheet" href="/css/dark-mode.css">
+    <link rel="stylesheet" href="/css/glightbox.min.css">
+    <script src="/js/glightbox.min.js" defer></script>
+    <script src="/js/flip.min.js" defer></script>
+    <script src="/js/gsap.min.js" defer></script>
+    <script type="module" src="/js/bundle.js" defer></script>
+    <noscript>
+      <link rel="stylesheet" href="/css/style.css">
+    </noscript>
+    <title>The Garden Bar and Grill</title>
+  </head>
+
+  <body class="{{ bodyClass }}" data-page="{{ dataPage }}">
+    <div class="split-overlay split-overlay--top" aria-hidden="true"></div>
+    <div class="split-overlay split-overlay--center" aria-hidden="true"></div>
+    <div class="split-overlay split-overlay--bottom" aria-hidden="true"></div>
+
+      {% include "header.njk" %}
+
+      <main id="swup" class="main {{ mainClass }}">
+        {% block content %}{% endblock %}
+      </main>
+
+      {% include "footer.njk" %}
+  </body>
+</html>

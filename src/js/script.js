@@ -1,16 +1,32 @@
 "use strict";
+import Swup from "swup";
+import SwupHeadPlugin from "@swup/head-plugin";
 
-document.addEventListener("DOMContentLoaded", initPageScripts);
+// Observer for gallery lazy loading images.
+const observer = new IntersectionObserver(
+  (entries, obs) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
 
-////////////////////////////////* Swup page navigation *//////////////////////////////////////////////////////////////////////////////////////*
+      const img = entry.target;
 
-const swup = new Swup({
-  containers: ["#swup", "#swup-header-container", "#footer"],
-});
+      img.src = img.dataset.src;
 
-swup.hooks.on("page:view", initPageScripts);
+      if (img.dataset.srcset) {
+        img.srcset = img.dataset.srcset;
+      }
 
-function initPageScripts() {
+      obs.unobserve(img);
+    });
+  },
+  {
+    rootMargin: "200px",
+  },
+);
+
+document.addEventListener("DOMContentLoaded", () => {
+  initPageScripts();
+  initSwup();
   activateHamburgerMenu();
   updateActiveNavLink();
   darkMode();
@@ -19,11 +35,57 @@ function initPageScripts() {
   secondaryPageSvgInit();
   initAboutCarousel();
   initMenu();
+  initLazyImages();
   createImageTags();
   initGallery();
   scrollToTop();
   stopTransitionOnResize();
+});
 
+window.addEventListener("load", () => {
+  document.documentElement.classList.remove("is-loading");
+
+  requestAnimationFrame(() => {
+    gsapOpeningHomeAnimations();
+  });
+});
+
+////////////////////////////////* Swup page navigation *//////////////////////////////////////////////////////////////////////////////////////*
+
+function initSwup() {
+  const swup = new Swup({
+    containers: ["#swup", "#swup-header-container", "#footer"],
+    animateHistoryBrowsing: true,
+    respectScroll: false,
+
+    plugins: [
+      new SwupHeadPlugin({
+        awaitAssets: false,
+        persistAssets: true,
+      }),
+    ],
+  });
+
+  swup.hooks.on("page:view", () => {
+    initPageScripts();
+    initDarkToggleText();
+    initPageScripts();
+    activateHamburgerMenu();
+    updateActiveNavLink();
+    darkMode();
+    initLogoEasterEgg();
+    secondaryPageSvgInit();
+    initAboutCarousel();
+    initMenu();
+    initLazyImages();
+    createImageTags();
+    initGallery();
+    scrollToTop();
+    stopTransitionOnResize();
+  });
+}
+
+function initPageScripts() {
   setTimeout(() => {
     secondaryPageSvgInit(); // Re-run to make sure code prevents the side svg from animating in when coming from home page after the inital animation
   }, 1500);
@@ -58,8 +120,8 @@ function initPageScripts() {
 
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
-document.addEventListener("DOMContentLoaded", () => {
-  /* return; */
+function gsapOpeningHomeAnimations() {
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -91,18 +153,18 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 0.75,
       ease: "power1.out",
     },
-    "-=0.3"
+    "-=0.3",
   )
     .to({}, { duration: 0.65 })
     .to(
       ".split-overlay--top",
       { yPercent: -100, duration: 4, ease: "power4.out" },
-      "+=0"
+      "+=0",
     )
     .to(
       ".split-overlay--bottom",
       { yPercent: 100, duration: 4, ease: "power4.out" },
-      "-=4"
+      "-=4",
     )
     .to(".split-overlay", {
       duration: 0.01,
@@ -117,7 +179,7 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0,
         duration: 1.5,
       },
-      "-=2"
+      "-=2",
     )
     .fromTo(
       ".button-flex a",
@@ -132,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
           gsap.set(".button-flex a", { clearProps: "all" });
         },
       },
-      "-=1.2"
+      "-=1.2",
     )
     .from(
       "#header",
@@ -140,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0,
         duration: 1.5,
       },
-      "-=1"
+      "-=1",
     )
     .from(
       "#footer",
@@ -149,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
         x: -1000,
         duration: 1.25,
       },
-      "-=0.8"
+      "-=0.8",
     )
     .from(
       ".hero-main-logo-container",
@@ -161,10 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
           // Change body classes so swup takes over animations for page changes
           document.body.classList.remove("loading");
           document.body.classList.remove("bg-fade-in");
-          document.body.classList.add("loaded");
+          /* document.body.classList.add("loaded"); */
         },
       },
-      "-=1"
+      "-=1",
     )
     .from(
       ".cmp-info-text--pg1",
@@ -173,9 +235,9 @@ document.addEventListener("DOMContentLoaded", () => {
         opacity: 0,
         duration: 2,
       },
-      "-=0"
+      "-=0",
     );
-});
+}
 
 ///////////////////////////////////////////////////////////* Home buttons shifting *//////////////////////////////////////////////////////////////////////////*
 
@@ -186,11 +248,11 @@ function shuffleHomeButtons() {
   const buttonBox = document.querySelector(".button-flex");
 
   buttonBox?.addEventListener("mouseenter", () =>
-    buttonBox?.classList.add("no-animation")
+    buttonBox?.classList.add("no-animation"),
   );
 
   buttonBox?.addEventListener("mouseleave", () =>
-    buttonBox?.classList.remove("no-animation")
+    buttonBox?.classList.remove("no-animation"),
   );
 
   if (buttonBox?.classList.contains("no-animation")) return;
@@ -222,12 +284,12 @@ let bgObserver = null;
 
 (function fillImageArrays() {
   for (let i = 1; i < 16; i++) {
-    const dayLarge = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}.webp`;
-    const dayMedium = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-m.webp`;
-    const daySmall = `/The-Garden-Bar-and-Grill/assets/images/day/garden-day-${i}-s.webp`;
-    const nightLarge = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}.webp`;
-    const nightMedium = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-m.webp`;
-    const nightSmall = `/The-Garden-Bar-and-Grill/assets/images/night/garden-night-${i}-s.webp`;
+    const dayLarge = `/assets/images/day/garden-day-${i}.webp`;
+    const dayMedium = `/assets/images/day/garden-day-${i}-m.webp`;
+    const daySmall = `/assets/images/day/garden-day-${i}-s.webp`;
+    const nightLarge = `/assets/images/night/garden-night-${i}.webp`;
+    const nightMedium = `/assets/images/night/garden-night-${i}-m.webp`;
+    const nightSmall = `/assets/images/night/garden-night-${i}-s.webp`;
 
     dayImagesLarge.push(dayLarge);
     dayImagesMedium.push(dayMedium);
@@ -389,13 +451,13 @@ function initAboutCarousel() {
     const a = document.createElement("a");
     a.className = "glightbox";
     a.dataset.gallery = "about-carousel";
-    a.dataset.href = `assets/images/carousel/${file}.webp`;
-    a.dataset.srcset = `assets/images/carousel/${file}-s.webp 600w, assets/images/carousel/${file}-l.webp 1920w`;
+    a.dataset.href = `/assets/images/carousel/${file}.webp`;
+    a.dataset.srcset = `/assets/images/carousel/${file}-s.webp 600w, /assets/images/carousel/${file}-l.webp 1920w`;
     a.dataset.sizes = "100vw";
     a.dataset.type = "image";
 
     const img = document.createElement("img");
-    img.src = `assets/images/carousel/${file}.jpg`;
+    img.src = `/assets/images/carousel/${file}.jpg`;
     img.width = 400;
     img.height = 300;
     img.decoding = "async";
@@ -450,7 +512,7 @@ function initAboutCarousel() {
 /////////////////////////////////////////////////////* Menu section modal image logic *//////////////////////////////////////////////////////////////////////*
 
 function initMenu() {
-  document.querySelectorAll(".cmp-main-btn").forEach((button) => {
+  document.querySelectorAll(".food-btn button").forEach((button) => {
     button.addEventListener("click", () => {
       const lang = button.dataset.lang;
       let images = [];
@@ -459,49 +521,49 @@ function initMenu() {
         case "en":
           images = [
             {
-              href: "/The-Garden-Bar-and-Grill/assets/images/menu/english-1.jpg",
+              href: "/assets/images/menu/english-1.jpg",
               type: "image",
             },
             {
-              href: "/The-Garden-Bar-and-Grill/assets/images/menu/english-2.jpg",
+              href: "/assets/images/menu/english-2.jpg",
               type: "image",
             },
           ];
           break;
         case "pt":
           images = [
-            { href: "assets/images/menu/portuguese-1.jpg", type: "image" },
-            { href: "assets/images/menu/portuguese-2.jpg", type: "image" },
+            { href: "/assets/images/menu/portuguese-1.jpg", type: "image" },
+            { href: "/assets/images/menu/portuguese-2.jpg", type: "image" },
           ];
           break;
         case "de":
           images = [
-            { href: "assets/images/menu/german-1.jpg", type: "image" },
-            { href: "assets/images/menu/german-2.jpg", type: "image" },
+            { href: "/assets/images/menu/german-1.jpg", type: "image" },
+            { href: "/assets/images/menu/german-2.jpg", type: "image" },
           ];
           break;
         case "fr":
           images = [
-            { href: "assets/images/menu/french-1.jpg", type: "image" },
-            { href: "assets/images/menu/french-2.jpg", type: "image" },
+            { href: "/assets/images/menu/french-1.jpg", type: "image" },
+            { href: "/assets/images/menu/french-2.jpg", type: "image" },
           ];
           break;
         case "dr":
           images = [
-            { href: "assets/images/menu/drinks-1.jpg", type: "image" },
-            { href: "assets/images/menu/drinks-2.jpg", type: "image" },
+            { href: "/assets/images/menu/drinks-1.jpg", type: "image" },
+            { href: "/assets/images/menu/drinks-2.jpg", type: "image" },
           ];
           break;
         case "bw":
           images = [
-            { href: "assets/images/menu/beer-wine-1.jpg", type: "image" },
-            { href: "assets/images/menu/beer-wine-2.jpg", type: "image" },
+            { href: "/assets/images/menu/beer-wine-1.jpg", type: "image" },
+            { href: "/assets/images/menu/beer-wine-2.jpg", type: "image" },
           ];
           break;
       }
 
       const prefersReducedMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
+        "(prefers-reduced-motion: reduce)",
       ).matches;
 
       if (images.length > 0) {
@@ -525,6 +587,7 @@ function initMenu() {
 
 function initGallery() {
   const galleryRoot = document.querySelector(".gallery-page");
+
   if (
     !galleryRoot ||
     typeof gsap === "undefined" ||
@@ -537,7 +600,7 @@ function initGallery() {
   }
 
   const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
+    "(prefers-reduced-motion: reduce)",
   ).matches;
 
   window.lightbox = GLightbox({
@@ -595,7 +658,7 @@ function initGallery() {
             },
             { scaleX: 1, scaleY: 1, duration: 0.2, ease: "power1.inOut" },
           ],
-        }
+        },
       );
     });
   });
@@ -645,7 +708,7 @@ function initGallery() {
             scale: 0.1,
             ease: "power1.in",
           },
-          0
+          0,
         );
       }
     });
@@ -665,10 +728,10 @@ function initGallery() {
           album.style.pointerEvents = "auto";
         },
       },
-      "-=0.3"
+      "-=0.3",
     );
 
-    // Animate images in
+    ////// Animate images in
     gsap.fromTo(
       images,
       { opacity: 0, y: 20 },
@@ -679,7 +742,7 @@ function initGallery() {
         stagger: 0.05,
         ease: "steps.out",
         delay: 1.25,
-      }
+      },
     );
 
     setTimeout(() => {
@@ -693,7 +756,7 @@ function initGallery() {
     animationOnGoing = true;
 
     const openWrapper = galleryRoot.querySelector(
-      ".album-wrapper:not(.hidden)"
+      ".album-wrapper:not(.hidden)",
     );
 
     if (!openWrapper) return;
@@ -712,7 +775,7 @@ function initGallery() {
     if (tl) {
       const images = openWrapper.querySelectorAll("img");
 
-      // Fade out images
+      ////// Fade out images
       gsap.to(images, {
         opacity: 0,
         duration: 0.4,
@@ -726,21 +789,29 @@ function initGallery() {
       tl.reverse().then(() => {
         openWrapper.classList.add("hidden");
         books.forEach((book) =>
-          gsap.set(book, { clearProps: "all", opacity: 1, scale: 1 })
+          gsap.set(book, { clearProps: "all", opacity: 1, scale: 1 }),
         );
         animationOnGoing = false;
       });
     }
   }
 
-  // Bind events
+  ///// Bind events
   books.forEach((book, index) =>
-    book.addEventListener("click", () => showAlbum(index))
+    book.addEventListener("click", () => showAlbum(index)),
   );
   backButtons.forEach((btn) => btn.addEventListener("click", hideAlbum));
 }
 
-// Loop to create the image tags within the HTML
+// Lazy load images so as not to load all images as soon as a user enters an album.
+function initLazyImages(container) {
+  if (!container) return;
+
+  const images = container.querySelectorAll("img[data-src]");
+  images.forEach((img) => observer.observe(img));
+}
+
+///// Loop to create the image tags within the HTML
 function createImageTags() {
   function tags2012() {
     const container = document.querySelector(".album-grid--1");
@@ -751,19 +822,19 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album1";
-
-      a.dataset.href = `assets/images/book-start/${i}.jpg`;
-      a.dataset.srcset = `assets/images/book-start/${i}-s.webp 800w, assets/images/book-start/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/book-start/${i}.jpg`;
+      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.src = `assets/images/book-start/${i}.jpg`;
+      img.dataset.src = `/assets/images/book-start/${i}.jpg`;
+      img.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
+      img.sizes = "100vw";
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
       img.decoding = "async";
-      img.loading = "lazy";
 
       a.appendChild(img);
       container.appendChild(a);
@@ -781,19 +852,19 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album2";
-
-      a.dataset.href = `assets/images/book-2016/${i}.jpg`;
-      a.dataset.srcset = `assets/images/book-2016/${i}-s.webp 800w, assets/images/book-2016/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/book-2016/${i}.jpg`;
+      a.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.src = `assets/images/book-2016/${i}.jpg`;
+      img.dataset.src = `/assets/images/book-2016/${i}.jpg`;
+      img.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
+      img.sizes = "100vw";
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
       img.decoding = "async";
-      img.loading = "lazy";
 
       a.appendChild(img);
       container.appendChild(a);
@@ -809,19 +880,19 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album3";
-
-      a.dataset.href = `assets/images/beer-fest/${i}.jpg`;
-      a.dataset.srcset = `assets/images/beer-fest/${i}-s.webp 800w, assets/images/beer-fest/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/beer-fest/${i}.jpg`;
+      a.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.src = `assets/images/beer-fest/${i}.jpg`;
+      img.dataset.src = `/assets/images/beer-fest/${i}.jpg`;
+      img.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
+      img.sizes = "100vw";
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
       img.decoding = "async";
-      img.loading = "lazy";
 
       a.appendChild(img);
       container.appendChild(a);
@@ -829,8 +900,13 @@ function createImageTags() {
   }
 
   tags2012();
+  initLazyImages(document.querySelector(".album-grid--1"));
+
   tags2016();
+  initLazyImages(document.querySelector(".album-grid--2"));
+
   tagsBeer();
+  initLazyImages(document.querySelector(".album-grid--3"));
 }
 
 function scrollToTop() {
@@ -869,7 +945,7 @@ function initLogoEasterEgg() {
   });
 }
 
-////////////////////////////////* Navigation links and hamburger menu *//////////////////////////////////////////////////////////////////////*
+///////////////////////////////////////////////////////* Navigation links and hamburger menu *//////////////////////////////////////////////////////////////////////*
 
 function activateHamburgerMenu() {
   const hamburgerBtn = document.querySelector(".hamburger-btn");
@@ -945,7 +1021,7 @@ function setNavAttributes() {
   });
 }
 
-/////////////////////////////////////* Show the current page *////////////////////////////////////////////////////////////////////////////////*
+/////////////////////////////////////////////////////////////* Show the current page *////////////////////////////////////////////////////////////////////////////////*
 
 function updateActiveNavLink() {
   const navBarLinks = document.querySelectorAll(".nav-bar a");
@@ -966,7 +1042,7 @@ function updateActiveNavLink() {
   });
 }
 
-///////////////////////////////////////////////////////* Dark-mode change *////////////////////////////////////////////////////////////////////////*
+////////////////////////////////////////////////////////////////* Dark-mode change *////////////////////////////////////////////////////////////////////////*
 
 function darkMode() {
   const darkModeButton = document.getElementById("dark-mode-toggle");
@@ -1001,13 +1077,11 @@ function darkMode() {
 
     if (theme === "light" && bodyEl.classList.contains("home")) {
       disableDarkMode();
-      preloadLink.href =
-        "/The-Garden-Bar-and-Grill/assets/images/day/garden-day-1.webp";
+      preloadLink.href = "/assets/images/day/garden-day-1.webp";
       document.head.appendChild(preloadLink);
     } else if (theme === "dark" && bodyEl.classList.contains("home")) {
       enableDarkMode();
-      preloadLink.href =
-        "/The-Garden-Bar-and-Grill/assets/images/night/garden-night-1.webp";
+      preloadLink.href = "/assets/images/night/garden-night-1.webp";
       document.head.appendChild(preloadLink);
     }
   })();
@@ -1045,8 +1119,14 @@ function darkMode() {
 
 function initDarkToggleText() {
   const textBox = document.querySelector(".dark-toggle-text-box");
+  const body = document.querySelector("body");
 
-  if (!textBox) return;
+  if (body.classList.contains("secondary-pages")) {
+    textBox.style.display = "none";
+    return;
+  } else {
+    textBox.style.display = "flex";
+  }
 
   const day = textBox.querySelector(".dark-toggle-text__day");
   const night = textBox.querySelector(".dark-toggle-text__night");

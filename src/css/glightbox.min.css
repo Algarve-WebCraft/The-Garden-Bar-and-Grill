@@ -30,7 +30,9 @@
   -webkit-transition: -webkit-transform 0.4s ease;
   transition: -webkit-transform 0.4s ease;
   transition: transform 0.4s ease;
-  transition: transform 0.4s ease, -webkit-transform 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    -webkit-transform 0.4s ease;
   height: 100%;
   left: 0;
   top: 0;
@@ -349,9 +351,6 @@
 }
 .glightbox-desc {
   display: none !important;
-}
-.glightbox-open {
-  overflow: hidden;
 }
 .gloader {
   height: 25px;
@@ -785,6 +784,7 @@ iframe.wait-autoplay {
   }
   .glightbox-open {
     height: auto;
+    width: 100%;
   }
   .goverlay {
     background: rgba(0, 0, 0, 0.92);
