@@ -121,7 +121,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  return;
+  /* return; */
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
