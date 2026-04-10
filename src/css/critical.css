@@ -346,7 +346,7 @@
 
   html,
   body {
-    min-height: 104svh;
+    min-height: 112vh;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }

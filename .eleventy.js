@@ -4,6 +4,7 @@ export default function (eleventyConfig) {
     "./src/js": "js",
     "./src/assets": "assets",
     "./src/admin": "admin",
+    "./src/assets": "assets",
   });
 
   return {

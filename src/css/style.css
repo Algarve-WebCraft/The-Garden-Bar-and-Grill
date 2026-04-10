@@ -399,21 +399,21 @@
     padding-bottom: 1rem;
     z-index: 5;
 
+    &.absolute-position {
+      position: absolute;
+      margin-top: 1rem;
+
+      @media (width > 62.5rem) {
+        margin-top: 4rem;
+      }
+    }
+
     @media (width > 62.5rem) {
       flex-direction: column;
       justify-content: center;
       gap: 0;
       padding-bottom: 0.5rem;
       margin-top: 9rem;
-    }
-  }
-
-  .gallery-book-svg-box.absolute-position {
-    position: absolute;
-    margin-top: 1rem;
-
-    @media (width > 62.5rem) {
-      margin-top: 4rem;
     }
   }
 

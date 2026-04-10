@@ -20,7 +20,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    rootMargin: "200px",
+    rootMargin: "400px",
   },
 );
 
@@ -121,7 +121,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  return;
+  /* return; */
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -681,7 +681,9 @@ function initGallery() {
       },
     });
 
-    booksBox.classList.add("absolute-position");
+    setTimeout(() => {
+      booksBox.classList.add("absolute-position");
+    }, 1000);
 
     // Animate clicked book
     tl.to(books[index], {
@@ -720,7 +722,7 @@ function initGallery() {
       album,
       { opacity: 0, y: 20 },
       {
-        duration: 1,
+        duration: 1.1,
         opacity: 1,
         y: 0,
         ease: "elastic.out",
@@ -770,7 +772,7 @@ function initGallery() {
 
     setTimeout(() => {
       booksBox.classList.remove("absolute-position"); // Remove absolute class which was preventing books from taking up dom space
-    }, 2000);
+    }, 1000);
 
     if (tl) {
       const images = openWrapper.querySelectorAll("img");
