@@ -2,8 +2,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({
     "./src/css": "css",
     "./src/js": "js",
-    "./src/assets": "assets",
     "./src/admin": "admin",
+    "./src/assets": "assets",
   });
 
   return {
