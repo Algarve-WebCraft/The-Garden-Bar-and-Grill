@@ -20,7 +20,7 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    rootMargin: "400px",
+    rootMargin: "800px",
   },
 );
 
@@ -121,7 +121,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  /* return; */
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -805,7 +805,7 @@ function initGallery() {
   backButtons.forEach((btn) => btn.addEventListener("click", hideAlbum));
 }
 
-// Lazy load images so as not to load all images as soon as a user enters an album.
+// Lazy load images so as not to load all images as soon as a user enters an album. Observer is defined at the very top of the page.
 function initLazyImages(container) {
   if (!container) return;
 
