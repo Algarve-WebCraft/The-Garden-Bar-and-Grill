@@ -21,9 +21,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("load", () => {
-  document.documentElement.classList.remove("is-loading");
-
   requestAnimationFrame(() => {
+    document.documentElement.classList.remove("is-loading");
     gsapOpeningHomeAnimations();
   });
 });

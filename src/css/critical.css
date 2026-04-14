@@ -1341,7 +1341,7 @@
 
     html.is-leaving .transition-fade,
     html.is-rendering .transition-fade {
-      opacity: 0;
+      opacity: 0 !important;
     }
 
     .transition-slide-carousel {
