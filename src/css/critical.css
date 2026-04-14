@@ -881,7 +881,6 @@
 
   .cmp-main-btn--pg1-s1 {
     position: relative;
-    opacity: 0.96;
     width: 35vw;
     max-width: 12rem;
     backdrop-filter: blur(0.25rem);
