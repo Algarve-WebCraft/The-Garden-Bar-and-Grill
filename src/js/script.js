@@ -2,28 +2,6 @@
 import Swup from "swup";
 import SwupHeadPlugin from "@swup/head-plugin";
 
-// Observer for gallery lazy loading images.
-const observer = new IntersectionObserver(
-  (entries, obs) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-
-      const img = entry.target;
-
-      img.src = img.dataset.src;
-
-      if (img.dataset.srcset) {
-        img.srcset = img.dataset.srcset;
-      }
-
-      obs.unobserve(img);
-    });
-  },
-  {
-    rootMargin: "800px",
-  },
-);
-
 document.addEventListener("DOMContentLoaded", () => {
   initPageScripts();
   initSwup();
@@ -69,7 +47,6 @@ function initSwup() {
   swup.hooks.on("page:view", () => {
     initPageScripts();
     initDarkToggleText();
-    initPageScripts();
     activateHamburgerMenu();
     updateActiveNavLink();
     darkMode();
@@ -242,35 +219,34 @@ function gsapOpeningHomeAnimations() {
 ///////////////////////////////////////////////////////////* Home buttons shifting *//////////////////////////////////////////////////////////////////////////*
 
 function shuffleHomeButtons() {
-  /* return; */
+  const buttonBox = document.querySelector(".button-flex");
+  if (!buttonBox) return;
+
   gsap.registerPlugin(Flip);
 
-  const buttonBox = document.querySelector(".button-flex");
-
-  buttonBox?.addEventListener("mouseenter", () =>
-    buttonBox?.classList.add("no-animation"),
+  buttonBox.addEventListener("mouseenter", () =>
+    buttonBox.classList.add("no-animation"),
   );
 
-  buttonBox?.addEventListener("mouseleave", () =>
-    buttonBox?.classList.remove("no-animation"),
+  buttonBox.addEventListener("mouseleave", () =>
+    buttonBox.classList.remove("no-animation"),
   );
 
-  if (buttonBox?.classList.contains("no-animation")) return;
+  if (buttonBox.classList.contains("no-animation")) return;
 
-  const buttons = [...buttonBox?.querySelectorAll(".cmp-main-btn--pg1-s1")];
+  const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
 
   const state = Flip.getState(buttons);
 
   const first = buttons[0];
-  buttonBox?.appendChild(first);
+  buttonBox.appendChild(first);
 
   Flip.from(state, {
     duration: 0.4,
-    ease: "power3.out",
+    ease: "power4.out",
     stagger: 0.25,
   }); /* The function is called in the 'initHomeBackground' below so the change matches the background images change */
 }
-
 ///////////////////////////////////////////////////////* Home section background image transitions *////////////////////////////////////////////////////////*
 
 const dayImagesLarge = [];
@@ -806,8 +782,34 @@ function initGallery() {
 }
 
 // Lazy load images so as not to load all images as soon as a user enters an album. Observer is defined at the very top of the page.
+let observer;
+
 function initLazyImages(container) {
   if (!container) return;
+
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+  observer = new IntersectionObserver(
+    (entries, obs) => {
+      console.log(isMobile);
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const img = entry.target;
+
+        img.src = img.dataset.src;
+
+        if (img.dataset.srcset) {
+          img.srcset = img.dataset.srcset;
+        }
+
+        obs.unobserve(img);
+      });
+    },
+    {
+      rootMargin: isMobile ? "800px" : "400px",
+    },
+  );
 
   const images = container.querySelectorAll("img[data-src]");
   images.forEach((img) => observer.observe(img));

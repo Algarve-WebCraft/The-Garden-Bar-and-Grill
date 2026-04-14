@@ -346,7 +346,7 @@
 
   html,
   body {
-    min-height: clamp(106vh, 50vw + 35rem, 124svh);
+    min-height: clamp(100svh, 40vw + 37rem, 122svh);
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 
@@ -866,7 +866,7 @@
     position: relative;
     max-width: 50%;
     margin-inline: auto;
-    top: 0.5rem;
+    top: 0.25rem;
     z-index: 10;
 
     @media (width > 62.5rem) {
