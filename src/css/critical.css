@@ -869,6 +869,10 @@
     top: 0.25rem;
     z-index: 10;
 
+    a {
+      opacity: 0;
+    }
+
     @media (width > 62.5rem) {
       display: grid;
       place-content: center;

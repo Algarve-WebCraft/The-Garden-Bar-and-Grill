@@ -159,7 +159,7 @@ function gsapOpeningHomeAnimations() {
     )
     .fromTo(
       ".button-flex a",
-      { opacity: 0, x: 100 },
+      { x: 100 },
       {
         x: 0,
         opacity: 1,
@@ -167,7 +167,7 @@ function gsapOpeningHomeAnimations() {
         stagger: 0.3,
         ease: "power3.out",
         onComplete() {
-          gsap.set(".button-flex a", { clearProps: "all" });
+          gsap.set(".button-flex a", { clearProps: "x,y,scale,rotation,skewX,skewY,transform" });
         },
       },
       "-=1.2",
@@ -199,7 +199,7 @@ function gsapOpeningHomeAnimations() {
           // Change body classes so swup takes over animations for page changes
           document.body.classList.remove("loading");
           document.body.classList.remove("bg-fade-in");
-          /* document.body.classList.add("loaded"); */
+          document.body.classList.add("loaded");
         },
       },
       "-=1",
