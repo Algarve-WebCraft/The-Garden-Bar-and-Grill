@@ -346,7 +346,7 @@
 
   html,
   body {
-    min-height: clamp(100svh, 40vw + 37rem, 122svh);
+    min-height: clamp(105svh, 40vw + 36rem, 122svh);
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
 
