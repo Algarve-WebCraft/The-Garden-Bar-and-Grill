@@ -201,7 +201,7 @@ function gsapOpeningHomeAnimations() {
           // Change body classes so swup takes over animations for page changes
           document.body.classList.remove("loading");
           document.body.classList.remove("bg-fade-in");
-          /* document.body.classList.add("loaded"); */
+          document.body.classList.add("loaded");
         },
       },
       "-=1",
