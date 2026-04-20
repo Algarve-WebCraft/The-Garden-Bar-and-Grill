@@ -167,7 +167,7 @@ function gsapOpeningHomeAnimations() {
         stagger: 0.3,
         ease: "power3.out",
         onComplete() {
-          gsap.set(".button-flex a", { clearProps: "x,y,scale,rotation,skewX,skewY,transform" });
+          gsap.set(".button-flex a", { clearProps: "all" });
         },
       },
       "-=1.2",
@@ -359,9 +359,14 @@ function initHomeBackground() {
   }
 
   function nextImage() {
-    currentIndex = (currentIndex + 1) % currentSet.length;
+  const nextIndex = (currentIndex + 1) % currentSet.length;
+  const nextSrc = currentSet[nextIndex];
+
+  preloadImage(nextSrc).then(() => {
+    currentIndex = nextIndex;
     showImage(currentIndex);
-  }
+  });
+}
 
   showImage(currentIndex);
 
