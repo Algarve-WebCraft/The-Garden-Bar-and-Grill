@@ -359,14 +359,14 @@ function initHomeBackground() {
   }
 
   function nextImage() {
-  const nextIndex = (currentIndex + 1) % currentSet.length;
-  const nextSrc = currentSet[nextIndex];
+    const nextIndex = (currentIndex + 1) % currentSet.length;
+    const nextSrc = currentSet[nextIndex];
 
-  preloadImage(nextSrc).then(() => {
-    currentIndex = nextIndex;
-    showImage(currentIndex);
-  });
-}
+    preloadImage(nextSrc).then(() => {
+      currentIndex = nextIndex;
+      showImage(currentIndex);
+    });
+  }
 
   showImage(currentIndex);
 
