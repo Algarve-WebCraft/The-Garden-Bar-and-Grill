@@ -381,7 +381,7 @@
   }
 
   body.home {
-    /* --bg-before: url("/assets/images/day/garden-day-1.webp"); */
+    --bg-before: url("/assets/images/day/garden-day-1.webp");
     --before-opacity: 1;
 
     position: relative;
@@ -419,7 +419,7 @@
 
   body.home.with-transition::before,
   body.home.with-transition::after {
-    transition: opacity 0.75s ease-in-out; /* Change the speed of background images changing*/
+    transition: opacity 1.25s ease-in-out; /* Change the speed of background images changing*/
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
