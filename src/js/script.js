@@ -361,9 +361,14 @@ function initHomeBackground() {
   }
 
   function nextImage() {
-    currentIndex = (currentIndex + 1) % currentSet.length;
+  const nextIndex = (currentIndex + 1) % currentSet.length;
+  const nextSrc = currentSet[nextIndex];
+
+  preloadImage(nextSrc).then(() => {
+    currentIndex = nextIndex;
     showImage(currentIndex);
-  }
+  });
+}
 
   showImage(currentIndex);
 
@@ -401,6 +406,32 @@ function initHomeBackground() {
       showImage(currentIndex);
     }
   });
+
+  const imageCache = new Set();
+
+  function preloadImage(src) {
+    if (imageCache.has(src)) return Promise.resolve();
+
+    return new Promise((resolve) => {
+      const img = new Image();
+      img.src = src;
+
+      if (img.decode) {
+        img
+          .decode()
+          .then(() => {
+            imageCache.add(src);
+            resolve();
+          })
+          .catch(resolve);
+      } else {
+        img.onload = () => {
+          imageCache.add(src);
+          resolve();
+        };
+      }
+    });
+  }
 }
 
 ///////////////////////////////////////////////////////* Secondary pages side-svg transitions */////////////////////////////////////////////////////////////*
