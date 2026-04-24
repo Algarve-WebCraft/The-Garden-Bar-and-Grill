@@ -217,37 +217,6 @@ function gsapOpeningHomeAnimations() {
     );
 }
 
-///////////////////////////////////////////////////////////* Home buttons shifting *//////////////////////////////////////////////////////////////////////////*
-
-function shuffleHomeButtons() {
-  const buttonBox = document.querySelector(".button-flex");
-  if (!buttonBox) return;
-
-  gsap.registerPlugin(Flip);
-
-  buttonBox.addEventListener("mouseenter", () =>
-    buttonBox.classList.add("no-animation"),
-  );
-
-  buttonBox.addEventListener("mouseleave", () =>
-    buttonBox.classList.remove("no-animation"),
-  );
-
-  if (buttonBox.classList.contains("no-animation")) return;
-
-  const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
-
-  const state = Flip.getState(buttons);
-
-  const first = buttons[0];
-  buttonBox.appendChild(first);
-
-  Flip.from(state, {
-    duration: 0.4,
-    ease: "power4.out",
-    stagger: 0.25,
-  }); /* The function is called in the 'initHomeBackground' below so the change matches the background images change */
-}
 ///////////////////////////////////////////////////////* Home section background image transitions *////////////////////////////////////////////////////////*
 
 const dayImagesLarge = [];
@@ -341,10 +310,6 @@ function initHomeBackground() {
   function showImage(index) {
     if (stopBackground) return;
 
-    setTimeout(() => {
-      shuffleHomeButtons();
-    }, 200); /* Switch the home buttons from the function above to be called with a small delay to match the images changing */
-
     const url = `url(${currentSet[index]})`;
 
     if (toggle) {
@@ -361,14 +326,14 @@ function initHomeBackground() {
   }
 
   function nextImage() {
-  const nextIndex = (currentIndex + 1) % currentSet.length;
-  const nextSrc = currentSet[nextIndex];
+    const nextIndex = (currentIndex + 1) % currentSet.length;
+    const nextSrc = currentSet[nextIndex];
 
-  preloadImage(nextSrc).then(() => {
-    currentIndex = nextIndex;
-    showImage(currentIndex);
-  });
-}
+    preloadImage(nextSrc).then(() => {
+      currentIndex = nextIndex;
+      showImage(currentIndex);
+    });
+  }
 
   showImage(currentIndex);
 
@@ -464,7 +429,14 @@ function initAboutCarousel() {
     a.dataset.sizes = "100vw";
     a.dataset.type = "image";
 
+    const picture = document.createElement("picture");
+    const sourceWebp = document.createElement("source");
     const img = document.createElement("img");
+
+    sourceWebp.srcset = `/assets/images/carousel/${file}-s.webp 600w,/assets/images/carousel/${file}-l.webp 1920w`;
+    sourceWebp.sizes = "100vw";
+    sourceWebp.type = "image/webp";
+
     img.src = `/assets/images/carousel/${file}.jpg`;
     img.width = 400;
     img.height = 300;
@@ -472,7 +444,10 @@ function initAboutCarousel() {
     img.loading = "lazy";
     img.alt = alt;
 
-    a.appendChild(img);
+    picture.appendChild(sourceWebp);
+    picture.appendChild(img);
+
+    a.appendChild(picture);
     track.appendChild(a);
   }
 
