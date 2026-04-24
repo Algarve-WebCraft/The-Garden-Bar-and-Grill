@@ -114,6 +114,7 @@
   main.about-page {
     background-image: url("/assets/images/background/about-bg-l.webp");
     background-size: cover;
+    background-position: center top;
   }
 
   main.menu-page {
@@ -124,6 +125,7 @@
 
   main.gallery-page {
     background-image: url("/assets/images/background/gallery-bg-l.webp");
+    background-color: rgba(0, 30, 80, 0.3) !important;
   }
 
   main.reserve-page {

@@ -25,6 +25,10 @@ html.dark-mode main.secondary-pages {
   background-color: rgba(0, 30, 80, 0.4);
 }
 
+html.dark-mode main.gallery-page {
+  background-color: rgba(0, 30, 80, 0.4);
+}
+
 html.dark-mode p,
 html.dark-mode li,
 html.dark-mode h1,
