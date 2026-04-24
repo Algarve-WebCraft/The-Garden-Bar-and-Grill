@@ -798,7 +798,6 @@ function initLazyImages(container) {
 
   observer = new IntersectionObserver(
     (entries, obs) => {
-      console.log(isMobile);
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
