@@ -3,9 +3,9 @@ export default function (eleventyConfig) {
     "./src/css": "css",
     "./src/js": "js",
     "./src/admin": "admin",
-    /* "./src/assets": "assets", */
+    "./src/assets": "assets",
   });
- 
+
   return {
     dir: {
       input: "src",
