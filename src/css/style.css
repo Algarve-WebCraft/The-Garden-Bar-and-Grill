@@ -441,8 +441,6 @@
     translate: -50% -50%;
     rotate: -6deg;
     filter: drop-shadow(4px 2px 2px rgba(0, 0, 0, 0.25));
-    backdrop-filter: blur(0.1rem);
-    -webkit-backdrop-filter: blur(0.1rem);
     border-radius: 2rem;
 
     @media (width > 37.5rem) {
@@ -505,8 +503,6 @@
       letter-spacing: 0.15em;
       line-height: 2em;
       border-radius: 2rem;
-      backdrop-filter: blur(0.1rem);
-      -webkit-backdrop-filter: blur(0.1rem);
       /* animation: flip-in 0.75s linear 2.5s forwards; */
 
       @media (width > 37.5rem) {

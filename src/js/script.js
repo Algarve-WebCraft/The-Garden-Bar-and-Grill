@@ -665,8 +665,15 @@ function initGallery() {
       },
     });
 
+    galleryMain.style.willChange = "background-size";
+
     setTimeout(() => {
-      galleryMain.style.backgroundSize = "auto";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          galleryMain.style.backgroundSize = "auto";
+        });
+      });
+
       booksBox.classList.add("absolute-position");
     }, 1000);
 
@@ -755,8 +762,15 @@ function initGallery() {
 
     album.style.pointerEvents = "none"; // Prevent opening image while animating
 
+    galleryMain.style.willChange = "background-size";
+
     setTimeout(() => {
-      galleryMain.style.backgroundSize = "cover";
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          galleryMain.style.backgroundSize = "cover";
+        });
+      });
+      
       booksBox.classList.remove("absolute-position"); // Remove absolute class which was preventing books from taking up dom space
     }, 1000);
 
