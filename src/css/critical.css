@@ -988,7 +988,7 @@
         left: 50%;
         transform: translateX(100%);
         background: var(--clr-text-white);
-        color: var(--clr-lighter-black);
+        color: var(--clr-lighter-black) !important;
         padding: 0.2em 0.4em;
         font-size: 0.9rem;
         font-weight: 600;
@@ -996,6 +996,7 @@
         white-space: nowrap;
         opacity: 0;
         pointer-events: none;
+        z-index: 999;
         transition:
           opacity 1s ease,
           transform 1s ease;
