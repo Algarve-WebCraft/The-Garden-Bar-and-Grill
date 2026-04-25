@@ -33,7 +33,7 @@
       drop-shadow(8px 4px 10px rgba(0, 0, 0, 0.15));
 
     @media (width > 92rem) {
-      left: 0rem;
+      left: -2rem;
     }
   }
 
@@ -44,7 +44,7 @@
       drop-shadow(-12px -6px 10px rgba(0, 0, 0, 0.15));
 
     @media (width > 92rem) {
-      right: 0rem;
+      right: -2rem;
     }
   }
 
@@ -58,8 +58,8 @@
       drop-shadow(-6px -3px 10px rgba(0, 0, 0, 0.15));
 
     @media (width > 92rem) {
-      right: -5.5rem;
-      rotate: 9deg;
+      right: -7rem;
+      rotate: 7deg;
     }
   }
 
@@ -70,8 +70,8 @@
       drop-shadow(6px 3px 10px rgba(0, 0, 0, 0.15));
 
     @media (width > 92rem) {
-      left: -5.5rem;
-      rotate: -10deg;
+      left: -7rem;
+      rotate: -9deg;
     }
   }
 
@@ -441,7 +441,6 @@
     backdrop-filter: blur(0.1rem);
     -webkit-backdrop-filter: blur(0.1rem);
     border-radius: 2rem;
-    /* animation: jello-diagonal 1.5s ease-in-out 0.5s forwards; */
 
     @media (width > 37.5rem) {
       top: -30%;
@@ -457,7 +456,6 @@
     opacity: 1;
     rotate: 6deg;
     left: 50%;
-    /* animation: jello-diagonal 1.5s ease-in-out 1.25s forwards; */
   }
 
   .gallery-album-image {
@@ -620,7 +618,6 @@
 
     @media (width > 62.5rem) {
       right: 3.75rem;
-      bottom: unset;
     }
   }
 
