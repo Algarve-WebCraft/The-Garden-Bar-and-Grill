@@ -17,16 +17,16 @@ html.dark-mode body.home {
 
 html.dark-mode body.home::before,
 html.dark-mode body.home::after {
-  background-color: rgba(0, 0, 0, 0.13);
+  background-color: rgba(0, 0, 0, 0.1);
   background-blend-mode: multiply;
 }
 
 html.dark-mode main.secondary-pages {
-  background-color: rgba(0, 30, 80, 0.4);
+  background-color: rgba(0, 23, 62, 0.4);
 }
 
 html.dark-mode main.gallery-page {
-  background-color: rgba(0, 30, 80, 0.4);
+  background-color: rgba(0, 23, 62, 0.5);
 }
 
 html.dark-mode p,

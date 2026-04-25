@@ -347,28 +347,27 @@
 
   html,
   body {
-    min-height: clamp(110svh, 45vw + 38rem, 122svh);
+    min-height: 105svh;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
-
-    @media (width > 62.5rem) {
-      min-height: 110svh;
-    }
   }
 
   body {
+    position: relative;
     display: grid;
     grid-template-rows: auto 1fr auto;
     font-size: 1rem;
     font-family: var(--ff-body-sans);
     font-weight: 400;
-    overflow-x: hidden;
     overflow-x: clip;
-    margin: 0;
 
     * > {
       min-width: 0;
     }
+  }
+
+  body.reserve {
+    min-height: 120svh;
   }
 
   body.home.loading::before {
@@ -402,7 +401,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-blend-mode: multiply;
-    background-color: rgba(0, 30, 80, 0.35);
+    background-color: rgba(0, 30, 80, 0.2);
     z-index: -1;
     opacity: 0;
     transition: none;
@@ -827,7 +826,7 @@
     color: var(--clr-green-100);
     width: fit-content;
     margin-inline: auto;
-    margin-top: 0.75em;
+    margin-top: 1.25em;
     margin-bottom: var(--marg-heading-32-48);
     text-shadow:
       0 2px 6px rgba(0, 0, 0, 0.55),
@@ -879,32 +878,32 @@
     z-index: 1;
 
     @media (width > 22.5rem) {
-      top: 19rem;
+      top: 22rem;
+      right: 2rem;
     }
 
     @media (width > 31.25rem) {
-      top: 21rem;
-      right: 0.5rem;
+      top: 28rem;
+      right: 3rem;
     }
 
     @media (width > 62.5rem) {
-      top: 18rem;
-      right: 0;
+      top: 21rem;
+      right: 4rem;
       transform: rotate(-11deg);
     }
 
     @media (width > 82.5rem) {
-      top: 20.5rem;
-      right: 22%;
+      right: 20%;
     }
   }
 
   .hero-main-logo {
     display: block;
-    width: 39vw;
+    width: 42vw;
     max-width: 21rem;
     height: auto;
-    opacity: 0.85;
+    opacity: 0.95;
     filter: invert(1) brightness(0.9)
       drop-shadow(2px 1px 4px rgba(0, 0, 0, 0.8))
       drop-shadow(6px 3px 6px rgba(0, 0, 0, 0.65));
@@ -914,9 +913,9 @@
 
   .hero-main-logo__easter-egg {
     position: absolute;
-    max-width: 65%;
-    top: 1rem;
-    right: 0;
+    max-width: 75%;
+    top: -3rem;
+    right: 3rem;
     bottom: 0;
     opacity: 0;
     pointer-events: none;
@@ -925,8 +924,8 @@
       opacity 0.6s ease-out;
 
     @media (width > 62.5rem) {
-      top: 2rem;
-      right: 7rem;
+      top: -5rem;
+      right: 17rem;
     }
   }
 
@@ -968,82 +967,89 @@
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\      *** FOOTER ***       \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-  .footer {
-    position: relative;
-    background-color: var(--clr-nav-background-light);
-    width: 100%;
-    bottom: 0;
-    padding-block: 0.2em;
-    border-top: 2px solid rgba(255, 255, 255, 0.053);
-    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(0.1rem) saturate(120%);
-    -webkit-backdrop-filter: blur(0.1rem) saturate(120%);
-    text-align: center;
-    z-index: 100;
-  }
-
   .footer-flex {
-    position: relative;
+    position: absolute;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    bottom: 0.5rem;
+    right: 1.5rem;
     color: var(--clr-dark-theme-300);
+    z-index: 0;
+
+    @media (width > 62.5rem) {
+      right: 12%;
+    }
 
     span {
       position: relative;
-      margin-right: auto;
-      max-width: 18ch;
-      font-size: 1rem;
-      left: 3rem;
-      font-weight: 700;
-      text-shadow: 2px 1px 3px rgba(156, 156, 156, 0.5);
-      transition: transform 0.8s ease-in-out;
-      /* prettier-ignore */
-      transition-timing-function: linear( 0, 0.264 10.2%, 0.428 15.4%, 0.642 20.6%, 0.998 27.7%, 0.766 33.3%, 0.713 35.6%, 0.696 37.8%, 0.713 39.9%, 0.761 42%, 0.998 48%, 0.88 51.6%, 0.853 53.1%, 0.844 54.6%, 0.853 56.1%, 0.878 57.6%, 1 62%, 0.937 64.8%, 0.918 67.2%, 0.935 69.6%, 1 73.4%, 0.97 75.6%, 0.96 77.7%, 0.968 79.7%, 1 83.2%, 0.984 86.8%, 1 92%, 1);
+      display: inline-block;
+      left: 0;
+      bottom: 1rem;
+
+      .footer-tooltip-text {
+        position: absolute;
+        bottom: 120%;
+        left: 50%;
+        transform: translateX(100%);
+        background: var(--clr-text-white);
+        color: var(--clr-lighter-black);
+        padding: 0.2em 0.4em;
+        font-size: 0.9rem;
+        font-weight: 600;
+        border-radius: 4px;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition:
+          opacity 0.75s ease,
+          transform 0.75s ease;
+        /* prettier-ignore */
+        transition-timing-function: linear(0, 0.271 8.8%, 0.542 19.9%, 0.837 34.2%, 1 44.7%, 0.943 51.1%, 0.925 57.5%, 0.937 63.1%, 1 77.4%, 0.991 84.2%, 1);
+      }
 
       @media (width > 62.5rem) {
-        font-size: 1.2rem;
+        left: 1.25rem;
+        bottom: -2.6rem;
       }
 
       @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          transform: scale(1.1);
+        &:hover .footer-tooltip-text {
+          opacity: 0.9;
+          transform: translateX(-70%);
         }
       }
     }
 
-    a {
-      text-decoration: none;
-      line-height: 0;
-    }
+    img {
+      max-width: 3em;
+      filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.8));
+      transition: transform 0.8s ease-in-out;
+      /* prettier-ignore */
+      transition-timing-function: linear( 0, 0.264 10.2%, 0.428 15.4%, 0.642 20.6%, 0.998 27.7%, 0.766 33.3%, 0.713 35.6%, 0.696 37.8%, 0.713 39.9%, 0.761 42%, 0.998 48%, 0.88 51.6%, 0.853 53.1%, 0.844 54.6%, 0.853 56.1%, 0.878 57.6%, 1 62%, 0.937 64.8%, 0.918 67.2%, 0.935 69.6%, 1 73.4%, 0.97 75.6%, 0.96 77.7%, 0.968 79.7%, 1 83.2%, 0.984 86.8%, 1 92%, 1);
 
-    @media (width > 31.25rem) {
-      span {
-        margin-inline: auto;
-      }
-    }
-
-    @media (width > 35rem) {
-      span {
-        max-width: unset;
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          transform: scale(1.2);
+        }
       }
     }
   }
 
   .footer__social-links {
     position: relative;
-    right: 0.5rem;
+    left: 0.3rem;
     height: 100%;
     display: flex;
-    gap: 1.2rem;
+    flex-direction: column;
+    gap: 0.5rem;
 
     @media (width > 62.5rem) {
-      right: 4rem;
+      flex-direction: row;
+      left: 5.5rem;
     }
 
     svg {
-      width: 2.15em;
+      width: 2.25em;
       height: auto;
       border-radius: 25%;
       filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.6));

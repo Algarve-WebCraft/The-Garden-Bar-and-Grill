@@ -111,6 +111,12 @@
 }
 
 @layer base {
+  main.secondary-pages {
+    background-repeat: repeat;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 30, 80, 0.35);
+  }
+
   main.about-page {
     background-image: url("/assets/images/background/about-bg-l.webp");
     background-size: cover;
@@ -125,20 +131,13 @@
 
   main.gallery-page {
     background-image: url("/assets/images/background/gallery-bg-l.webp");
-    background-size: cover;
-    background-color: rgba(0, 30, 80, 0.3) !important;
+    background-color: rgba(0, 30, 80, 0.45);
   }
 
   main.reserve-page {
     background-image: url("/assets/images/background/contact-bg-l.webp");
     background-size: cover;
     background-position: bottom;
-  }
-
-  main.secondary-pages {
-    background-repeat: repeat;
-    background-blend-mode: multiply;
-    background-color: rgba(0, 30, 80, 0.3);
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
@@ -230,6 +229,7 @@
     margin-inline: 3rem;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
+    z-index: 5;
 
     @media (width > 62.5rem) {
       margin: 9rem 1rem 0;
@@ -596,8 +596,8 @@
   .scrollToTopButton {
     display: none;
     position: fixed;
-    bottom: 5rem;
-    right: 0.75rem;
+    bottom: 12rem;
+    right: 1.25rem;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
@@ -619,7 +619,6 @@
     }
 
     @media (width > 62.5rem) {
-      top: 4rem;
       right: 3.75rem;
       bottom: unset;
     }
@@ -720,10 +719,11 @@
   .maps-container__map {
     position: relative;
     display: block;
-    max-width: 95%;
-    width: 800px;
-    height: 450px;
+    max-width: 90%;
+    width: 50rem;
+    height: 28rem;
     margin-inline: auto;
+    z-index: 5;
 
     @media (width > 62.5rem) {
       max-width: 100%;
