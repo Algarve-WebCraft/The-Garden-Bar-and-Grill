@@ -132,7 +132,7 @@
   main.gallery-page {
     background-image: url("/assets/images/background/gallery-bg-l.webp");
     background-color: rgba(0, 30, 80, 0.45);
-    background-size: cover;
+    background-size: auto;
     background-position: center;
   }
 
