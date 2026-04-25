@@ -130,10 +130,13 @@
   }
 
   main.gallery-page {
-    background-image: url("/assets/images/background/gallery-bg-l.webp");
-    background-color: rgba(0, 30, 80, 0.45);
-    background-size: auto;
+    background-image:
+      linear-gradient(rgba(0, 15, 40, 0.4), rgba(0, 15, 40, 0.4)),
+      url("/assets/images/background/gallery-bg-l.webp");
+    background-color: unset;
     background-position: center;
+    background-repeat: repeat;
+    background-attachment: fixed;
   }
 
   main.reserve-page {

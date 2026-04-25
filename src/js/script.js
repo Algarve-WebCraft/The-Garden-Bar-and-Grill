@@ -97,7 +97,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  return;
+  /* return; */
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -570,7 +570,7 @@ function initMenu() {
 
 function initGallery() {
   const galleryRoot = document.querySelector(".gallery-page");
-return;
+
   if (
     !galleryRoot ||
     typeof gsap === "undefined" ||

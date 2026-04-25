@@ -26,7 +26,10 @@ html.dark-mode main.secondary-pages {
 }
 
 html.dark-mode main.gallery-page {
-  background-color: rgba(0, 23, 62, 0.5);
+  background-color: unset;
+  background-image:
+    linear-gradient(rgba(0, 15, 40, 0.45), rgba(0, 15, 40, 0.45)),
+    url("/assets/images/background/gallery-bg-l.webp");
 }
 
 html.dark-mode p,
