@@ -570,6 +570,7 @@ function initMenu() {
 
 function initGallery() {
   const galleryRoot = document.querySelector(".gallery-page");
+  const galleryMain = document.querySelector("main.gallery-page");
 
   if (
     !galleryRoot ||
@@ -665,6 +666,7 @@ function initGallery() {
     });
 
     setTimeout(() => {
+      galleryMain.style.backgroundSize = "auto";
       booksBox.classList.add("absolute-position");
     }, 1000);
 
@@ -754,6 +756,7 @@ function initGallery() {
     album.style.pointerEvents = "none"; // Prevent opening image while animating
 
     setTimeout(() => {
+      galleryMain.style.backgroundSize = "cover";
       booksBox.classList.remove("absolute-position"); // Remove absolute class which was preventing books from taking up dom space
     }, 1000);
 

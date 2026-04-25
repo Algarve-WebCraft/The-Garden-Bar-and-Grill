@@ -114,18 +114,17 @@
   main.secondary-pages {
     background-repeat: repeat;
     background-blend-mode: multiply;
+    background-size: cover;
     background-color: rgba(0, 30, 80, 0.35);
   }
 
   main.about-page {
     background-image: url("/assets/images/background/about-bg-l.webp");
-    background-size: cover;
     background-position: center top;
   }
 
   main.menu-page {
     background-image: url("/assets/images/background/menu-bg-l.webp");
-    background-size: cover;
     background-position: top;
   }
 
@@ -141,7 +140,6 @@
 
   main.reserve-page {
     background-image: url("/assets/images/background/contact-bg-l.webp");
-    background-size: cover;
     background-position: bottom;
   }
 
