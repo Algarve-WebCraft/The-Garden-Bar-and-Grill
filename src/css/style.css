@@ -134,8 +134,8 @@
       linear-gradient(rgba(0, 15, 40, 0.4), rgba(0, 15, 40, 0.4)),
       url("/assets/images/background/gallery-bg-l.webp");
     background-color: unset;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-position: top;
+    background-repeat: repeat;
     background-attachment: fixed;
   }
 
