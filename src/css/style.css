@@ -120,12 +120,22 @@
 
   main.about-page {
     background-image: url("/assets/images/background/about-bg-l.webp");
-    background-position: center top;
+
+    @media (width > 37.5rem) {
+      background-image:
+        linear-gradient(rgba(0, 15, 40, 0.25), rgba(0, 15, 40, 0.25)),
+        url("/assets/images/background/about-bg-s.webp");
+    }
   }
 
   main.menu-page {
     background-image: url("/assets/images/background/menu-bg-l.webp");
-    background-position: top;
+
+    @media (width > 37.5rem) {
+      background-image:
+        linear-gradient(rgba(0, 15, 40, 0.25), rgba(0, 15, 40, 0.25)),
+        url("/assets/images/background/menu-bg-s.webp");
+    }
   }
 
   main.gallery-page {
@@ -134,7 +144,6 @@
       url("/assets/images/background/gallery-bg-s.webp");
     background-color: unset;
     background-size: unset;
-    background-position: bottom;
     background-repeat: repeat;
     background-attachment: fixed;
 
@@ -147,7 +156,12 @@
 
   main.reserve-page {
     background-image: url("/assets/images/background/contact-bg-l.webp");
-    background-position: bottom;
+
+    @media (width > 37.5rem) {
+      background-image:
+        linear-gradient(rgba(0, 15, 40, 0.25), rgba(0, 15, 40, 0.25)),
+        url("/assets/images/background/contact-bg-s.webp");
+    }
   }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
