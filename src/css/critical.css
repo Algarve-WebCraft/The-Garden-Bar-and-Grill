@@ -1113,8 +1113,8 @@
 
     .loaded .transition-main-heading {
       transition:
-        transform 0.2s ease,
-        opacity 0.2s ease;
+        transform 0.5s ease,
+        opacity 0.5s ease;
     }
 
     html.is-leaving .loaded .transition-main-heading,
@@ -1143,7 +1143,7 @@
     }
 
     .loaded .transition-main-fade {
-      transition: opacity 0.3s ease 0.2s !important;
+      transition: opacity 0.4s ease 0.3s !important;
 
       @media (hover: hover) and (pointer: fine) {
         &:hover {
@@ -1169,6 +1169,17 @@
     .transition-slide-carousel {
       transform: translate(0, 0);
       opacity: 1;
+    }
+
+    .transition-main-page-fade {
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease-out;
+    }
+
+    html.is-leaving .transition-main-page-fade,
+    html.is-rendering .transition-main-page-fade {
+      opacity: 0;
     }
 
     .transition-slide-heading {
