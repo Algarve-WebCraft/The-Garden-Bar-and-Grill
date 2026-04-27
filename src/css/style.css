@@ -144,7 +144,7 @@
       url("/assets/images/background/gallery-bg-s.webp");
     background-color: unset;
     background-size: unset;
-    background-position: bottom;
+    background-position: top;
     background-repeat: repeat;
     background-attachment: fixed;
 
