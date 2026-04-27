@@ -27,9 +27,10 @@ html.dark-mode main.secondary-pages {
 
 html.dark-mode main.gallery-page {
   background-color: unset;
-  background-image:
-    linear-gradient(rgba(0, 15, 40, 0.45), rgba(0, 15, 40, 0.45)),
-    url("/assets/images/background/gallery-bg-l.webp");
+  background-image: linear-gradient(
+    rgba(0, 15, 40, 0.45),
+    rgba(0, 15, 40, 0.45)
+  );
 }
 
 html.dark-mode p,
