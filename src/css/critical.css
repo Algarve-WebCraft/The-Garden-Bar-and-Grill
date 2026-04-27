@@ -843,15 +843,12 @@
     line-height: 1.35em;
     backdrop-filter: blur(0.05rem);
     -webkit-backdrop-filter: blur(0.05rem);
-    clip-path: ellipse(60% 80% at 50% 28%);
-    overflow-wrap: normal;
     user-select: none;
     text-wrap: balance;
     z-index: 10;
 
     @media (width > 62.5rem) {
       margin-top: 0.5em;
-      clip-path: ellipse(70% 90% at 50% 25%);
     }
 
     .hero-title__letters {

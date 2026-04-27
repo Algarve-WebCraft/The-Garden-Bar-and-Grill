@@ -155,32 +155,16 @@ function gsapOpeningHomeAnimations() {
         opacity: 0,
         duration: 1.5,
       },
-      "-=2",
-    )
-    .fromTo(
-      ".button-flex a",
-      { x: 100 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.3,
-        ease: "power3.out",
-        onComplete() {
-          gsap.set(".button-flex a", {
-            clearProps: "x,y,scale,rotation,skewX,skewY,transform",
-          });
-        },
-      },
-      "-=1.2",
+      "-=1",
     )
     .from(
       "#header",
       {
+        y: -100,
         opacity: 0,
         duration: 1.5,
       },
-      "-=1",
+      "-=0.5",
     )
     .from(
       "#footer",
@@ -189,14 +173,14 @@ function gsapOpeningHomeAnimations() {
         x: 200,
         duration: 1.25,
       },
-      "-=0.8",
+      "-=1.5",
     )
     .from(
       ".hero-main-logo-container",
       {
         scale: 0.1,
         opacity: 0,
-        duration: 0.75,
+        duration: 2,
         onComplete() {
           // Change body classes so swup takes over animations for page changes
           document.body.classList.remove("loading");
