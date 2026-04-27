@@ -839,12 +839,11 @@
       0 2px 6px rgba(0, 0, 0, 0.55),
       0 10px 30px rgba(0, 0, 0, 0.4);
     border-radius: 0.5rem;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.06em;
     line-height: 1.35em;
     backdrop-filter: blur(0.05rem);
     -webkit-backdrop-filter: blur(0.05rem);
     user-select: none;
-    text-wrap: balance;
     z-index: 10;
 
     @media (width > 62.5rem) {
@@ -1175,6 +1174,7 @@
       transition:
         opacity 0.4s ease,
         transform 0.4s ease-out,
+        color 0.1s ease;
     }
 
     html.is-leaving .transition-main-page-fade,
