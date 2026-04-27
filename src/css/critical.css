@@ -844,6 +844,7 @@
     backdrop-filter: blur(0.05rem);
     -webkit-backdrop-filter: blur(0.05rem);
     user-select: none;
+    text-wrap: balance;
     z-index: 10;
 
     @media (width > 62.5rem) {
