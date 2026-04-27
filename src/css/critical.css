@@ -434,7 +434,7 @@
   .header {
     position: relative;
     top: 0;
-    z-index: 900;
+    z-index: 999;
     background-color: var(--clr-nav-background-light);
     box-shadow: 1px 1px 25px var(--clr-nav-shadow-light);
     backdrop-filter: blur(0.25rem);
@@ -966,7 +966,7 @@
     bottom: 0.5rem;
     right: 5%;
     color: var(--clr-dark-theme-300);
-    z-index: 999;
+    z-index: 900;
 
     span {
       position: relative;
