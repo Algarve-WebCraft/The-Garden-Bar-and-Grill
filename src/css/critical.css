@@ -1173,8 +1173,8 @@
 
     .transition-main-page-fade {
       transition:
-        opacity 0.6s ease,
-        transform 0.6s ease-out;
+        opacity 2s ease,
+        transform 2s ease-out;
     }
 
     html.is-leaving .transition-main-page-fade,
