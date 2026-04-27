@@ -131,12 +131,18 @@
   main.gallery-page {
     background-image:
       linear-gradient(rgba(0, 15, 40, 0.4), rgba(0, 15, 40, 0.4)),
-      url("/assets/images/background/gallery-bg-l.webp");
+      url("/assets/images/background/gallery-bg-s.webp");
     background-color: unset;
     background-size: unset;
     background-position: bottom;
     background-repeat: repeat;
     background-attachment: fixed;
+
+    @media (width > 37.5rem) {
+      background-image:
+        linear-gradient(rgba(0, 15, 40, 0.25), rgba(0, 15, 40, 0.25)),
+        url("/assets/images/background/gallery-bg-l.webp");
+    }
   }
 
   main.reserve-page {
@@ -424,7 +430,7 @@
 
   .cmp-info-text--pg4,
   .beer-image-box > span {
-    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
     font-family: Open-Sans;
     pointer-events: none;
 
@@ -445,7 +451,7 @@
     border-radius: 2rem;
 
     @media (width > 37.5rem) {
-      top: -30%;
+      top: -40%;
     }
 
     @media (width > 62.5rem) {
@@ -458,6 +464,10 @@
     opacity: 1;
     rotate: 6deg;
     left: 50%;
+
+    @media (width > 62.5rem) {
+      left: 60%;
+    }
   }
 
   .gallery-album-image {
