@@ -22,7 +22,7 @@ html.dark-mode body.home::after {
 }
 
 html.dark-mode main.secondary-pages {
-  background-color: rgba(0, 23, 62, 0.4);
+  background-color: rgba(0, 23, 62, 0.45);
 }
 
 html.dark-mode main.gallery-page {
@@ -96,14 +96,17 @@ html.dark-mode .cmp-leaf-svg {
 }
 
 html.dark-mode .header {
-  box-shadow: 1px 1px 30px var(--nav-shadow-dark);
+  background-color: #011400c5;
+  background: linear-gradient(
+    to bottom,
+    rgba(1, 20, 0, 0.9),
+    rgba(5, 30, 10, 0.75)
+  );
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.35),
+    0 8px 20px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(0.25rem);
   -webkit-backdrop-filter: blur(8px);
-}
-
-html.dark-mode .header,
-html.dark-mode .footer {
-  background-color: #011400c5;
 }
 
 html.dark-mode .nav-bar {

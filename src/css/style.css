@@ -115,26 +115,26 @@
     background-repeat: repeat;
     background-blend-mode: multiply;
     background-size: cover;
-    background-color: rgba(0, 30, 80, 0.35);
+    background-color: rgba(0, 30, 80, 0.4);
   }
 
   main.about-page {
-    background-image: url("/assets/images/background/about-bg-l.webp");
+    background-image: url("/assets/images/background/about-bg-s.webp");
+    background-position: center top;
 
     @media (width > 37.5rem) {
       background-image:
-        linear-gradient(rgba(0, 15, 40, 0.25), rgba(0, 15, 40, 0.25)),
-        url("/assets/images/background/about-bg-s.webp");
+        url("/assets/images/background/about-bg-l.webp");
     }
   }
 
   main.menu-page {
-    background-image: url("/assets/images/background/menu-bg-l.webp");
+    background-image: url("/assets/images/background/menu-bg-s.webp");
+    background-position: top;
 
     @media (width > 37.5rem) {
       background-image:
-        linear-gradient(rgba(0, 15, 40, 0.25), rgba(0, 15, 40, 0.25)),
-        url("/assets/images/background/menu-bg-s.webp");
+        url("/assets/images/background/menu-bg-l.webp");
     }
   }
 
@@ -144,6 +144,7 @@
       url("/assets/images/background/gallery-bg-s.webp");
     background-color: unset;
     background-size: unset;
+    background-position: bottom;
     background-repeat: repeat;
     background-attachment: fixed;
 
@@ -155,12 +156,12 @@
   }
 
   main.reserve-page {
-    background-image: url("/assets/images/background/contact-bg-l.webp");
+    background-image: url("/assets/images/background/contact-bg-s.webp");
+    background-position: bottom;
 
     @media (width > 37.5rem) {
       background-image:
-        linear-gradient(rgba(0, 15, 40, 0.25), rgba(0, 15, 40, 0.25)),
-        url("/assets/images/background/contact-bg-s.webp");
+        url("/assets/images/background/contact-bg-l.webp");
     }
   }
 
