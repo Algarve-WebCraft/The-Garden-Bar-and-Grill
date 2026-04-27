@@ -843,6 +843,7 @@
     line-height: 1.35em;
     backdrop-filter: blur(0.05rem);
     -webkit-backdrop-filter: blur(0.05rem);
+    overflow-wrap: normal;
     user-select: none;
     text-wrap: balance;
     z-index: 10;
