@@ -133,6 +133,7 @@
       linear-gradient(rgba(0, 15, 40, 0.4), rgba(0, 15, 40, 0.4)),
       url("/assets/images/background/gallery-bg-l.webp");
     background-color: unset;
+    background-size: unset;
     background-position: top;
     background-repeat: repeat;
     background-attachment: fixed;
@@ -473,9 +474,14 @@
   .gallery-book-svg-box__wrapper--beer-fest {
     position: relative;
 
+    @media (width > 24rem) {
+      margin-bottom: 3rem;
+    }
+
     @media (width > 62.5rem) {
       position: absolute;
       margin-top: 6rem;
+      mrgin-bottom: unset;
       max-width: clamp(12rem, 20vw, 18rem);
     }
   }
@@ -747,21 +753,33 @@
     align-items: center;
   }
 
-  .wrapper--mobile-L {
+  .wrapper--tablet-xl {
     @media (width < 62.5rem) {
-      max-width: calc(39rem + 2rem);
+      max-width: calc(48rem + 2rem);
     }
   }
 
-  .wrapper--mobile-S {
+  .wrapper--tablet-l {
     @media (width < 62.5rem) {
-      max-width: calc(32rem + 2rem);
+      max-width: calc(40rem + 2rem);
     }
   }
 
-  .wrapper--mobile-XS {
+  .wrapper--mobile-l {
+    @media (width < 62.5rem) {
+      max-width: calc(35.62rem + 2rem);
+    }
+  }
+
+  .wrapper--mobile-s {
     @media (width < 47.5rem) {
-      max-width: calc(30rem + 2rem);
+      max-width: calc(35.62rem + 2rem);
+    }
+  }
+
+  .wrapper--mobile-xs {
+    @media (width < 47.5rem) {
+      max-width: calc(31.25rem + 2rem);
     }
   }
 

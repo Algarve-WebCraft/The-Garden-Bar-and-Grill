@@ -97,7 +97,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  /* return; */
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -667,8 +667,8 @@ function initGallery() {
 
     
     setTimeout(() => {
-      galleryMain.style.willChange = "background-size";
-      galleryMain.style.backgroundSize = "auto";
+      /* galleryMain.style.willChange = "background-size";
+      galleryMain.style.backgroundSize = "auto"; */
       booksBox.classList.add("absolute-position");
     }, 1000);
 
@@ -759,8 +759,8 @@ function initGallery() {
 
     
     setTimeout(() => {
-      galleryMain.style.willChange = "background-size";
-      galleryMain.style.backgroundSize = "cover";
+      /* galleryMain.style.willChange = "background-size";
+      galleryMain.style.backgroundSize = "cover"; */
       booksBox.classList.remove("absolute-position"); // Remove absolute class which was preventing books from taking up dom space
     }, 1000);
 
