@@ -175,7 +175,6 @@ html.dark-mode .hamburger-btn {
 }
 
 html.dark-mode .hero-main-logo {
-  filter: invert(1) brightness(2);
   transform: rotateX(360deg);
 }
 
