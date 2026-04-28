@@ -155,46 +155,32 @@ function gsapOpeningHomeAnimations() {
         opacity: 0,
         duration: 1.5,
       },
-      "-=2",
-    )
-    .fromTo(
-      ".button-flex a",
-      { x: 100 },
-      {
-        x: 0,
-        opacity: 1,
-        duration: 0.5,
-        stagger: 0.3,
-        ease: "power3.out",
-        onComplete() {
-          gsap.set(".button-flex a", { clearProps: "all" });
-        },
-      },
-      "-=1.2",
+      "-=1",
     )
     .from(
       "#header",
       {
+        y: -100,
         opacity: 0,
         duration: 1.5,
       },
-      "-=1",
+      "-=0.5",
     )
     .from(
       "#footer",
       {
         opacity: 0,
-        x: -1000,
+        x: 200,
         duration: 1.25,
       },
-      "-=0.8",
+      "-=1.5",
     )
     .from(
       ".hero-main-logo-container",
       {
         scale: 0.1,
         opacity: 0,
-        duration: 0.75,
+        duration: 2,
         onComplete() {
           // Change body classes so swup takes over animations for page changes
           document.body.classList.remove("loading");
@@ -215,37 +201,6 @@ function gsapOpeningHomeAnimations() {
     );
 }
 
-///////////////////////////////////////////////////////////* Home buttons shifting *//////////////////////////////////////////////////////////////////////////*
-
-function shuffleHomeButtons() {
-  const buttonBox = document.querySelector(".button-flex");
-  if (!buttonBox) return;
-
-  gsap.registerPlugin(Flip);
-
-  buttonBox.addEventListener("mouseenter", () =>
-    buttonBox.classList.add("no-animation"),
-  );
-
-  buttonBox.addEventListener("mouseleave", () =>
-    buttonBox.classList.remove("no-animation"),
-  );
-
-  if (buttonBox.classList.contains("no-animation")) return;
-
-  const buttons = [...buttonBox.querySelectorAll(".cmp-main-btn--pg1-s1")];
-
-  const state = Flip.getState(buttons);
-
-  const first = buttons[0];
-  buttonBox.appendChild(first);
-
-  Flip.from(state, {
-    duration: 0.4,
-    ease: "power4.out",
-    stagger: 0.25,
-  }); /* The function is called in the 'initHomeBackground' below so the change matches the background images change */
-}
 ///////////////////////////////////////////////////////* Home section background image transitions *////////////////////////////////////////////////////////*
 
 const dayImagesLarge = [];
@@ -338,10 +293,6 @@ function initHomeBackground() {
 
   function showImage(index) {
     if (stopBackground) return;
-
-    setTimeout(() => {
-      shuffleHomeButtons();
-    }, 200); /* Switch the home buttons from the function above to be called with a small delay to match the images changing */
 
     const url = `url(${currentSet[index]})`;
 
@@ -462,7 +413,14 @@ function initAboutCarousel() {
     a.dataset.sizes = "100vw";
     a.dataset.type = "image";
 
+    const picture = document.createElement("picture");
+    const sourceWebp = document.createElement("source");
     const img = document.createElement("img");
+
+    sourceWebp.srcset = `/assets/images/carousel/${file}-s.webp 600w,/assets/images/carousel/${file}-l.webp 1920w`;
+    sourceWebp.sizes = "100vw";
+    sourceWebp.type = "image/webp";
+
     img.src = `/assets/images/carousel/${file}.jpg`;
     img.width = 400;
     img.height = 300;
@@ -470,7 +428,10 @@ function initAboutCarousel() {
     img.loading = "lazy";
     img.alt = alt;
 
-    a.appendChild(img);
+    picture.appendChild(sourceWebp);
+    picture.appendChild(img);
+
+    a.appendChild(picture);
     track.appendChild(a);
   }
 
@@ -593,6 +554,7 @@ function initMenu() {
 
 function initGallery() {
   const galleryRoot = document.querySelector(".gallery-page");
+  const galleryMain = document.querySelector("main.gallery-page");
 
   if (
     !galleryRoot ||
@@ -821,7 +783,6 @@ function initLazyImages(container) {
 
   observer = new IntersectionObserver(
     (entries, obs) => {
-      console.log(isMobile);
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
 
