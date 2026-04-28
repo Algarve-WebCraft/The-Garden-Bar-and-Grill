@@ -59,10 +59,11 @@
 
       {% include "header.njk" %}
 
-      <main id="swup" class="main {{ mainClass }}">
+      <main id="swup" class="main {{ mainClass }} transition-fade-main">
         {% block content %}{% endblock %}
       </main>
 
+      {% include "decor.njk" %}
       {% include "footer.njk" %}
   </body>
 </html>

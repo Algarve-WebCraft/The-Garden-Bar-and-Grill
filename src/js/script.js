@@ -389,8 +389,11 @@ function secondaryPageSvgInit() {
   const svgBox = document.querySelector(".side-svg-decor-box");
   const body = document.querySelector("body");
 
-  if (body.classList.contains("secondary-pages"))
-    svgBox?.classList.remove("transition-side-fade");
+  if (body.classList.contains("home")) {
+    svgBox.style.opacity = "0";
+  } else {
+    svgBox.style.opacity = "1";
+  };
 }
 
 ///////////////////////////////////////////////////////* About section carousel function *///////////////////////////////////////////////////////////////////*

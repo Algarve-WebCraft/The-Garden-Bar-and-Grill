@@ -18,6 +18,7 @@
   .side-svg-decor-box {
     user-select: none;
     pointer-events: none;
+    transition: opacity 0.75s ease-out;
   }
 
   .cmp-side-wave-svg {
@@ -433,6 +434,13 @@
     margin-top: clamp(5rem, 20vw, 10rem);
     overflow: visible;
     isolation: isolate;
+
+    svg {
+      position: absolute;
+      width: 200px;
+      top: -110%;
+      rotate: -70deg;
+    }
 
     @media (width > 62.5rem) {
       margin-top: 0;

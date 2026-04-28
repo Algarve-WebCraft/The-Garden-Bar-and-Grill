@@ -15,6 +15,10 @@ html.dark-mode body.home {
   background-blend-mode: multiply;
 }
 
+html.dark-mode body {
+  background-color: var(--clr-dark-theme-400);
+}
+
 html.dark-mode body.home::before,
 html.dark-mode body.home::after {
   background-color: rgba(0, 0, 0, 0.1);

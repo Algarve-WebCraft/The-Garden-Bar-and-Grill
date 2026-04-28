@@ -156,7 +156,7 @@
     --clr-green-300: oklch(61.495% 0.08185 151.815);
     --clr-green-350: #5e936cef;
     --clr-green-400: #3e5f44;
-    --clr-nav-background-light: #cdcdcdcc;
+    --clr-nav-background-light: #ffffffc3;
     --clr-nav-background-dark: #00000061;
     --clr-nav-shadow-light: #00000078;
     --clr-nav-shadow-dark: #ffffff74;
@@ -362,6 +362,7 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-columns: minmax(0, 1fr);
+    background-color: var(--clr-green-400);
     font-size: 1rem;
     font-family: var(--ff-body-sans);
     font-weight: 400;
@@ -1264,6 +1265,15 @@
 
     html.is-leaving .transition-fade,
     html.is-rendering .transition-fade {
+      opacity: 0 !important;
+    }
+
+    .transition-fade-main {
+      transition: opacity 0.2s ease-in;
+    }
+
+    html.is-leaving .transition-fade-main,
+    html.is-rendering .transition-fade-main {
       opacity: 0 !important;
     }
 
