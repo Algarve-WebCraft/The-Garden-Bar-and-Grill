@@ -134,7 +134,7 @@
     --fs-logo-light-text: clamp(1.5rem, 3.5vw, 3rem);
     --fs-nav-text: clamp(1.2rem, 2.5vw, 1.3rem);
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
-    --fs-text-hero-heading: clamp(1.85rem, 9vw, 3.75rem);
+    --fs-text-hero-heading: clamp(1.85rem, 8.5vw, 3.75rem);
     --fs-text-heading: clamp(3.25rem, 8vw, 4rem);
     --fs-text-body: clamp(1.1rem, 3vw, 1.25rem);
 
@@ -836,14 +836,15 @@
     font-size: var(--fs-text-hero-heading);
     color: var(--clr-green-100);
     width: fit-content;
+    max-width: 100%;
     margin-inline: auto;
     margin-top: 1.25em;
     margin-bottom: var(--marg-heading-32-48);
     text-shadow:
-      0 2px 6px rgba(0, 0, 0, 0.55),
-      0 10px 30px rgba(0, 0, 0, 0.4);
+      0 4px 8px rgba(0, 0, 0, 0.65),
+      0 8px 24px rgba(0, 0, 0, 0.45);
     border-radius: 0.5rem;
-    letter-spacing: 0.13em;
+    letter-spacing: 0.03em;
     line-height: 1.35em;
     backdrop-filter: blur(0.05rem);
     -webkit-backdrop-filter: blur(0.05rem);
@@ -881,7 +882,7 @@
   .hero-main-logo-container {
     position: absolute;
     right: 5%;
-    top: clamp(18rem, 72vw, 26rem);
+    top: clamp(18rem, 68vw, 26rem);
     width: fit-content;
     transform: rotate(-19deg);
     z-index: 1;
