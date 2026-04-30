@@ -435,27 +435,73 @@
     overflow: visible;
     isolation: isolate;
 
-    svg {
-      position: absolute;
-      width: 200px;
-      top: -110%;
-      rotate: -70deg;
-    }
-
     @media (width > 62.5rem) {
       margin-top: 0;
       width: 30%;
     }
+
+    .gallery-album-label {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+
+      span {
+        display: inline-block;
+        padding: 0.3em 0.6em;
+        background: var(--clr-bg-green-gradient);
+        opacity: 0.98;
+        border-radius: 0.35rem;
+        box-shadow:
+          0 3px 14px rgba(0, 0, 0, 0.25),
+          inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0.2rem;
+          left: 5%;
+          width: 0.6rem;
+          height: 0.6rem;
+          background: var(--clr-green-300);
+          border-radius: 50%;
+          transform: translateX(-50%);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+      }
+    }
+
+    .gallery-album-label--black {
+      span {
+        &::before {
+          left: unset;
+          right: 1%;
+        }
+      }
+    }
+
+    .gallery-album-label--beer {
+      top: 1.75rem;
+      rotate: 9deg;
+
+      span {
+        &::before {
+          left: 80%;
+        }
+      }
+    }
   }
 
   .cmp-info-text--pg4,
-  .beer-image-box > span {
+  .beer-image-box span {
     font-size: clamp(1.5rem, 6vw, 2.5rem);
     font-family: Open-Sans;
+    letter-spacing: 0.1em !important;
+    line-height: 1.4em !important;
     pointer-events: none;
 
     @media (width > 62.5rem) {
-      font-size: clamp(1.5rem, 2.75vw, 2rem);
+      font-size: clamp(1.25rem, 2.75vw, 1.75rem);
     }
   }
 
@@ -466,7 +512,7 @@
     letter-spacing: 0.15em;
     opacity: 1;
     translate: -50% -50%;
-    rotate: -6deg;
+    rotate: -12deg;
     filter: drop-shadow(4px 2px 2px rgba(0, 0, 0, 0.45));
     border-radius: 2rem;
 
@@ -475,18 +521,18 @@
     }
 
     @media (width > 62.5rem) {
-      top: -35%;
-      left: 40%;
+      top: -20%;
+      left: 30%;
     }
   }
 
   .cmp-info-text--pg4--black {
     opacity: 1;
-    rotate: 6deg;
+    rotate: 23deg;
     left: 50%;
 
     @media (width > 62.5rem) {
-      left: 60%;
+      left: 78%;
     }
   }
 
@@ -535,14 +581,12 @@
       left: 50%;
       translate: -50% -50%;
       opacity: 1;
-      rotate: -6deg;
       letter-spacing: 0.15em;
       line-height: 2em;
       border-radius: 2rem;
 
       @media (width > 37.5rem) {
         top: -20%;
-        rotate: none;
       }
 
       @media (width > 62.5rem) {

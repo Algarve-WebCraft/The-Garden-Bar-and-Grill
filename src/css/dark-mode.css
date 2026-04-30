@@ -16,7 +16,12 @@ html.dark-mode body.home {
 }
 
 html.dark-mode body {
-  background-color: var(--clr-dark-theme-400);
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--clr-dark-theme-400) 85%, white),
+    var(--clr-dark-theme-400),
+    color-mix(in srgb, var(--clr-dark-theme-400) 85%, black)
+  );
 }
 
 html.dark-mode body.home::before,
@@ -39,6 +44,17 @@ html.dark-mode main.gallery-page {
     background-image:
       linear-gradient(rgba(0, 15, 40, 0.3), rgba(0, 15, 40, 0.3)),
       url("/assets/images/background/gallery-bg-l.webp");
+  }
+}
+
+html.dark-mode .gallery-album-label {
+  span {
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--clr-dark-theme-300) 85%, white),
+      var(--clr-dark-theme-300),
+      color-mix(in srgb, var(--clr-dark-theme-300) 85%, black)
+    );
   }
 }
 
