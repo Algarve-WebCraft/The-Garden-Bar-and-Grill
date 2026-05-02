@@ -368,8 +368,6 @@
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-columns: minmax(0, 1fr);
     background-color: #0b140b;
-    background-image: var(--clr-bg-green-gradient);
-    background-repeat: no-repeat;
     font-size: 1rem;
     font-family: var(--ff-body-sans);
     font-weight: 400;
