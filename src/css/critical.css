@@ -358,7 +358,8 @@
 
   html,
   body {
-    min-height: 105svh;
+    min-height: 108svh;
+    background: var(--clr-bg-green-gradient);
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
   }
