@@ -4,7 +4,7 @@ import SwupHeadPlugin from "@swup/head-plugin";
 
 document.addEventListener("DOMContentLoaded", () => {
   initPageScripts();
-  /* initSwup(); */
+  initSwup();
   activateHamburgerMenu();
   updateActiveNavLink();
   darkMode();
@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
 
 ////////////////////////////////* Swup page navigation *//////////////////////////////////////////////////////////////////////////////////////*
 
-/* function initSwup() {
+function initSwup() {
   const swup = new Swup({
     containers: ["#swup", "#swup-header-container", "#footer"],
     animateHistoryBrowsing: true,
@@ -59,7 +59,7 @@ window.addEventListener("load", () => {
     scrollToTop();
     stopTransitionOnResize();
   });
-} */
+}
 
 function initPageScripts() {
   setTimeout(() => {
@@ -97,7 +97,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  /* return; */
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
