@@ -8,6 +8,12 @@
   --clr-dark-theme-200: #4d7a58;
   --clr-dark-theme-300: #33523d;
   --clr-dark-theme-400: #243126;
+  --clr-bg-dark-green-gradient: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--clr-dark-theme-400) 85%, white),
+    var(--clr-dark-theme-400),
+    color-mix(in srgb, var(--clr-dark-theme-400) 85%, black)
+  );
 }
 
 html.dark-mode body.home {
@@ -16,12 +22,7 @@ html.dark-mode body.home {
 }
 
 html.dark-mode body {
-  background: linear-gradient(
-    to bottom,
-    color-mix(in srgb, var(--clr-dark-theme-400) 85%, white),
-    var(--clr-dark-theme-400),
-    color-mix(in srgb, var(--clr-dark-theme-400) 85%, black)
-  );
+  background-image: var(--clr-bg-dark-green-gradient);
 }
 
 html.dark-mode body.home::before,
