@@ -360,7 +360,6 @@
   body {
     min-height: 100%;
     background-color: #3e5f44;
-    background-color: var(--clr-bg-green-gradient) !important;
     overflow-x: hidden;
   }
 
@@ -381,6 +380,7 @@
 
   main {
     min-height: 100dvh;
+    background-color: var(--clr-bg-green-gradient);
   }
 
   body.home.loading::before {
