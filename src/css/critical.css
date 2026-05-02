@@ -358,10 +358,10 @@
 
   html,
   body {
-    min-height: 108svh;
-    background: var(--clr-bg-green-gradient);
+    min-height: 100%;
+    background-color: #3e5f44;
+    background: var(--clr-bg-green-gradient) !important;
     overflow-x: hidden;
-    -webkit-overflow-scrolling: touch;
   }
 
   body {
@@ -369,18 +369,18 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-columns: minmax(0, 1fr);
-    background: var(--clr-bg-green-gradient);
     font-size: 1rem;
     font-family: var(--ff-body-sans);
     font-weight: 400;
+    overflow-x: hidden;
 
     * > {
       min-width: 0;
     }
   }
 
-  body.reserve {
-    min-height: 120svh;
+  main {
+    min-height: 100dvh;
   }
 
   body.home.loading::before {
@@ -977,7 +977,7 @@
 
   .footer-flex {
     position: absolute;
-    bottom: 0.5rem;
+    bottom: 2rem;
     right: 5%;
     color: var(--clr-dark-theme-300);
     z-index: 900;
