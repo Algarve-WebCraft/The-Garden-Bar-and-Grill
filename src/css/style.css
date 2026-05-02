@@ -448,9 +448,9 @@
 
       span {
         display: inline-block;
-        padding: 0.3em 0.6em;
+        padding: 0.4em 0.8em;
         background: var(--clr-bg-green-gradient);
-        opacity: 0.98;
+        opacity: 0.95;
         border-radius: 0.35rem;
         box-shadow:
           0 3px 14px rgba(0, 0, 0, 0.25),
@@ -459,8 +459,8 @@
         &::before {
           content: "";
           position: absolute;
-          bottom: 0.2rem;
-          left: 5%;
+          bottom: 0.15em;
+          left: 25%;
           width: 0.6rem;
           height: 0.6rem;
           background: var(--clr-green-300);
@@ -475,18 +475,27 @@
       span {
         &::before {
           left: unset;
-          right: 1%;
+          right: 20%;
         }
       }
     }
 
     .gallery-album-label--beer {
-      top: 1.75rem;
-      rotate: 9deg;
+      top: 1.5rem;
+      rotate: -12deg;
+
+      @media (width > 62.5rem) {
+        top: 1.65rem;
+        rotate: 7deg;
+      }
 
       span {
         &::before {
-          left: 80%;
+          left: 40%;
+
+          @media (width > 62.5rem) {
+            left: 83%;
+          }
         }
       }
     }
@@ -494,7 +503,7 @@
 
   .cmp-info-text--pg4,
   .beer-image-box span {
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-size: clamp(1.25rem, 6vw, 2.25rem);
     font-family: Open-Sans;
     letter-spacing: 0.1em !important;
     line-height: 1.4em !important;
@@ -506,33 +515,31 @@
   }
 
   .cmp-info-text--pg4 {
-    top: -45%;
-    left: 50%;
+    top: -25%;
+    left: 30%;
     color: var(--clr-lighter-white) !important;
     letter-spacing: 0.15em;
     opacity: 1;
     translate: -50% -50%;
-    rotate: -12deg;
+    rotate: -10deg;
     filter: drop-shadow(4px 2px 2px rgba(0, 0, 0, 0.45));
     border-radius: 2rem;
-
-    @media (width > 37.5rem) {
-      top: -40%;
-    }
 
     @media (width > 62.5rem) {
       top: -20%;
       left: 30%;
+      rotate: -12deg;
     }
   }
 
   .cmp-info-text--pg4--black {
     opacity: 1;
-    rotate: 23deg;
-    left: 50%;
+    rotate: 12deg;
+    left: 75%;
 
     @media (width > 62.5rem) {
       left: 78%;
+      rotate: 23deg;
     }
   }
 
@@ -571,13 +578,13 @@
     margin-inline: auto;
 
     img {
-      max-height: 31.25rem;
+      max-width: 19rem;
     }
 
     span {
       display: block;
       color: var(--clr-lighter-white) !important;
-      top: -25%;
+      top: -20%;
       left: 50%;
       translate: -50% -50%;
       opacity: 1;

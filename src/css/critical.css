@@ -616,6 +616,7 @@
     flex-direction: column;
     justify-content: space-between;
     background-color: var(--clr-green-300);
+    margin-left: 0.5rem;
     cursor: pointer;
     user-select: none;
     border: none;
