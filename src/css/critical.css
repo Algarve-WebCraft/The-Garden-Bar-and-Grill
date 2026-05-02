@@ -367,7 +367,7 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-columns: minmax(0, 1fr);
-    background-color: #011c01;
+    background-color: #011901;
     background-image: var(--clr-bg-green-gradient);
     background-repeat: no-repeat;
     font-size: 1rem;
