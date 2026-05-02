@@ -367,8 +367,8 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-columns: minmax(0, 1fr);
-    background-color: #0b140b;
-    background-color: var(--clr-bg-green-gradient);
+    background: #0b140b;
+    background: var(--clr-bg-green-gradient);
     font-size: 1rem;
     font-family: var(--ff-body-sans);
     font-weight: 400;
@@ -381,7 +381,6 @@
 
   main {
     min-height: 100dvh;
-    background-color: var(--clr-bg-green-gradient);
   }
 
   body.home.loading::before {
