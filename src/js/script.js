@@ -4,7 +4,7 @@ import SwupHeadPlugin from "@swup/head-plugin";
 
 document.addEventListener("DOMContentLoaded", () => {
   initPageScripts();
-  initSwup();
+  /* initSwup(); */
   activateHamburgerMenu();
   updateActiveNavLink();
   darkMode();
@@ -29,7 +29,7 @@ window.addEventListener("load", () => {
 
 ////////////////////////////////* Swup page navigation *//////////////////////////////////////////////////////////////////////////////////////*
 
-function initSwup() {
+/* function initSwup() {
   const swup = new Swup({
     containers: ["#swup", "#swup-header-container", "#footer"],
     animateHistoryBrowsing: true,
@@ -59,7 +59,7 @@ function initSwup() {
     scrollToTop();
     stopTransitionOnResize();
   });
-}
+} */
 
 function initPageScripts() {
   setTimeout(() => {
