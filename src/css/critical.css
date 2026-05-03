@@ -134,7 +134,7 @@
     --fs-logo-light-text: clamp(1.5rem, 3.5vw, 3rem);
     --fs-nav-text: clamp(1.2rem, 2.5vw, 1.3rem);
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
-    --fs-text-hero-heading: clamp(1.85rem, 9vw, 3.75rem);
+    --fs-text-hero-heading: clamp(2.25rem, 10vw, 4.25rem);
     --fs-text-heading: clamp(3.25rem, 8vw, 4rem);
     --fs-text-body: clamp(1.1rem, 3vw, 1.25rem);
 
@@ -149,13 +149,13 @@
 
     --clr-lighter-white: #0f84f9;
     --clr-lighter-black: #1a1a1a;
-    --clr-text-white: #f4f4f4;
-    --clr-green-100: #ecffde;
-    --clr-green-200: #93da97;
-    --clr-green-250: #8bd58e;
+    --clr-text-white: oklch(96.715% 0.00011 271.152);
+    --clr-green-100: oklch(93.392% 0.0283 152.101);
+    --clr-green-200: oklch(82.425% 0.117 145.79);
+    --clr-green-250: oklch(80.646% 0.1233 145.287);
     --clr-green-300: oklch(61.495% 0.08185 151.815);
-    --clr-green-350: #5e936cef;
-    --clr-green-400: #3e5f44;
+    --clr-green-350: oklch(61.495% 0.08185 151.815 / 0.937);
+    --clr-green-400: oklch(45.179% 0.05841 149.346);
     --clr-bg-green-gradient: linear-gradient(
       to bottom,
       color-mix(in srgb, var(--clr-green-400) 85%, white),
@@ -184,12 +184,11 @@
     color: var(--clr-green-100);
     margin-bottom: var(--marg-heading-16-32);
     line-height: 1.45em;
-    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-    text-transform: uppercase;
-
-    @media (width > 62.5rem) {
-      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.888);
-    }
+    letter-spacing: 0.03em;
+    text-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.6),
+      0 3px 8px rgba(0, 0, 0, 0.5),
+      0 10px 30px rgba(0, 0, 0, 0.35);
   }
 
   .cmp-text {
@@ -554,6 +553,7 @@
         position: absolute;
         top: -80%;
         right: 4.75rem;
+        opacity: 0.65;
 
         div {
           opacity: 0;
@@ -842,25 +842,26 @@
 
   .hero-title {
     position: relative;
-    font-size: var(--fs-text-hero-heading);
-    color: var(--clr-green-100);
     width: fit-content;
     max-width: 100%;
+    font-size: var(--fs-text-hero-heading);
+    color: var(--clr-green-100);
     margin-inline: auto;
     margin-top: 1.25em;
     margin-bottom: var(--marg-heading-32-48);
-    text-shadow:
-      0 4px 8px rgba(0, 0, 0, 0.65),
-      0 8px 24px rgba(0, 0, 0, 0.45);
-    border-radius: 0.5rem;
     letter-spacing: 0.03em;
     line-height: 1.35em;
-    backdrop-filter: blur(0.05rem);
-    -webkit-backdrop-filter: blur(0.05rem);
     overflow-wrap: normal;
     user-select: none;
     text-wrap: balance;
     z-index: 10;
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 6px rgba(180, 220, 180, 0.15));
+    text-shadow:
+      0 1px 0 rgba(0, 0, 0, 0.6),
+      0 3px 8px rgba(0, 0, 0, 0.5),
+      0 10px 30px rgba(0, 0, 0, 0.35);
 
     @media (width > 62.5rem) {
       margin-top: 0.5em;
@@ -868,6 +869,8 @@
 
     .hero-title__letters {
       display: inline-flex;
+      font-size: var(--fs-text-hero-heading);
+      letter-spacing: 0.05em;
       white-space: nowrap;
 
       span {

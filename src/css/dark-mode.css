@@ -1,13 +1,13 @@
 :root {
-  --clr-lighter-white: #fafbfc;
-  --clr-lighter-black: #1a1a1a;
-  --clr-text-white: #f4f4f4;
-  --clr-nav-background-dark: #00000061;
-  --clr-nav-shadow-dark: #ffffff74;
-  --clr-dark-theme-100: #7fbf89;
-  --clr-dark-theme-200: #4d7a58;
-  --clr-dark-theme-300: #33523d;
-  --clr-dark-theme-400: #243126;
+  --clr-lighter-white: oklch(98.761% 0.00181 249.253);
+  --clr-lighter-black: oklch(21.779% 0.00002 271.152);
+  --clr-text-white: oklch(96.715% 0.00011 271.152);
+  --clr-nav-background-dark: oklch(0% 0 0 / 0.38);
+  --clr-nav-shadow-dark: oklch(100% 0.00011 271.152 / 0.455);
+  --clr-dark-theme-100: oklch(74.699% 0.10138 148.497);
+  --clr-dark-theme-200: oklch(53.691% 0.07282 151.125);
+  --clr-dark-theme-300: oklch(40.766% 0.05109 154.011);
+  --clr-dark-theme-400: oklch(29.746% 0.02641 149.195);
   --clr-bg-dark-green-gradient: linear-gradient(
     to bottom,
     color-mix(in srgb, var(--clr-dark-theme-400) 85%, white),
