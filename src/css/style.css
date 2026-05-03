@@ -727,6 +727,7 @@
   .contact-block-flex {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 4rem;
     max-width: 80%;
     margin-inline: auto;
