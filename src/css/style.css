@@ -491,16 +491,16 @@
       rotate: -12deg;
 
       @media (width > 62.5rem) {
-        top: 1.65rem;
+        top: 1.8rem;
         rotate: 7deg;
       }
 
       span {
         &::before {
-          left: 40%;
+          left: 20%;
 
           @media (width > 62.5rem) {
-            left: 83%;
+            left: clamp(70%, 12vw, 83%);
           }
         }
       }
@@ -773,11 +773,17 @@
       line-height: 1.35em;
     }
 
+    &:nth-of-type(4) span {
+      text-decoration: wavy underline;
+      text-decoration-thickness: 0.05rem;
+      text-underline-offset: 0.15em;
+    }
+
     &:last-of-type {
       font-weight: 600;
       text-decoration: underline;
       line-height: 1.85em;
-      text-underline-offset: 0.26em;
+      text-underline-offset: 0.3em;
     }
   }
 

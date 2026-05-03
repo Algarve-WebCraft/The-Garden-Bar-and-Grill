@@ -134,7 +134,7 @@
     --fs-logo-light-text: clamp(1.5rem, 3.5vw, 3rem);
     --fs-nav-text: clamp(1.2rem, 2.5vw, 1.3rem);
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
-    --fs-text-hero-heading: clamp(2.25rem, 10vw, 4.25rem);
+    --fs-text-hero-heading: clamp(2.5rem, 11vw, 4.25rem);
     --fs-text-heading: clamp(3.25rem, 8vw, 4rem);
     --fs-text-body: clamp(1.1rem, 3vw, 1.25rem);
 
@@ -520,6 +520,7 @@
   .dark-toggle-text-box {
     position: relative;
     user-select: none;
+    opacity: 0.65;
     z-index: -1;
 
     svg {
@@ -553,7 +554,6 @@
         position: absolute;
         top: -80%;
         right: 4.75rem;
-        opacity: 0.65;
 
         div {
           opacity: 0;
@@ -850,7 +850,7 @@
     margin-top: 1.25em;
     margin-bottom: var(--marg-heading-32-48);
     letter-spacing: 0.03em;
-    line-height: 1.35em;
+    line-height: 1.15em;
     overflow-wrap: normal;
     user-select: none;
     text-wrap: balance;
@@ -869,7 +869,7 @@
 
     .hero-title__letters {
       display: inline-flex;
-      font-size: var(--fs-text-hero-heading);
+      font-size: clamp(2.7rem, 11vw, 4.45rem);
       letter-spacing: 0.05em;
       white-space: nowrap;
 
@@ -894,7 +894,7 @@
   .hero-main-logo-container {
     position: absolute;
     right: 5%;
-    top: clamp(18rem, 68vw, 26rem);
+    top: clamp(19rem, 74vw, 26rem);
     width: fit-content;
     transform: rotate(-19deg);
     z-index: 1;
