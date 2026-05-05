@@ -23,6 +23,7 @@ html.dark-mode body.home {
 
 html.dark-mode body {
   background-image: var(--clr-bg-dark-green-gradient);
+  background-color: #011801;
 }
 
 html.dark-mode body.home::before,
