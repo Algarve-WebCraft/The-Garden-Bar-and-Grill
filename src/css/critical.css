@@ -162,7 +162,7 @@
       var(--clr-green-400),
       color-mix(in srgb, var(--clr-green-400) 85%, black)
     );
-    --clr-nav-background-light: #f1fcef;
+    --clr-nav-background-light: #f4fff1;
     --clr-nav-background-dark: #00000061;
     --clr-nav-shadow-light: #00000078;
     --clr-nav-shadow-dark: #ffffff74;
