@@ -149,6 +149,7 @@
 
     --clr-lighter-white: #0f84f9;
     --clr-lighter-black: #1a1a1a;
+    --clr-white: #fff;
     --clr-text-white: oklch(96.715% 0.00011 271.152);
     --clr-green-100: oklch(93.392% 0.0283 152.101);
     --clr-green-200: oklch(82.425% 0.117 145.79);
@@ -366,7 +367,7 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-columns: minmax(0, 1fr);
-    background-color: var(--clr-nav-background-light);
+    background-color: var(--clr-white);
     background-image: var(--clr-bg-green-gradient);
     background-repeat: no-repeat;
     font-size: 1rem;
@@ -443,7 +444,7 @@
     position: relative;
     top: 0;
     z-index: 999;
-    background-color: var(--clr-nav-background-light);
+    background-color: var(--clr-white);
     box-shadow: 1px 1px 25px var(--clr-nav-shadow-light);
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
@@ -462,10 +463,6 @@
     user-select: none;
     aspect-ratio: 120 / 110;
     transition: transform 3s ease-out;
-
-    @media (prefers-reduced-motion: reduce) {
-      transition: none !important;
-    }
   }
 
   .business-logo-text-dark-wrapper {
