@@ -446,7 +446,7 @@
     top: 0;
     z-index: 999;
     background-color: var(--clr-white);
-    opacity: 0.95;
+    opacity: 0.98;
     box-shadow: 1px 1px 25px var(--clr-nav-shadow-light);
     backdrop-filter: blur(0.25rem);
     -webkit-backdrop-filter: blur(0.25rem);
