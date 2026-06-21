@@ -390,7 +390,10 @@
     transition: opacity 1.5s ease !important;
   }
 
-
+  body.home.bg-fade-in::before {
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
 
   body.home {
     --bg-before: url("/assets/images/day/garden-day-1.webp");
