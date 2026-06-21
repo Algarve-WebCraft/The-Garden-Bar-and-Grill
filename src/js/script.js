@@ -393,7 +393,7 @@ function secondaryPageSvgInit() {
     svgBox.style.opacity = "0";
   } else {
     svgBox.style.opacity = "1";
-  };
+  }
 }
 
 ///////////////////////////////////////////////////////* About section carousel function *///////////////////////////////////////////////////////////////////*
@@ -490,44 +490,38 @@ function initMenu() {
       switch (lang) {
         case "en":
           images = [
-            {
-              href: "/assets/images/menu/english-1.jpg",
-              type: "image",
-            },
-            {
-              href: "/assets/images/menu/english-2.jpg",
-              type: "image",
-            },
+            { href: "/assets/images/menu/english-1.webp", type: "image" },
+            { href: "/assets/images/menu/english-2.webp", type: "image" },
           ];
           break;
         case "pt":
           images = [
-            { href: "/assets/images/menu/portuguese-1.jpg", type: "image" },
-            { href: "/assets/images/menu/portuguese-2.jpg", type: "image" },
+            { href: "/assets/images/menu/portuguese-1.webp", type: "image" },
+            { href: "/assets/images/menu/portuguese-2.webp", type: "image" },
           ];
           break;
         case "de":
           images = [
-            { href: "/assets/images/menu/german-1.jpg", type: "image" },
-            { href: "/assets/images/menu/german-2.jpg", type: "image" },
+            { href: "/assets/images/menu/german-1.webp", type: "image" },
+            { href: "/assets/images/menu/german-2.webp", type: "image" },
           ];
           break;
         case "fr":
           images = [
-            { href: "/assets/images/menu/french-1.jpg", type: "image" },
-            { href: "/assets/images/menu/french-2.jpg", type: "image" },
+            { href: "/assets/images/menu/french-1.webp", type: "image" },
+            { href: "/assets/images/menu/french-2.webp", type: "image" },
           ];
           break;
         case "dr":
           images = [
-            { href: "/assets/images/menu/drinks-1.jpg", type: "image" },
-            { href: "/assets/images/menu/drinks-2.jpg", type: "image" },
+            { href: "/assets/images/menu/drinks-1.webp", type: "image" },
+            { href: "/assets/images/menu/drinks-2.webp", type: "image" },
           ];
           break;
         case "bw":
           images = [
-            { href: "/assets/images/menu/beer-wine-1.jpg", type: "image" },
-            { href: "/assets/images/menu/beer-wine-2.jpg", type: "image" },
+            { href: "/assets/images/menu/beer-wine-1.webp", type: "image" },
+            { href: "/assets/images/menu/beer-wine-2.webp", type: "image" },
           ];
           break;
       }
@@ -874,7 +868,7 @@ function createImageTags() {
 
     if (!container) return;
 
-    for (let i = 1; i <= 23; i++) {
+    for (let i = 2; i <= 23; i++) {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album3";

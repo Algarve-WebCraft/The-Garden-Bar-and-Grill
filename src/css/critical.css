@@ -368,7 +368,7 @@
     display: grid;
     grid-template-rows: auto minmax(0, 1fr) auto;
     grid-template-columns: minmax(0, 1fr);
-    background-color: var(--clr-white);
+    background-color: var(--clr-green-400);
     background-image: var(--clr-bg-green-gradient);
     background-repeat: no-repeat;
     font-size: 1rem;
@@ -678,7 +678,7 @@
   .nav-bar {
     display: none;
     position: fixed;
-    background-color: #ffffff;
+    background-color: var(--clr-white);
     color: var(--clr-green-300);
     font-weight: 400;
     font-family: var(--ff-nav-pacifico);
