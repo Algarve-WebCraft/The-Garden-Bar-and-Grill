@@ -134,10 +134,10 @@
     --fs-logo-light-text: clamp(1.5rem, 3.5vw, 3rem);
     --fs-nav-text: clamp(1.2rem, 2.5vw, 1.3rem);
     --fs-btn-text: clamp(0.9rem, 3vw, 1rem);
-    --fs-text-hero-heading: clamp(2.25rem, 9vw + 0.7rem, 4.25rem);
-    --fs-text-hero-heading-span: clamp(2.4rem, 9vw + 0.7rem, 4.45rem);
-    --fs-text-heading: clamp(3.25rem, 8vw, 4rem);
-    --fs-text-body: clamp(1.1rem, 3vw, 1.25rem);
+    --fs-text-hero-heading: clamp(2.25rem, 8vw + 0.6rem, 4.25rem);
+    --fs-text-hero-heading-span: clamp(2.4rem, 8vw + 0.6rem, 4.45rem);
+    --fs-text-heading: clamp(3rem, 8vw, 4rem);
+    --fs-text-body: clamp(1rem, 3vw, 1.25rem);
 
     --ff-nav-pacifico: "Kaushan Script", Arial, sans-serif;
     --ff-heading-times: "Times New Roman", Times, serif;
