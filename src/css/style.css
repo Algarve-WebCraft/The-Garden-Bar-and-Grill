@@ -510,7 +510,7 @@
   .cmp-info-text--pg4,
   .beer-image-box span {
     font-size: clamp(1.25rem, 6vw, 2.25rem);
-    font-family: Open-Sans;
+    font-family: var(--ff-heading-times);
     letter-spacing: 0.1em !important;
     line-height: 1.4em !important;
     pointer-events: none;
