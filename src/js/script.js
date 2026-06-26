@@ -623,7 +623,10 @@ function initGallery() {
     const tl = gsap.timeline({
       onComplete: () => {
         animationOnGoing = false;
-        books.forEach((book) => (book.style.display = "none"));
+        books.forEach((book) => {
+          book.style.opacity = "0";
+          book.style.pointerEvents = "none";
+        });
       },
     });
 
@@ -693,8 +696,8 @@ function initGallery() {
     );
 
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 700);
+      window.scrollTo({ top: 80, behavior: "smooth" });
+    }, 1500);
 
     bookTimelines[index] = tl;
   }
@@ -729,8 +732,6 @@ function initGallery() {
         y: 10,
         ease: "power3.in",
       });
-
-      books.forEach((book) => (book.style.display = "block"));
 
       // Reverse timeline and reset books
       tl.reverse().then(() => {
@@ -882,11 +883,11 @@ function scrollToTop() {
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 800) {
-      button.style.position = "fixed";
       button.style.opacity = "1";
+      button.style.pointerEvents = "auto";
     } else {
-      button.style.position = "static";
       button.style.opacity = "0";
+      button.style.pointerEvents = "none";
     }
   });
 
