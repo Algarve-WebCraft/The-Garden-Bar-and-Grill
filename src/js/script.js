@@ -239,7 +239,7 @@ function initHomeBackground() {
   let toggle = false;
   const intervalTime = 7500;
 
-  home.classList.remove("bg-fade-in", "with-transition"); 
+  home.classList.remove("bg-fade-in", "with-transition");
 
   requestAnimationFrame(() => {
     home.classList.add("bg-fade-in");
@@ -822,7 +822,7 @@ function createImageTags() {
       a.className = "glightbox";
       a.dataset.gallery = "album1";
       a.dataset.href = `/assets/images/book-start/${i}-l.webp`;
-      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l-m.webp 1400w, /assets/images/book-start/${i}-l.webp 1920w`;
+      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 1000w, /assets/images/book-start/${i}-l-m.webp 1400w, /assets/images/book-start/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
@@ -1051,11 +1051,8 @@ function darkMode() {
   }
 
   (function detectColorScheme() {
-    const preloadLink = document.createElement("link");
     const bodyEl = document.querySelector("body");
     let theme = "light";
-    preloadLink.rel = "preload";
-    preloadLink.as = "image";
 
     if (localStorage.getItem("theme")) {
       theme = localStorage.getItem("theme");
@@ -1064,6 +1061,12 @@ function darkMode() {
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       theme = "dark";
+    }
+
+    if (theme === "light" && bodyEl.classList.contains("home")) {
+      disableDarkMode();
+    } else if (theme === "dark" && bodyEl.classList.contains("home")) {
+      enableDarkMode();
     }
   })();
 
