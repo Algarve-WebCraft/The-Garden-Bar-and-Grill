@@ -693,8 +693,8 @@ function initGallery() {
     );
 
     setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 700);
+      window.scrollTo({ top: 80, behavior: "smooth" });
+    }, 1700);
 
     bookTimelines[index] = tl;
   }
