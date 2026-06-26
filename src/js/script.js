@@ -884,9 +884,11 @@ function scrollToTop() {
     if (window.scrollY > 800) {
       button.style.opacity = "1";
       button.style.pointerEvents = "auto";
+      button.style.position = "fixed";
     } else {
       button.style.opacity = "0";
       button.style.pointerEvents = "none";
+      button.style.position = "static";
     }
   });
 
