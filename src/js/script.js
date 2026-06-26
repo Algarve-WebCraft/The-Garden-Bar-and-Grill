@@ -97,7 +97,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  /* return; */
+  return;
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -245,6 +245,16 @@ function initHomeBackground() {
     home.classList.add("bg-fade-in");
   });
 
+  const imageCache = new Map();
+
+  function preloadImage(src) {
+    if (imageCache.has(src)) return;
+
+    const img = new Image();
+    img.onload = () => imageCache.set(src, true);
+    img.src = src;
+  }
+
   function stopImagesOnChange() {
     const navLinks = document.querySelectorAll("nav a");
     const pageLinks = document.querySelectorAll(".cmp-main-btn--pg1-s1");
@@ -307,16 +317,14 @@ function initHomeBackground() {
     }
 
     toggle = !toggle;
+
+    const nextIndex = (index + 1) % currentSet.length;
+    preloadImage(currentSet[nextIndex]);
   }
 
   function nextImage() {
-    const nextIndex = (currentIndex + 1) % currentSet.length;
-    const nextSrc = currentSet[nextIndex];
-
-    preloadImage(nextSrc).then(() => {
-      currentIndex = nextIndex;
-      showImage(currentIndex);
-    });
+    currentIndex = (currentIndex + 1) % currentSet.length;
+    showImage(currentIndex);
   }
 
   showImage(currentIndex);
@@ -356,7 +364,7 @@ function initHomeBackground() {
     }
   });
 
-  const imageCache = new Set();
+  /* const imageCache = new Set();
 
   function preloadImage(src) {
     if (imageCache.has(src)) return Promise.resolve();
@@ -380,7 +388,7 @@ function initHomeBackground() {
         };
       }
     });
-  }
+  } */
 }
 
 ///////////////////////////////////////////////////////* Secondary pages side-svg transitions */////////////////////////////////////////////////////////////*
@@ -411,7 +419,6 @@ function initAboutCarousel() {
     const a = document.createElement("a");
     a.className = "glightbox";
     a.dataset.gallery = "about-carousel";
-    a.dataset.href = `/assets/images/carousel/${file}.webp`;
     a.dataset.srcset = `/assets/images/carousel/${file}-s.webp 600w, /assets/images/carousel/${file}-l.webp 1920w`;
     a.dataset.sizes = "100vw";
     a.dataset.type = "image";
@@ -420,11 +427,10 @@ function initAboutCarousel() {
     const sourceWebp = document.createElement("source");
     const img = document.createElement("img");
 
-    sourceWebp.srcset = `/assets/images/carousel/${file}-s.webp 600w,/assets/images/carousel/${file}-l.webp 1920w`;
+    sourceWebp.srcset = `/assets/images/carousel/${file}-s.webp`;
     sourceWebp.sizes = "100vw";
     sourceWebp.type = "image/webp";
 
-    img.src = `/assets/images/carousel/${file}.jpg`;
     img.width = 400;
     img.height = 300;
     img.decoding = "async";
@@ -814,15 +820,13 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album1";
-      a.dataset.href = `/assets/images/book-start/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/book-start/${i}-l.webp`;
+      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l-m.webp 1400w, /assets/images/book-start/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.dataset.src = `/assets/images/book-start/${i}.jpg`;
-      img.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
-      img.sizes = "100vw";
+      img.dataset.src = `/assets/images/book-start/${i}-s.webp`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -844,15 +848,13 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album2";
-      a.dataset.href = `/assets/images/book-2016/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/book-2016/${i}-l.webp`;
+      a.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l-m.webp 1400w, /assets/images/book-2016/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.dataset.src = `/assets/images/book-2016/${i}.jpg`;
-      img.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
-      img.sizes = "100vw";
+      img.dataset.src = `/assets/images/book-2016/${i}-s.webp`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -872,15 +874,13 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album3";
-      a.dataset.href = `/assets/images/beer-fest/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/beer-fest/${i}-l.webp`;
+      a.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l-m.webp 1400w, /assets/images/beer-fest/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.dataset.src = `/assets/images/beer-fest/${i}.jpg`;
-      img.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
-      img.sizes = "100vw";
+      img.dataset.src = `/assets/images/beer-fest/${i}-s.webp`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -1063,18 +1063,6 @@ function darkMode() {
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       theme = "dark";
-    }
-
-    //Logic for setting html pre-load <link> for background images depending on the theme
-
-    if (theme === "light" && bodyEl.classList.contains("home")) {
-      disableDarkMode();
-      preloadLink.href = "/assets/images/day/garden-day-1.webp";
-      document.head.appendChild(preloadLink);
-    } else if (theme === "dark" && bodyEl.classList.contains("home")) {
-      enableDarkMode();
-      preloadLink.href = "/assets/images/night/garden-night-1.webp";
-      document.head.appendChild(preloadLink);
     }
   })();
 
