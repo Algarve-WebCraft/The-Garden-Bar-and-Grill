@@ -614,7 +614,7 @@
     }
   }
 
-  /* .album-wrapper {
+  .album-wrapper {
     display: block;
     position: relative;
     z-index: 10;
@@ -653,7 +653,7 @@
         max-width: 100%;
       }
     }
-  } */
+  }
 
   /* .album-grid__btn {
     position: fixed;
