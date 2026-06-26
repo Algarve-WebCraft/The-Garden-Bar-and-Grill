@@ -795,15 +795,13 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album1";
-      a.dataset.href = `/assets/images/book-start/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/book-start/${i}-l.webp`;
+      a.dataset.srcset = `/assets/images/book-start/${i}-s.webp 1000w, /assets/images/book-start/${i}-l-m.webp 1400w, /assets/images/book-start/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.dataset.src = `/assets/images/book-start/${i}.jpg`;
-      img.dataset.srcset = `/assets/images/book-start/${i}-s.webp 800w, /assets/images/book-start/${i}-l.webp 1920w`;
-      img.sizes = "100vw";
+      img.dataset.src = `/assets/images/book-start/${i}-s.webp`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -825,15 +823,13 @@ function createImageTags() {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album2";
-      a.dataset.href = `/assets/images/book-2016/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/book-2016/${i}-l.webp`;
+      a.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l-m.webp 1400w, /assets/images/book-2016/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.dataset.src = `/assets/images/book-2016/${i}.jpg`;
-      img.dataset.srcset = `/assets/images/book-2016/${i}-s.webp 800w, /assets/images/book-2016/${i}-l.webp 1920w`;
-      img.sizes = "100vw";
+      img.dataset.src = `/assets/images/book-2016/${i}-s.webp`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
@@ -849,19 +845,17 @@ function createImageTags() {
 
     if (!container) return;
 
-    for (let i = 1; i <= 23; i++) {
+    for (let i = 2; i <= 23; i++) {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album3";
-      a.dataset.href = `/assets/images/beer-fest/${i}.jpg`;
-      a.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
+      a.dataset.href = `/assets/images/beer-fest/${i}-l.webp`;
+      a.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l-m.webp 1400w, /assets/images/beer-fest/${i}-l.webp 1920w`;
       a.dataset.sizes = "100vw";
       a.dataset.type = "image";
 
       const img = document.createElement("img");
-      img.dataset.src = `/assets/images/beer-fest/${i}.jpg`;
-      img.dataset.srcset = `/assets/images/beer-fest/${i}-s.webp 800w, /assets/images/beer-fest/${i}-l.webp 1920w`;
-      img.sizes = "100vw";
+      img.dataset.src = `/assets/images/beer-fest/${i}-s.webp`;
       img.width = 400;
       img.height = 300;
       img.alt = `Image ${i}`;
