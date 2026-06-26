@@ -667,7 +667,7 @@
   }
 
   .album-grid__btn {
-    /* position: fixed; */
+    position: absolute;
     font-size: var(--fs-btn-text);
     font-weight: 600;
     top: -4.5rem;
@@ -693,7 +693,7 @@
 
   .scrollToTopButton {
     display: none;
-    /* position: fixed; */
+    position: fixed;
     bottom: 12rem;
     right: 1.25rem;
     width: 3rem;
