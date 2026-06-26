@@ -666,8 +666,8 @@
     }
   }
 
-  /* .album-grid__btn {
-    position: fixed;
+  .album-grid__btn {
+    /* position: fixed; */
     font-size: var(--fs-btn-text);
     font-weight: 600;
     top: -4.5rem;
@@ -689,11 +689,11 @@
     &:active {
       transform: scale(0.9);
     }
-  } */
+  }
 
-  /* .scrollToTopButton {
+  .scrollToTopButton {
     display: none;
-    position: fixed;
+    /* position: fixed; */
     bottom: 12rem;
     right: 1.25rem;
     width: 3rem;
@@ -719,7 +719,7 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       right: 3.75rem;
     }
-  } */
+  }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 / SECTION-ONE / CONTACT ***       \\\\\\\\\\\\\\\\\\\\\\ */
