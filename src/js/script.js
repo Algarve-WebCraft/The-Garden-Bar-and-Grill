@@ -97,7 +97,7 @@ function initPageScripts() {
 ///////////////////////////////////////////////////////////* Home intro animations *//////////////////////////////////////////////////////////////////////////*
 
 function gsapOpeningHomeAnimations() {
-  return;
+  /* return; */
 
   const body = document.querySelector("body");
   const home = document.querySelector("body.home");
@@ -239,11 +239,22 @@ function initHomeBackground() {
   let toggle = false;
   const intervalTime = 7500;
 
-  home.classList.remove("bg-fade-in", "with-transition"); // Class applied so opacity transition only happens on image change and not loading on or off page
+  home.classList.remove("bg-fade-in", "with-transition"); 
 
   requestAnimationFrame(() => {
     home.classList.add("bg-fade-in");
   });
+
+  const imageCache = new Map();
+
+  function preloadImage(src) {
+    if (imageCache.has(src)) return;
+
+    const img = new Image();
+    img.src = src;
+
+    imageCache.set(src, img);
+  }
 
   function stopImagesOnChange() {
     const navLinks = document.querySelectorAll("nav a");
@@ -294,6 +305,9 @@ function initHomeBackground() {
   function showImage(index) {
     if (stopBackground) return;
 
+    const nextIndex = (index + 1) % currentSet.length;
+    preloadImage(currentSet[nextIndex]);
+
     const url = `url(${currentSet[index]})`;
 
     if (toggle) {
@@ -310,13 +324,8 @@ function initHomeBackground() {
   }
 
   function nextImage() {
-    const nextIndex = (currentIndex + 1) % currentSet.length;
-    const nextSrc = currentSet[nextIndex];
-
-    preloadImage(nextSrc).then(() => {
-      currentIndex = nextIndex;
-      showImage(currentIndex);
-    });
+    currentIndex = (currentIndex + 1) % currentSet.length;
+    showImage(currentIndex);
   }
 
   showImage(currentIndex);
@@ -355,32 +364,6 @@ function initHomeBackground() {
       showImage(currentIndex);
     }
   });
-
-  const imageCache = new Set();
-
-  function preloadImage(src) {
-    if (imageCache.has(src)) return Promise.resolve();
-
-    return new Promise((resolve) => {
-      const img = new Image();
-      img.src = src;
-
-      if (img.decode) {
-        img
-          .decode()
-          .then(() => {
-            imageCache.add(src);
-            resolve();
-          })
-          .catch(resolve);
-      } else {
-        img.onload = () => {
-          imageCache.add(src);
-          resolve();
-        };
-      }
-    });
-  }
 }
 
 ///////////////////////////////////////////////////////* Secondary pages side-svg transitions */////////////////////////////////////////////////////////////*
@@ -1055,18 +1038,6 @@ function darkMode() {
       window.matchMedia("(prefers-color-scheme: dark)").matches
     ) {
       theme = "dark";
-    }
-
-    //Logic for setting html pre-load <link> for background images depending on the theme
-
-    if (theme === "light" && bodyEl.classList.contains("home")) {
-      disableDarkMode();
-      preloadLink.href = "/assets/images/day/garden-day-1.webp";
-      document.head.appendChild(preloadLink);
-    } else if (theme === "dark" && bodyEl.classList.contains("home")) {
-      enableDarkMode();
-      preloadLink.href = "/assets/images/night/garden-night-1.webp";
-      document.head.appendChild(preloadLink);
     }
   })();
 
