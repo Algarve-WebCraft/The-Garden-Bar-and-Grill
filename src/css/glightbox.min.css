@@ -148,7 +148,7 @@
   -ms-touch-action: none;
   touch-action: none;
   margin: auto;
-  min-width: 100%;
+  min-width: 200px;
 }
 .desc-bottom .gslide-image img,
 .desc-top .gslide-image img {

@@ -460,7 +460,7 @@
     height: auto;
     padding-block: 0.5rem;
     user-select: none;
-    aspect-ratio: 120 / 110;
+    aspect-ratio: 1.2 / 1.1;
     transition: transform 3s ease-out;
   }
 

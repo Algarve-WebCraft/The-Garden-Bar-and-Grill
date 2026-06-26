@@ -785,7 +785,7 @@ function initLazyImages(container) {
 }
 
 ///// Loop to create the image tags within the HTML
-/* function createImageTags() {
+function createImageTags() {
   function tags2012() {
     const container = document.querySelector(".album-grid--1");
 
@@ -874,7 +874,7 @@ function initLazyImages(container) {
 
   tagsBeer();
   initLazyImages(document.querySelector(".album-grid--3"));
-} */
+}
 
 function scrollToTop() {
   const button = document?.querySelector(".scrollToTopButton");
