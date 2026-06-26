@@ -881,10 +881,12 @@ function scrollToTop() {
   if (!button) return;
 
   window.addEventListener("scroll", () => {
-    if (window.scrollY > 1500) {
+    if (window.scrollY > 800) {
       button.style.display = "flex";
+      button.style.position = "fixed";
       button.style.opacity = "1";
     } else {
+      button.style.position = "static";
       button.style.opacity = "0";
     }
   });
