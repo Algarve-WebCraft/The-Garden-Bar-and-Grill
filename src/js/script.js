@@ -633,7 +633,7 @@ function initGallery() {
 
     // Animate clicked book
     tl.to(books[index], {
-      duration: 1.5,
+      duration: 1.75,
       scale: 2,
       rotation: -15,
       opacity: 0,
@@ -648,11 +648,11 @@ function initGallery() {
         tl.to(
           book,
           {
-            duration: 1.5,
+            duration: 1.75,
             opacity: 0,
-            x: i % 2 === 0 ? -500 : 500,
-            y: -200,
-            rotation: i % 2 === 0 ? -45 : 45,
+            x: i % 2 === 0 ? -300 : 300,
+            y: -100,
+            rotation: i % 2 === 0 ? -30 : 30,
             scale: 0.1,
             ease: "power1.in",
           },
@@ -666,11 +666,10 @@ function initGallery() {
     // Fade in album
     tl.fromTo(
       album,
-      { opacity: 0, y: 20 },
+      { opacity: 0 },
       {
-        duration: 1.5,
+        duration: 1.25,
         opacity: 1,
-        y: 0,
         ease: "power4.in",
         onComplete: () => {
           album.style.pointerEvents = "auto";
@@ -686,9 +685,9 @@ function initGallery() {
       {
         opacity: 1,
         y: 0,
-        duration: 0.5,
+        duration: 0.35,
         stagger: 0.05,
-        ease: "steps.out",
+        ease: "power4.in",
         delay: 1.25,
       },
     );
@@ -718,7 +717,7 @@ function initGallery() {
 
     setTimeout(() => {
       booksBox.classList.remove("absolute-position"); // Remove absolute class which was preventing books from taking up dom space
-    }, 700);
+    }, 600);
 
     if (tl) {
       const images = openWrapper.querySelectorAll("img");
@@ -726,9 +725,9 @@ function initGallery() {
       ////// Fade out images
       gsap.to(images, {
         opacity: 0,
-        duration: 0.6,
-        y: 20,
-        ease: "power1.in",
+        duration: 0.8,
+        y: 10,
+        ease: "power3.in",
       });
 
       books.forEach((book) => (book.style.display = "block"));

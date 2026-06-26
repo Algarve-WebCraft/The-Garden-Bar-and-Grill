@@ -666,7 +666,7 @@
     }
   }
 
-  .album-grid__btn {
+  /* .album-grid__btn {
     position: fixed;
     font-size: var(--fs-btn-text);
     font-weight: 600;
@@ -689,7 +689,7 @@
     &:active {
       transform: scale(0.9);
     }
-  }
+  } */
 
   .scrollToTopButton {
     display: none;
