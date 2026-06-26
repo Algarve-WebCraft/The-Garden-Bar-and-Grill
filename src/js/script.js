@@ -842,7 +842,7 @@ function createImageTags() {
 
     if (!container) return;
 
-    for (let i = 2; i <= 23; i++) {
+    for (let i = 2; i <= 22; i++) {
       const a = document.createElement("a");
       a.className = "glightbox";
       a.dataset.gallery = "album3";
