@@ -1056,6 +1056,18 @@ function darkMode() {
     ) {
       theme = "dark";
     }
+
+    //Logic for setting html pre-load <link> for background images depending on the theme
+
+    if (theme === "light" && bodyEl.classList.contains("home")) {
+      disableDarkMode();
+      preloadLink.href = "/assets/images/day/garden-day-1.webp";
+      document.head.appendChild(preloadLink);
+    } else if (theme === "dark" && bodyEl.classList.contains("home")) {
+      enableDarkMode();
+      preloadLink.href = "/assets/images/night/garden-night-1.webp";
+      document.head.appendChild(preloadLink);
+    }
   })();
 
   function switchTheme(newTheme) {
