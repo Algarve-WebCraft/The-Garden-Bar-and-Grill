@@ -452,9 +452,12 @@
         background: var(--clr-bg-green-gradient);
         opacity: 0.95;
         border-radius: 1.5rem;
-        /* box-shadow:
-          0 3px 14px rgba(0, 0, 0, 0.25),
-          inset 0 0 0 1px rgba(0, 0, 0, 0.08); */
+
+        @media (width > 37.5rem) {
+          box-shadow:
+            0 3px 14px rgba(0, 0, 0, 0.25),
+            inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+        }
 
         &::before {
           content: "";
@@ -466,7 +469,10 @@
           background: var(--clr-green-300);
           border-radius: 50%;
           transform: translateX(-50%);
-          /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); */
+
+          @media (width > 37.5rem) {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+          }
 
           @media (width > 62.5rem) {
             width: 0.5rem;
@@ -528,8 +534,11 @@
     opacity: 1;
     translate: -50% -50%;
     rotate: -10deg;
-    /* filter: drop-shadow(4px 2px 2px rgba(0, 0, 0, 0.45)); */
     border-radius: 2rem;
+
+    @media (width > 37.5rem) {
+      filter: drop-shadow(4px 2px 2px rgba(0, 0, 0, 0.45));
+    }
 
     @media (width > 62.5rem) {
       top: -20%;
@@ -554,10 +563,13 @@
     width: 100%;
     border-radius: 0.75rem;
     cursor: pointer;
-    /* box-shadow:
-      0 6px 12px rgba(0, 0, 0, 0.4),
-      0 4px 8px rgba(0, 0, 0, 0.2),
-      0 0 0 1px rgba(255, 255, 255, 0.04); */
+
+    @media (width > 37.5rem) {
+      box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.4),
+        0 4px 8px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
   }
 
   .gallery-book-svg-box__wrapper--beer-fest {
@@ -641,12 +653,11 @@
       object-fit: cover;
       border-radius: 20px;
       opacity: 0;
-      /* box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.533); */
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.533);
       cursor: pointer !important;
 
       &:hover {
         animation: vibrate 3s linear infinite;
-        /* box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.703); */
       }
 
       @media (width > 35rem) {
@@ -666,7 +677,6 @@
     text-transform: uppercase;
     cursor: pointer;
     border: none;
-    box-shadow: 3px 2px 4px var(--clr-lighter-black);
     z-index: 20;
     transition:
       transform 0.2s ease-out,
@@ -678,11 +688,10 @@
 
     &:active {
       transform: scale(0.9);
-      box-shadow: none;
     }
   }
 
-  /* .scrollToTopButton {
+  .scrollToTopButton {
     display: none;
     position: fixed;
     bottom: 12rem;
@@ -695,7 +704,6 @@
     border: none;
     font-size: 2rem;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     align-items: center;
     justify-content: center;
     z-index: 1000;
@@ -708,9 +716,10 @@
     }
 
     @media (width > 62.5rem) {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       right: 3.75rem;
     }
-  } */
+  }
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 / SECTION-ONE / CONTACT ***       \\\\\\\\\\\\\\\\\\\\\\ */
