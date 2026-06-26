@@ -239,22 +239,11 @@ function initHomeBackground() {
   let toggle = false;
   const intervalTime = 7500;
 
-  home.classList.remove("bg-fade-in", "with-transition"); 
+  home.classList.remove("bg-fade-in", "with-transition"); // Class applied so opacity transition only happens on image change and not loading on or off page
 
   requestAnimationFrame(() => {
     home.classList.add("bg-fade-in");
   });
-
-  const imageCache = new Map();
-
-  function preloadImage(src) {
-    if (imageCache.has(src)) return;
-
-    const img = new Image();
-    img.src = src;
-
-    imageCache.set(src, img);
-  }
 
   function stopImagesOnChange() {
     const navLinks = document.querySelectorAll("nav a");
@@ -305,9 +294,6 @@ function initHomeBackground() {
   function showImage(index) {
     if (stopBackground) return;
 
-    const nextIndex = (index + 1) % currentSet.length;
-    preloadImage(currentSet[nextIndex]);
-
     const url = `url(${currentSet[index]})`;
 
     if (toggle) {
@@ -324,8 +310,13 @@ function initHomeBackground() {
   }
 
   function nextImage() {
-    currentIndex = (currentIndex + 1) % currentSet.length;
-    showImage(currentIndex);
+    const nextIndex = (currentIndex + 1) % currentSet.length;
+    const nextSrc = currentSet[nextIndex];
+
+    preloadImage(nextSrc).then(() => {
+      currentIndex = nextIndex;
+      showImage(currentIndex);
+    });
   }
 
   showImage(currentIndex);
@@ -365,7 +356,7 @@ function initHomeBackground() {
     }
   });
 
-  /* const imageCache = new Set();
+  const imageCache = new Set();
 
   function preloadImage(src) {
     if (imageCache.has(src)) return Promise.resolve();
@@ -389,7 +380,7 @@ function initHomeBackground() {
         };
       }
     });
-  } */
+  }
 }
 
 ///////////////////////////////////////////////////////* Secondary pages side-svg transitions */////////////////////////////////////////////////////////////*
