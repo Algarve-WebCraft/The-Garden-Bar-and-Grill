@@ -882,7 +882,6 @@ function scrollToTop() {
 
   window.addEventListener("scroll", () => {
     if (window.scrollY > 800) {
-      button.style.display = "flex";
       button.style.position = "fixed";
       button.style.opacity = "1";
     } else {

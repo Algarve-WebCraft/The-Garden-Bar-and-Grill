@@ -689,7 +689,7 @@
   }
 
   .scrollToTopButton {
-    display: none;
+    display: flex;
     position: static;
     bottom: 12rem;
     right: 1.25rem;
