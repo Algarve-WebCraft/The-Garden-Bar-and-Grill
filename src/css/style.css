@@ -655,7 +655,7 @@
     }
   } */
 
-  .album-grid__btn {
+  /* .album-grid__btn {
     position: fixed;
     font-size: var(--fs-btn-text);
     font-weight: 600;
@@ -710,7 +710,7 @@
     @media (width > 62.5rem) {
       right: 3.75rem;
     }
-  }
+  } */
 
   /* \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
   /* \\\\\\\\\\\\\\\\\\\\\\\      *** PAGE 5 / SECTION-ONE / CONTACT ***       \\\\\\\\\\\\\\\\\\\\\\ */
