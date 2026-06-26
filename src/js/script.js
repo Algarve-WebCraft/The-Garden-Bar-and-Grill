@@ -239,7 +239,7 @@ function initHomeBackground() {
   let toggle = false;
   const intervalTime = 7500;
 
-  home.classList.remove("bg-fade-in", "with-transition"); // Class applied so opacity transition only happens on image change and not loading on or off page
+  home.classList.remove("bg-fade-in", "with-transition"); 
 
   requestAnimationFrame(() => {
     home.classList.add("bg-fade-in");
@@ -251,8 +251,9 @@ function initHomeBackground() {
     if (imageCache.has(src)) return;
 
     const img = new Image();
-    img.onload = () => imageCache.set(src, true);
     img.src = src;
+
+    imageCache.set(src, img);
   }
 
   function stopImagesOnChange() {
@@ -304,6 +305,9 @@ function initHomeBackground() {
   function showImage(index) {
     if (stopBackground) return;
 
+    const nextIndex = (index + 1) % currentSet.length;
+    preloadImage(currentSet[nextIndex]);
+
     const url = `url(${currentSet[index]})`;
 
     if (toggle) {
@@ -317,9 +321,6 @@ function initHomeBackground() {
     }
 
     toggle = !toggle;
-
-    const nextIndex = (index + 1) % currentSet.length;
-    preloadImage(currentSet[nextIndex]);
   }
 
   function nextImage() {
