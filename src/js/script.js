@@ -623,7 +623,7 @@ function initGallery() {
     const tl = gsap.timeline({
       onComplete: () => {
         animationOnGoing = false;
-        books.forEach((book) => (book.style.opacity = "0"));
+        books.forEach((book) => (book.style.display = "none"));
       },
     });
 
