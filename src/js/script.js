@@ -730,6 +730,8 @@ function initGallery() {
         ease: "power3.in",
       });
 
+      books.forEach((book) => (book.style.display = "block"));
+
       // Reverse timeline and reset books
       tl.reverse().then(() => {
         openWrapper.classList.add("hidden");
