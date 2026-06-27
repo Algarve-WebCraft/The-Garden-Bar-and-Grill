@@ -272,10 +272,6 @@
       }
     }
 
-    a {
-      max-width: 85%;
-    }
-
     img {
       max-height: 25rem;
       border-radius: 0.75rem;
@@ -425,7 +421,7 @@
 
   .gallery-book-svg-box__wrapper {
     position: relative;
-    width: 70%;
+    width: 85%;
     margin-top: clamp(5rem, 20vw, 10rem);
     overflow: visible;
     /* isolation: isolate; */
@@ -866,7 +862,7 @@
 
   .wrapper--mobile-xl {
     @media (width < 62.5rem) {
-      max-width: calc(48rem + 2rem);
+      max-width: calc(42rem + 2rem);
     }
   }
 
